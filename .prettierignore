@@ -1,0 +1,14 @@
+*.md
+.dev/*
+public/search/
+public/assets/css/.archived/
+public/assets/js/json/min.apps.json
+public/assets/js/json/min.games.json
+package-lock.json
+node_modules/**
+pnpm-lock.yaml
+package.json
+index.js
+.gitignore
+.gitattributes
+LICENSE
