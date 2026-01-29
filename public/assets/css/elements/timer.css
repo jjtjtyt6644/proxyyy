@@ -1,0 +1,44 @@
+/* Study Timer Styles */
+#studyTimer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  background: var(--element-bg);
+  border: 1px solid var(--border);
+  transition: 0.2s ease;
+  font-size: 14px;
+}
+
+#studyTimer:hover {
+  border-color: var(--border-h);
+}
+
+#timerDisplay {
+  color: var(--text);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  min-width: 80px;
+}
+
+.timer-btn {
+  background: var(--border);
+  border: none;
+  color: var(--text);
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s ease;
+}
+
+.timer-btn:hover {
+  background: var(--border-h);
+}
+
+.timer-btn.active {
+  background: #10b981;
+  color: white;
+}
