@@ -47,3 +47,19 @@
   border-radius: 30px;
   box-sizing: border-box;
 }
+
+.search-notice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: white;
+  opacity: 0.8;
+}
+
+.search-notice svg {
+  width: 16px;
+  height: 16px;
+  stroke: white;
+}
