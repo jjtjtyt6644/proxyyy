@@ -13,5 +13,13 @@ Below are the contributors of Ambient and their respective contributions.
 - Configured Ultraviolet
 - Frontend functions (obsolete)
 
-# Additional Information & Resources Used
+## Junyu
+- Core Developer
+- About page development and design
+- Service worker optimization and caching fixes
+- UI/UX improvements and styling enhancements
+- Content management and cleanup
+- Security documentation and safety features
+
+## Additional Information & Resources Used
 - Titanium's Ultraviolet version 2
