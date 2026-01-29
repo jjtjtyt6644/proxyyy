@@ -42,12 +42,6 @@
     "img": "https://www.google.com/s2/favicons?sz=256&domain_url=https%3A%2F%2FESPN.com"
   },
   {
-    "name": "Discord",
-    "desc": "Discord is great for playing games and chilling with friends, or even building a worldwide community. Customize your own space to talk, play, and hang out.",
-    "link": "https://discord.com/login",
-    "img": "https://www.google.com/s2/favicons?sz=256&domain_url=https%3A%2F%2FDiscord.com"
-  },
-  {
     "name": "GitHub",
     "desc": "Millions of developers and businesses call GitHub home. Whether you're scaling your development process or just learning how to code, GitHub is where you belong.",
     "link": "https://github.com",

@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="title" content="Ambient - About" />
+    <meta name="description" content="Learn about Ambient proxy and its security features." />
+    <link rel="icon" type="image/x-icon" href="/public/assets/imgs/logo.png" />
+    <title>Ambient | About</title>
+    <!-- Critical CSS -->
+    <link rel="stylesheet" href="assets/css/global.css" />
+    <link rel="stylesheet" href="assets/css/theme/default.css" />
+    <!-- Non-critical CSS -->
+    <link rel="stylesheet" href="assets/css/rays.css" />
+    <link rel="stylesheet" href="assets/css/nav.css" />
+    <link rel="stylesheet" href="assets/css/glass.css" />
+    <link rel="stylesheet" href="assets/css/pages/about.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="raysContain">
+        <div class="rays"></div>
+      </div>
+      <nav>
+        <img src="assets/imgs/logo.png" alt="logo" />
+        <div class="flex">
+          <a href="/">Home</a>
+          <a href="/g">Games</a>
+          <a href="/a">Apps</a>
+          <a href="/about">About</a>
+        </div>
+        <i data-lucide="settings"></i>
+      </nav>
+
+      <div class="glass">
+        <div class="about-content">
+          <h1>About Ambient</h1>
+
+          <div class="dev-section">
+            <h2><i data-lucide="code"></i> Core Development Team</h2>
+            <div class="dev-card">
+              <div class="dev-info">
+                <h3>Junyu</h3>
+                <p class="dev-role">Core Developer</p>
+                <p>Junyu is a key contributor to this build of Ambient, focusing on security enhancements and proxy optimization.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="safety-section">
+            <h2><i data-lucide="shield"></i> Security & Safety</h2>
+            <div class="safety-grid">
+              <div class="safety-item">
+                <i data-lucide="lock"></i>
+                <h3>Isolated Browsing</h3>
+                <p>All proxied content runs in isolated iframes with no direct access to your browser's main context.</p>
+              </div>
+              <div class="safety-item">
+                <i data-lucide="eye-off"></i>
+                <h3>No Data Logging</h3>
+                <p>The server does not log or store any browsing data. All proxying is done in real-time with no persistence.</p>
+              </div>
+              <div class="safety-item">
+                <i data-lucide="zap"></i>
+                <h3>Client-Side Processing</h3>
+                <p>URL encoding and request rewriting happens entirely in your browser using service workers.</p>
+              </div>
+              <div class="safety-item">
+                <i data-lucide="server"></i>
+                <h3>Minimal Server Exposure</h3>
+                <p>The server only proxies requests and serves static files. No user data is stored or processed server-side.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="proxy-section">
+            <h2><i data-lucide="globe"></i> How Ambient Proxies Websites</h2>
+            <div class="proxy-steps">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h3>URL Input</h3>
+                  <p>User enters a website URL in the search bar on the home page.</p>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h3>Service Worker Registration</h3>
+                  <p>Ultraviolet service worker is registered with a specific scope to intercept requests.</p>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h3>URL Encoding</h3>
+                  <p>The URL is encoded using XOR cipher to obfuscate the destination before transmission.</p>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                  <h3>Session Storage</h3>
+                  <p>Encoded URL is temporarily stored in sessionStorage for the proxy page to access.</p>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                  <h3>Page Navigation</h3>
+                  <p>User is redirected to /search page where an iframe loads the encoded URL.</p>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                  <h3>Request Interception</h3>
+                  <p>Service worker intercepts all iframe requests and rewrites them for proxying.</p>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-content">
+                  <h3>Bare Server Routing</h3>
+                  <p>Requests are routed through the Bare server at /bare/ endpoint on the backend.</p>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-number">8</div>
+                <div class="step-content">
+                  <h3>Response Processing</h3>
+                  <p>Server fetches the target website and returns the content, which gets rewritten by the service worker.</p>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-number">9</div>
+                <div class="step-content">
+                  <h3>Content Injection</h3>
+                  <p>Ultraviolet injects client-side scripts to handle dynamic content and maintain functionality.</p>
+                </div>
+              </div>
+
+              <div class="step">
+                <div class="step-number">10</div>
+                <div class="step-content">
+                  <h3>Isolated Rendering</h3>
+                  <p>Final proxied website renders in the iframe with full functionality but isolated from your main browser context.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-section">
+            <h2><i data-lucide="cpu"></i> Technology Stack</h2>
+            <div class="tech-grid">
+              <div class="tech-item">
+                <h4>Frontend</h4>
+                <ul>
+                  <li>HTML5, CSS3, JavaScript (ES6+)</li>
+                  <li>Service Workers for request interception</li>
+                  <li>Ultraviolet proxy framework</li>
+                  <li>Lucide icons</li>
+                </ul>
+              </div>
+              <div class="tech-item">
+                <h4>Backend</h4>
+                <ul>
+                  <li>Node.js with Express server</li>
+                  <li>@tomphttp/bare-server for proxying</li>
+                  <li>CORS enabled for cross-origin requests</li>
+                  <li>Static file serving</li>
+                </ul>
+              </div>
+              <div class="tech-item">
+                <h4>Security</h4>
+                <ul>
+                  <li>XOR URL encoding</li>
+                  <li>Isolated iframe execution</li>
+                  <li>Client-side request rewriting</li>
+                  <li>No server-side data storage</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="troubleshooting-section">
+            <h2><i data-lucide="wrench"></i> Troubleshooting</h2>
+            <div class="troubleshooting-content">
+              <p>If you experience syntax errors or slow loading when accessing websites, try clearing the service worker cache:</p>
+              <button id="clearCacheBtn" class="clear-cache-btn">
+                <i data-lucide="trash-2"></i>
+                Clear Service Worker Cache
+              </button>
+              <p class="troubleshooting-note">
+                <strong>Note:</strong> This will reset all proxy settings and cached data.
+                The page will reload automatically after clearing the cache.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/index.js"></script>
+    <!-- DO NOT REMOVE -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+
+      // Clear cache button functionality
+      document.getElementById('clearCacheBtn').addEventListener('click', async () => {
+        const btn = document.getElementById('clearCacheBtn');
+        const originalText = btn.innerHTML;
+
+        try {
+          btn.innerHTML = '<i data-lucide="loader-2"></i> Clearing...';
+          btn.disabled = true;
+          lucide.createIcons();
+
+          const success = await window.clearServiceWorkerCache();
+
+          if (success) {
+            btn.innerHTML = '<i data-lucide="check"></i> Cache Cleared!';
+            btn.style.background = '#10b981';
+            lucide.createIcons();
+
+            // Reload page after 2 seconds
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000);
+          } else {
+            throw new Error('Cache clearing not supported');
+          }
+        } catch (error) {
+          console.error('Failed to clear cache:', error);
+          btn.innerHTML = '<i data-lucide="x"></i> Failed to Clear';
+          btn.style.background = '#ef4444';
+          lucide.createIcons();
+
+          // Reset button after 3 seconds
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            btn.style.background = '';
+            lucide.createIcons();
+          }, 3000);
+        }
+      });
+    </script>
+  </body>
+</html>
