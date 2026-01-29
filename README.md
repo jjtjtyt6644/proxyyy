@@ -55,11 +55,7 @@ git pull --force --allow-unrelated-histories # This may overwrite your local cha
 [![Deploy to Render](https://binbashbanana.github.io/deploy-buttons/buttons/remade/render.svg)](https://render.com/deploy?repo=https://github.com/xnoctra/ambient)
 [![Deploy to Cyclic](https://binbashbanana.github.io/deploy-buttons/buttons/remade/cyclic.svg)](https://app.cyclic.sh/api/app/deploy/xnoctra/ambient)
 
-## Support
-If you come across any issues, submit an issue on GitHub, and we'll address it swiftly. 
 
-> [!TIP]
-> If you're having trouble, feel free to contact us on our [Discord](https://discord.gg/5hETqnGc3e).
 
 Hosted by Junyu
 
