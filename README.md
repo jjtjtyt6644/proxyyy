@@ -61,7 +61,7 @@ If you come across any issues, submit an issue on GitHub, and we'll address it s
 > [!TIP]
 > If you're having trouble, feel free to contact us on our [Discord](https://discord.gg/5hETqnGc3e).
 
-# Contributors
-Shoutout to all the following people that have contributed to Ambient.
+Hosted by Junyu
+
 
 [![Contributors](https://contrib.rocks/image?repo=xnoctra/ambient)](https://github.com/xnoctra/ambient/graphs/contributors)
