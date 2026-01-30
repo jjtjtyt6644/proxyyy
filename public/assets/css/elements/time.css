@@ -2,30 +2,42 @@
 #timeDisplay {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: var(--border-radius);
+  gap: 10px;
   background: var(--element-bg);
   border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: 12px 16px;
+  transition: 0.2s ease;
   font-size: 14px;
+  margin-left: 15px;
+  min-width: 120px;
+}
+
+#timeDisplay:hover {
+  border-color: var(--border-h);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .time-info {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .time {
   color: var(--text);
   font-family: 'Courier New', monospace;
   font-weight: bold;
+  font-size: 18px;
   line-height: 1;
+  margin-bottom: 2px;
 }
 
 .date {
   color: var(--text);
   opacity: 0.7;
   font-size: 12px;
+  font-weight: 500;
   line-height: 1;
 }
