@@ -49,6 +49,10 @@ app.get("/devlogs", (req, res) => {
   res.sendFile(path.join(process.cwd(), "/public/devlogs.html"));
 });
 
+app.get("/troubleshooting", (req, res) => {
+  res.sendFile(path.join(process.cwd(), "/public/troubleshooting.html"));
+});
+
 app.get("/settings", (req, res) => {
   res.sendFile(path.join(process.cwd(), "/public/settings/general.html"));
 });
