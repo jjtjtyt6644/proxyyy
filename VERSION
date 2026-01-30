@@ -1,13 +1,19 @@
 [VERSION]
-1.3.12
+1.3.13
 
 [RELEASE DATE]
-2025-04-01
+2026-01-30
 
 [CHANGES]
-- Added .dev folder
-- Added VERSION
-- Added .commit-types
+- Fixed search encoding to use UV codec instead of custom crypts
+- Added notice overlay with alternative URLs on homepage
+- Added Dev Logs page with version info and commit history
+- Refined styles for study timer and UI buttons
+- Updated time.css for better styling
+- Added comprehensive about page with developer credits
+- Enhanced text visibility and contrast on about page
+- Fixed service worker caching issues
+- Added student utility features
 - Updated .gitignore
 - Improved directory organization
 
