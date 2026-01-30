@@ -109,32 +109,52 @@ async function launch(val) {
 
 // Function to clear service worker cache and force refresh
 async function clearServiceWorkerCache() {
-  if ('serviceWorker' in navigator) {
-    // Unregister all service workers
-    const registrations = await navigator.serviceWorker.getRegistrations();
-    for (const registration of registrations) {
-      await registration.unregister();
-      console.log('Service worker unregistered');
-    }
+  try {
+    if ('serviceWorker' in navigator) {
+      // Unregister all service workers
+      const registrations = await navigator.serviceWorker.getRegistrations();
+      console.log(`Found ${registrations.length} service workers to unregister`);
 
-    // Clear all caches
-    if ('caches' in window) {
-      const cacheNames = await caches.keys();
-      for (const cacheName of cacheNames) {
-        await caches.delete(cacheName);
-        console.log('Cache cleared:', cacheName);
+      for (const registration of registrations) {
+        const success = await registration.unregister();
+        console.log('Service worker unregistered:', registration.scope, success ? 'SUCCESS' : 'FAILED');
+
+        // Wait a bit for unregistration to complete
+        await new Promise(resolve => setTimeout(resolve, 100));
       }
+
+      // Clear all caches, including UV-specific ones
+      if ('caches' in window) {
+        const cacheNames = await caches.keys();
+        console.log(`Found ${cacheNames.length} caches to clear:`, cacheNames);
+
+        for (const cacheName of cacheNames) {
+          const success = await caches.delete(cacheName);
+          console.log('Cache cleared:', cacheName, success ? 'SUCCESS' : 'FAILED');
+        }
+      }
+
+      // Clear all localStorage and sessionStorage
+      // Be more aggressive - clear everything proxy-related
+      const keysToRemove = ['proxy', 'browse', 'engine'];
+      keysToRemove.forEach(key => {
+        localStorage.removeItem(key);
+        sessionStorage.removeItem(key);
+      });
+
+      // Also clear the encodedUrl
+      sessionStorage.removeItem('encodedUrl');
+
+      console.log('All proxy caches and data cleared successfully');
+      return true;
     }
 
-    // Clear localStorage and sessionStorage related to proxy
-    localStorage.removeItem('proxy');
-    localStorage.removeItem('browse');
-    sessionStorage.removeItem('encodedUrl');
-
-    console.log('All proxy caches and data cleared');
-    return true;
+    console.warn('Service Worker API not available');
+    return false;
+  } catch (error) {
+    console.error('Error clearing service worker cache:', error);
+    return false;
   }
-  return false;
 }
 
 // Make functions globally available
