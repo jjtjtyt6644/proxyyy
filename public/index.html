@@ -152,31 +152,6 @@
       const errorCode = document.getElementById('uv-error-code');
       const input = document.querySelector('input');
 
-      // crypts class definition
-      class crypts {
-        static encode(str) {
-          return encodeURIComponent(
-            str
-              .toString()
-              .split('')
-              .map((char, ind) => (ind % 2 ? String.fromCharCode(char.charCodeAt() ^ 2) : char))
-              .join('')
-          );
-        }
-
-        static decode(str) {
-          if (str.charAt(str.length - 1) === '/') {
-            str = str.slice(0, -1);
-          }
-          return decodeURIComponent(
-            str
-              .split('')
-              .map((char, ind) => (ind % 2 ? String.fromCharCode(char.charCodeAt() ^ 2) : char))
-              .join('')
-          );
-        }
-      }
-
       function search(input) {
         input = input.trim();
         const searchTemplate = localStorage.getItem('engine') || 'https://google.com/search?q=%s';
@@ -209,7 +184,7 @@
             console.log('ServiceWorker registration successful with scope: ', registration.scope);
             form.addEventListener('submit', async (event) => {
               event.preventDefault();
-              let encodedUrl = swConfigSettings.prefix + crypts.encode(search(address.value));
+              let encodedUrl = swConfigSettings.prefix + __uv$config.encodeUrl(search(address.value));
               sessionStorage.setItem('encodedUrl', encodedUrl);
               location.href = '/search';
             });
