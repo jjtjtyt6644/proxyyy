@@ -24,8 +24,8 @@
 To host Ambient on your server, you must run the following commands:
 
 ```bash
-git clone https://github.com/xnoctra/Ambient
-cd Ambient
+git clone https://github.com/jjtjtyt6644/proxyyy.git
+cd proxyyy
 ```
 
 ### npm
@@ -45,15 +45,10 @@ pnpm start
 ## Updating
 
 ```bash
-cd Ambient
-git pull --force --allow-unrelated-histories # This may overwrite your local changes 
+cd proxyyy
+git pull --force --allow-unrelated-histories # This may overwrite your local changes
 ```
-
-
-
-
 
 Hosted by Junyu
 
-
-[![Contributors](https://contrib.rocks/image?repo=xnoctra/ambient)](https://github.com/xnoctra/ambient/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=jjtjtyt6644/proxyyy)](https://github.com/jjtjtyt6644/proxyyy/graphs/contributors)
