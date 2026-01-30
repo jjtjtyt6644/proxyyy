@@ -2,43 +2,61 @@
 #studyTimer {
   display: flex;
   align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  padding: 8px 12px;
-  border-radius: var(--border-radius);
+  gap: 10px;
   background: var(--element-bg);
   border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: 12px 16px;
   transition: 0.2s ease;
+  cursor: pointer;
   font-size: 14px;
+  margin-left: 15px;
 }
 
 #studyTimer:hover {
   border-color: var(--border-h);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#studyTimer i {
+  color: var(--text);
+  opacity: 0.8;
 }
 
 #timerDisplay {
   color: var(--text);
   font-family: 'Courier New', monospace;
   font-weight: bold;
-  min-width: 80px;
+  font-size: 16px;
+  min-width: 90px;
+  text-align: center;
 }
 
 .timer-btn {
   background: var(--border);
   border: none;
   color: var(--text);
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 6px 12px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 12px;
+  font-weight: 500;
   transition: 0.2s ease;
+  margin-left: 8px;
 }
 
 .timer-btn:hover {
   background: var(--border-h);
+  transform: scale(1.05);
 }
 
 .timer-btn.active {
   background: #10b981;
   color: white;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.3);
+}
+
+.timer-btn.active:hover {
+  background: #059669;
 }
