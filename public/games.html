@@ -84,14 +84,25 @@
 
       function search(input) {
         input = input.trim();
+        
+        // Prevent empty or invalid inputs
+        if (!input || input.length < 2) {
+          return 'https://google.com/search?q=';
+        }
+        
         const searchTemplate = localStorage.getItem('engine') || 'https://google.com/search?q=%s';
 
         try {
-          return new URL(input).toString();
+          const url = new URL(input);
+          // Validate protocol
+          if (!['http:', 'https:'].includes(url.protocol)) {
+            throw new Error('Invalid protocol');
+          }
+          return url.toString();
         } catch (err) {
           try {
             const url = new URL(`http://${input}`);
-            if (url.hostname.includes('.')) {
+            if (url.hostname.includes('.') && url.hostname.length > 3) {
               return url.toString();
             }
             throw new Error('Invalid hostname');

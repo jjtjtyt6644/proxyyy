@@ -12,6 +12,9 @@ const __dirname = process.cwd();
 const bareServer = createBareServer("/bare/");
 const PORT = process.env.PORT || 8080;
 
+// Set server timeout (30 seconds)
+server.setTimeout(30000);
+
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(express.static(__dirname + "/public", {
@@ -65,6 +68,25 @@ app.get("/404", (req, res) => {
   res.sendFile(path.join(process.cwd(), "/public/err/404.html"));
 });
 
+// Request timeout middleware
+app.use((req, res, next) => {
+  res.setTimeout(25000, () => {
+    console.error('Request timeout:', req.url);
+    res.status(408).send('Request timeout');
+  });
+  next();
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error('Server error:', err);
+  res.status(500).json({ 
+    error: 'Internal server error',
+    message: process.env.NODE_ENV === 'development' ? err.message : 'An error occurred'
+  });
+});
+
+// 404 handler (must be last)
 app.use((req, res, next) => {
   res.status(404).redirect("/404");
 });
