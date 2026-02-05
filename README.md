@@ -14,7 +14,6 @@
 - Games Page
 - Apps page
 - Shortcuts
-- **Statistics Tracker** (movable widget tracking time spent on each page)
 
 # Deployment
 > [!WARNING]

@@ -36,10 +36,6 @@ app.get("/search", (req, res) => {
   res.sendFile(path.join(process.cwd(), "/public/search.html"));
 });
 
-app.get("/proxy-frame", (req, res) => {
-  res.sendFile(path.join(process.cwd(), "/public/proxy-frame.html"));
-});
-
 app.get("/a", (req, res) => {
   res.sendFile(path.join(process.cwd(), "/public/apps.html"));
 });

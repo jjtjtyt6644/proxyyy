@@ -377,10 +377,7 @@
       <footer>
         <a href="https://github.com/jjtjtyt6644/proxyyy" target="_blank">GitHub</a>
         <span>\</span>
-        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-          <input type="checkbox" id="stats-toggle" style="cursor: pointer;" checked />
-          <span style="color: var(--text); opacity: 0.5; font-size: 12px;">Enable Stats Tracker</span>
-        </label>
+        
       </footer>
     </div>
     <script src="assets/js/index.js"></script>
@@ -403,17 +400,6 @@
     <script>
       document.getElementById('close-notice').addEventListener('click', function() {
         document.getElementById('notice-overlay').style.display = 'none';
-      });
-      
-      // Stats toggle
-      const statsToggle = document.getElementById('stats-toggle');
-      const statsEnabled = localStorage.getItem('stats-enabled');
-      if (statsEnabled !== null) {
-        statsToggle.checked = statsEnabled === 'true';
-      }
-      
-      statsToggle.addEventListener('change', function() {
-        localStorage.setItem('stats-enabled', this.checked);
       });
     </script>
     <script>
