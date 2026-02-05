@@ -33,8 +33,23 @@
         let encodedUrl = sessionStorage.getItem('encodedUrl');
         if (encodedUrl) {
           console.log('Redirecting to proxied URL:', encodedUrl);
-          // Redirect the entire window to the proxied URL
-          window.location.href = encodedUrl;
+          
+          // Check if stats are enabled
+          const statsEnabled = localStorage.getItem('stats-enabled');
+          if (statsEnabled === null || statsEnabled === 'true') {
+            // Load stats tracker before redirecting
+            const script = document.createElement('script');
+            script.src = '/assets/js/stats-tracker.js';
+            document.body.appendChild(script);
+            
+            // Small delay to let stats tracker initialize
+            setTimeout(() => {
+              window.location.href = encodedUrl;
+            }, 100);
+          } else {
+            // Redirect immediately without stats
+            window.location.href = encodedUrl;
+          }
         } else {
           console.error('No encoded URL found in sessionStorage');
           // Fallback to home page

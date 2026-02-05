@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ambient Proxy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    #proxy-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="proxy-frame"></iframe>
+  
+  <!-- Stats Tracker will be injected here -->
+  <script src="/assets/js/stats-tracker.js"></script>
+  
+  <script>
+    const frame = document.getElementById('proxy-frame');
+    const encodedUrl = sessionStorage.getItem('encodedUrl');
+    
+    if (encodedUrl) {
+      frame.src = encodedUrl;
+      
+      // Try to inject stats into iframe content (if same-origin allows)
+      frame.addEventListener('load', () => {
+        try {
+          const iframeDoc = frame.contentDocument || frame.contentWindow.document;
+          
+          // Create script element in iframe
+          const script = iframeDoc.createElement('script');
+          script.src = '/assets/js/stats-tracker.js';
+          iframeDoc.body.appendChild(script);
+        } catch (e) {
+          console.log('Cannot inject into iframe (cross-origin), stats will show in parent');
+        }
+      });
+    } else {
+      window.location.href = '/';
+    }
+  </script>
+</body>
+</html>
