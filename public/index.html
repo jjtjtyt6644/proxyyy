@@ -370,7 +370,9 @@
           <a href="/about">About</a>
           <a href="/devlogs">Dev Logs</a>
         </div>
-        <i data-lucide="settings" id="settings-icon" style="cursor: pointer;"></i>
+        <div id="settings-btn" style="cursor: pointer; display: flex; align-items: center;">
+            <i data-lucide="settings"></i>
+        </div>
       </nav>
       <div class="news">
         <i data-lucide=""></i>
@@ -424,13 +426,13 @@
       lucide.createIcons();
       
       // Settings Overlay Logic
-      const settingsIcon = document.getElementById('settings-icon');
+      const settingsBtn = document.getElementById('settings-btn');
       const settingsOverlay = document.getElementById('settings-overlay');
       const closeSettingsBtn = document.getElementById('close-settings');
       const toggleStatsBtn = document.getElementById('toggle-stats-btn');
       
       // Open Settings
-      settingsIcon.addEventListener('click', () => {
+      settingsBtn.addEventListener('click', () => {
           settingsOverlay.style.display = 'flex';
           
           // Update Stats Button State

@@ -51,7 +51,7 @@ const pingCheck = {
 
     this.timeout = setTimeout(() => {
       this.start();
-    }, 1500);
+    }, 300000);
   },
 
   stop() {
