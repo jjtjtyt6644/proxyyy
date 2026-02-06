@@ -475,6 +475,15 @@
               location.reload();
           }
       });
+
+      // Listen for changes from the overlay
+      window.addEventListener('storage', (e) => {
+          if (e.key === 'ambient_overlay_disabled') {
+             const disabled = e.newValue === 'true';
+             toggleStatsBtn.innerText = disabled ? 'Enable' : 'Disable';
+             toggleStatsBtn.style.background = disabled ? 'rgba(78, 205, 196, 0.2)' : 'rgba(255,255,255,0.1)';
+          }
+      });
     </script>
     <!-- DO NOT REMOVE -->
     <script>
