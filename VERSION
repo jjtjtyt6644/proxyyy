@@ -1,13 +1,13 @@
 [VERSION]
-1.3.13
+1.4.0
 
 [RELEASE DATE]
-2026-01-30
+2026-02-07
 
 [CHANGES]
-- Fixed search encoding to use UV codec instead of custom crypts
-- Added notice overlay with alternative URLs on homepage
-- Added Dev Logs page with version info and commit history
+- Complete overlay redesign with glassmorphism, animations, and new stats UI
+- Fix overlay scrolling issues on mobile and touch devices
+- Add security indicator (HTTPS/HTTP) and connection quality gradient
 - Refined styles for study timer and UI buttons
 - Updated time.css for better styling
 - Added comprehensive about page with developer credits

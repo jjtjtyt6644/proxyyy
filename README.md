@@ -2,6 +2,7 @@
   <img src="https://i.ibb.co/dspWJqwc/image-29.png" />
   <p>Enhance your experience.</p>
   <p>Ambient is a web based proxy built for all of your browsing needs.</p>
+  <p><strong>Current Version: v1.4.0</strong></p>
 </div>
 
 ![preview](https://i.ibb.co/xtNW3r2s/Screenshot-2025-03-28-10-37-09-AM.png)
