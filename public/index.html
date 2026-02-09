@@ -24,6 +24,107 @@
   <link rel="stylesheet" href="assets/css/elements/time.css" />
 
   <style>
+    /* Front Page Styles */
+    #front-page {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      overflow: hidden;
+    }
+
+    #front-page::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .front-content {
+      text-align: center;
+      z-index: 1;
+      padding: 20px;
+    }
+
+    .animated-text {
+      font-size: 48px;
+      font-weight: 700;
+      color: #ffffff;
+      opacity: 0;
+      transform: translateY(30px);
+      margin: 30px 0;
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    .animated-text.show {
+      animation: textReveal 1.2s ease-out forwards;
+    }
+
+    @keyframes textReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+        filter: blur(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    .animated-text.fade-out {
+      animation: textFadeOut 0.8s ease-in forwards;
+    }
+
+    @keyframes textFadeOut {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+    }
+
+    #front-page.hide {
+      animation: pageFadeOut 1s ease-out forwards;
+    }
+
+    @keyframes pageFadeOut {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.1);
+      }
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff, #a0a0a0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -327,6 +428,21 @@
 </head>
 
 <body>
+  <!-- Front Page -->
+  <div id="front-page">
+    <div class="front-content">
+      <div class="animated-text" id="text1">
+        <span class="gradient-text">Welcome to Ambient Proxy</span>
+      </div>
+      <div class="animated-text" id="text2">
+        <span class="gradient-text">This Web is made by Junyu</span>
+      </div>
+      <div class="animated-text" id="text3">
+        <span class="gradient-text">Your Gateway to Unrestricted Browsing</span>
+      </div>
+    </div>
+  </div>
+
   <div id="notice-overlay" class="overlay">
     <div class="overlay-content">
       <h2>Alternative Proxies</h2>
@@ -487,6 +603,92 @@
           console.error('ServiceWorker registration failed:', error);
         });
     }
+
+    // Front Page Animation Script
+    (function() {
+      const frontPage = document.getElementById('front-page');
+      const text1 = document.getElementById('text1');
+      const text2 = document.getElementById('text2');
+      const text3 = document.getElementById('text3');
+      const noticeOverlay = document.getElementById('notice-overlay');
+
+      let currentStep = 0;
+      let timeouts = [];
+
+      // Hide notice overlay initially
+      noticeOverlay.style.display = 'none';
+
+      function clearAllTimeouts() {
+        timeouts.forEach(timeout => clearTimeout(timeout));
+        timeouts = [];
+      }
+
+      function goToNextStep() {
+        clearAllTimeouts();
+        
+        if (currentStep === 0) {
+          text1.classList.remove('show', 'fade-out');
+          text1.classList.add('fade-out');
+          timeouts.push(setTimeout(() => {
+            text2.classList.add('show');
+            currentStep = 1;
+          }, 100));
+        } else if (currentStep === 1) {
+          text2.classList.remove('show', 'fade-out');
+          text2.classList.add('fade-out');
+          timeouts.push(setTimeout(() => {
+            text3.classList.add('show');
+            currentStep = 2;
+          }, 100));
+        } else if (currentStep === 2) {
+          text3.classList.remove('show', 'fade-out');
+          text3.classList.add('fade-out');
+          frontPage.classList.add('hide');
+          timeouts.push(setTimeout(() => {
+            frontPage.style.display = 'none';
+            noticeOverlay.style.display = 'flex';
+          }, 800));
+        }
+      }
+
+      // Add click listener to skip animations
+      frontPage.addEventListener('click', goToNextStep);
+      frontPage.style.cursor = 'pointer';
+
+      // Animation sequence
+      timeouts.push(setTimeout(() => {
+        text1.classList.add('show');
+        currentStep = 0;
+      }, 500));
+
+      timeouts.push(setTimeout(() => {
+        text1.classList.add('fade-out');
+      }, 2500));
+
+      timeouts.push(setTimeout(() => {
+        text2.classList.add('show');
+        currentStep = 1;
+      }, 3500));
+
+      timeouts.push(setTimeout(() => {
+        text2.classList.add('fade-out');
+      }, 5500));
+
+      timeouts.push(setTimeout(() => {
+        text3.classList.add('show');
+        currentStep = 2;
+      }, 6500));
+
+      timeouts.push(setTimeout(() => {
+        text3.classList.add('fade-out');
+        frontPage.classList.add('hide');
+      }, 8500));
+
+      timeouts.push(setTimeout(() => {
+        frontPage.style.display = 'none';
+        noticeOverlay.style.display = 'flex';
+      }, 9500));
+    })();
   </script>
 </body>
 
