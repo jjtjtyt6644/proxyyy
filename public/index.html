@@ -1,468 +1,493 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="title" content="Ambient" />
-    <meta name="description" content="The better way to browse." />
-    <link rel="icon" type="image/x-icon" href="/public/assets/imgs/logo.png" />
-    <title>Ambient</title>
-    <!-- Critical CSS -->
-    <link rel="stylesheet" href="assets/css/global.css" />
-    <link rel="stylesheet" href="assets/css/theme/default.css" />
-    <!-- Non-critical CSS -->
-    <link rel="stylesheet" href="assets/css/rays.css" />
-    <link rel="stylesheet" href="assets/css/nav.css" />
-    <link rel="stylesheet" href="assets/css/elements/news.css" />
-    <link rel="stylesheet" href="assets/css/searchbar.css" />
-    <link rel="stylesheet" href="assets/css/shortcuts.css" />
-    <link rel="stylesheet" href="assets/css/elements/greeting.css" />
-    <link rel="stylesheet" href="assets/css/elements/ping.css" />
-    <link rel="stylesheet" href="assets/css/elements/timer.css" />
 
-    <link rel="stylesheet" href="assets/css/elements/time.css" />
-    
-    <style>
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: scale(0.95);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="title" content="Ambient" />
+  <meta name="description" content="The better way to browse." />
+  <link rel="icon" type="image/x-icon" href="/public/assets/imgs/logo.png" />
+  <title>Ambient</title>
+  <!-- Critical CSS -->
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/theme/default.css" />
+  <!-- Non-critical CSS -->
+  <link rel="stylesheet" href="assets/css/rays.css" />
+  <link rel="stylesheet" href="assets/css/nav.css" />
+  <link rel="stylesheet" href="assets/css/elements/news.css" />
+  <link rel="stylesheet" href="assets/css/searchbar.css" />
+  <link rel="stylesheet" href="assets/css/shortcuts.css" />
+  <link rel="stylesheet" href="assets/css/elements/greeting.css" />
+  <link rel="stylesheet" href="assets/css/elements/ping.css" />
+  <link rel="stylesheet" href="assets/css/elements/timer.css" />
+
+  <link rel="stylesheet" href="assets/css/elements/time.css" />
+
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
       }
-      
-      @keyframes gradientShift {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
       }
-      
-      @keyframes shimmer {
-        0% { background-position: -1000px 0; }
-        100% { background-position: 1000px 0; }
+    }
+
+    @keyframes gradientShift {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
       }
-      
-      @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.5; }
+
+      50% {
+        background-position: 100% 50%;
       }
-      
-      .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--bg);
-        backdrop-filter: blur(15px) saturate(180%);
-        -webkit-backdrop-filter: blur(15px) saturate(180%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-        animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -1000px 0;
       }
-      
-      .overlay-content {
-        background: var(--element-bg);
-        border: 2px solid transparent;
-        background-clip: padding-box;
-        position: relative;
-        border-radius: 20px;
-        padding: 40px 35px;
-        text-align: center;
-        max-width: 550px;
-        width: 90%;
-        color: var(--text);
-        box-shadow: 
-          0 25px 50px -12px rgba(0, 0, 0, 0.5),
-          0 0 0 1px rgba(78, 205, 196, 0.1),
-          inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
-        animation: fadeIn 0.4s ease-out 0.1s both;
+
+      100% {
+        background-position: 1000px 0;
       }
-      
-      .overlay-content::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, 
-          #4ecdc4 0%, 
-          #10b981 25%, 
-          #06b6d4 50%, 
-          #10b981 75%, 
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg);
+      backdrop-filter: blur(15px) saturate(180%);
+      -webkit-backdrop-filter: blur(15px) saturate(180%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .overlay-content {
+      background: var(--element-bg);
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+      border-radius: 20px;
+      padding: 40px 35px;
+      text-align: center;
+      max-width: 550px;
+      width: 90%;
+      color: var(--text);
+      box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(78, 205, 196, 0.1),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+      animation: fadeIn 0.4s ease-out 0.1s both;
+    }
+
+    .overlay-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg,
+          #4ecdc4 0%,
+          #10b981 25%,
+          #06b6d4 50%,
+          #10b981 75%,
           #4ecdc4 100%);
-        background-size: 200% 100%;
-        animation: gradientShift 4s ease-in-out infinite;
-        border-radius: 20px 20px 0 0;
-      }
-      
-      .overlay-content::after {
-        content: '';
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        right: -2px;
-        bottom: -2px;
-        background: linear-gradient(135deg, 
-          rgba(78, 205, 196, 0.3), 
+      background-size: 200% 100%;
+      animation: gradientShift 4s ease-in-out infinite;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .overlay-content::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg,
+          rgba(78, 205, 196, 0.3),
           rgba(16, 185, 129, 0.3),
           rgba(6, 182, 212, 0.3));
-        border-radius: 20px;
-        z-index: -1;
-        opacity: 0.5;
-        filter: blur(10px);
-      }
-      
-      .overlay-content h2 {
-        margin: 0 0 15px 0;
-        font-size: 32px;
-        font-weight: 700;
-        background: linear-gradient(135deg, #4ecdc4, #10b981, #06b6d4);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        letter-spacing: -0.5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-      }
-      
-      .overlay-content h2::before {
-        content: '🚀';
-        font-size: 36px;
-        animation: pulse 2s ease-in-out infinite;
-      }
-      
-      .overlay-content p {
-        margin: 0 0 25px 0;
-        color: rgba(255, 255, 255, 0.85);
-        line-height: 1.7;
-        font-size: 16px;
-        font-weight: 400;
-      }
-      
-      .overlay-content .subtitle {
-        font-size: 14px;
-        color: rgba(255, 255, 255, 0.6);
-        margin-bottom: 20px;
-        font-style: italic;
-      }
-      
-      .overlay-content .links {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin: 25px 0;
-      }
-      
-      .overlay-content a {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        color: #4ecdc4;
-        text-decoration: none;
-        padding: 16px 20px;
-        background: linear-gradient(135deg, 
-          rgba(78, 205, 196, 0.08) 0%, 
-          rgba(16, 185, 129, 0.08) 100%);
-        border: 1.5px solid rgba(78, 205, 196, 0.25);
-        border-radius: 12px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
-        font-size: 13px;
-        position: relative;
-        overflow: hidden;
-      }
-      
-      .overlay-content a::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, 
-          transparent, 
-          rgba(78, 205, 196, 0.15), 
-          transparent);
-        transition: left 0.5s ease;
-      }
-      
-      .overlay-content a:hover::before {
-        left: 100%;
-      }
-      
-      .overlay-content a::after {
-        content: '→';
-        font-size: 18px;
-        opacity: 0;
-        transform: translateX(-10px);
-        transition: all 0.3s ease;
-      }
-      
-      .overlay-content a:hover {
-        background: linear-gradient(135deg, 
-          rgba(78, 205, 196, 0.18) 0%, 
-          rgba(16, 185, 129, 0.18) 100%);
-        border-color: #4ecdc4;
-        transform: translateX(5px);
-        box-shadow: 
-          0 8px 20px rgba(78, 205, 196, 0.25),
-          inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      }
-      
-      .overlay-content a:hover::after {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      
-      .overlay-content a:active {
-        transform: translateX(3px) scale(0.98);
-      }
-      
-      .overlay-content a span {
-        flex: 1;
-        text-align: left;
-        word-break: break-all;
-      }
-      
-      #close-notice {
-        margin-top: 30px;
-        padding: 14px 32px;
-        background: linear-gradient(135deg, #4ecdc4 0%, #10b981 100%);
-        color: white;
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
-        font-weight: 700;
-        font-size: 15px;
-        letter-spacing: 0.5px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 
-          0 4px 15px rgba(78, 205, 196, 0.35),
-          inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        position: relative;
-        overflow: hidden;
-      }
-      
-      #close-notice::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        transform: translate(-50%, -50%);
-        transition: width 0.5s ease, height 0.5s ease;
-      }
-      
-      #close-notice:hover::before {
-        width: 300px;
-        height: 300px;
-      }
-      
-      #close-notice:hover {
-        transform: translateY(-3px);
-        box-shadow: 
-          0 8px 25px rgba(78, 205, 196, 0.45),
-          inset 0 1px 0 rgba(255, 255, 255, 0.3);
-      }
-      
-      #close-notice:active {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(78, 205, 196, 0.35);
-      }
-      
-      #close-notice span {
-        position: relative;
-        z-index: 1;
-      }
-      
-      @media (max-width: 600px) {
-        .overlay-content {
-          padding: 30px 25px;
-          max-width: 95%;
-        }
-        
-        .overlay-content h2 {
-          font-size: 26px;
-        }
-        
-        .overlay-content a {
-          padding: 14px 16px;
-          font-size: 12px;
-        }
-      }
-    </style>
-    
-  </head>
+      border-radius: 20px;
+      z-index: -1;
+      opacity: 0.5;
+      filter: blur(10px);
+    }
 
-  <body>
-    <div id="notice-overlay" class="overlay">
-      <div class="overlay-content">
-        <h2>Alternative Proxies</h2>
-        <p>If the main proxy doesn't work, try these alternative instances:</p>
-        <p class="subtitle">Click any link to visit directly, or close to continue with the main instance</p>
-        <div class="links">
-          <a href="https://proxyyyy-pi.vercel.app" target="_blank">
-            <span>https://proxyyyy-pi.vercel.app</span>
-          </a>
-          <a href="https://proxyyy-dusky-five.vercel.app" target="_blank">
-            <span>https://proxyyy-dusky-five.vercel.app</span>
-          </a>
-          <a href="https://proxy-zeta-gilt.vercel.app/" target="_blank">
-            <span>https://proxy-zeta-gilt.vercel.app/</span>
-          </a>
-          <a href="https://proxyy-sepia-tau.vercel.app" target="_blank">
-            <span>https://proxyy-sepia-tau.vercel.app</span>
-          </a>
-        </div>
-        <button id="close-notice"><span>Continue to Main Site</span></button>
-      </div>
-    </div>
-    <div class="container">
-      <div class="raysContain">
-        <div class="rays"></div>
-      </div>
-      <nav>
-        <img src="assets/imgs/logo.png" alt="logo" />
-        <div class="flex">
-          <a href="/">Home</a>
-          <a href="/g">Games</a>
-          <a href="/a">Apps</a>
-          <a href="/about">About</a>
-          <a href="/devlogs">Dev Logs</a>
-        </div>
-        <div id="settings-btn" style="cursor: pointer; display: flex; align-items: center;">
-            <i data-lucide="settings"></i>
-        </div>
-      </nav>
-      <div class="news">
-        <i data-lucide=""></i>
-        <p></p>
-      </div>
-      <h1 class="title">Ambient</h1>
-      <div class="searchbarContainer">
-        <i data-lucide="search"></i>
-        <form id="uv-form">
-          <input class="searchbar" id="searchbar" type="text" required />
-        </form>
-      </div>
-      <div class="search-notice">
-        <i data-lucide="info"></i>
-        <span>Tip: Write full website links (e.g., https://google.com) as Google blocks direct access</span>
-      </div>
-      <div class="trouble-button">
-        <a href="/troubleshooting" class="trouble-link">
-          <i data-lucide="help-circle"></i>
-          Having Trouble?
+    .overlay-content h2 {
+      margin: 0 0 15px 0;
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #4ecdc4, #10b981, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .overlay-content h2::before {
+      content: '🚀';
+      font-size: 36px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .overlay-content p {
+      margin: 0 0 25px 0;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.7;
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .overlay-content .subtitle {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .overlay-content .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 25px 0;
+    }
+
+    .overlay-content a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #4ecdc4;
+      text-decoration: none;
+      padding: 16px 20px;
+      background: linear-gradient(135deg,
+          rgba(78, 205, 196, 0.08) 0%,
+          rgba(16, 185, 129, 0.08) 100%);
+      border: 1.5px solid rgba(78, 205, 196, 0.25);
+      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+      font-size: 13px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .overlay-content a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg,
+          transparent,
+          rgba(78, 205, 196, 0.15),
+          transparent);
+      transition: left 0.5s ease;
+    }
+
+    .overlay-content a:hover::before {
+      left: 100%;
+    }
+
+    .overlay-content a::after {
+      content: '→';
+      font-size: 18px;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .overlay-content a:hover {
+      background: linear-gradient(135deg,
+          rgba(78, 205, 196, 0.18) 0%,
+          rgba(16, 185, 129, 0.18) 100%);
+      border-color: #4ecdc4;
+      transform: translateX(5px);
+      box-shadow:
+        0 8px 20px rgba(78, 205, 196, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .overlay-content a:hover::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .overlay-content a:active {
+      transform: translateX(3px) scale(0.98);
+    }
+
+    .overlay-content a span {
+      flex: 1;
+      text-align: left;
+      word-break: break-all;
+    }
+
+    #close-notice {
+      margin-top: 30px;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #4ecdc4 0%, #10b981 100%);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow:
+        0 4px 15px rgba(78, 205, 196, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #close-notice::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.5s ease, height 0.5s ease;
+    }
+
+    #close-notice:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    #close-notice:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 8px 25px rgba(78, 205, 196, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    #close-notice:active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(78, 205, 196, 0.35);
+    }
+
+    #close-notice span {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 600px) {
+      .overlay-content {
+        padding: 30px 25px;
+        max-width: 95%;
+      }
+
+      .overlay-content h2 {
+        font-size: 26px;
+      }
+
+      .overlay-content a {
+        padding: 14px 16px;
+        font-size: 12px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="notice-overlay" class="overlay">
+    <div class="overlay-content">
+      <h2>Alternative Proxies</h2>
+      <p>If the main proxy doesn't work, try these alternative instances:</p>
+      <p class="subtitle">Click any link to visit directly, or close to continue with the main instance</p>
+      <div class="links">
+        <a href="https://proxyyy-wrxa.onrender.com/" target="_blank">
+          <span>https://proxyyy-wrxa.onrender.com/</span>
+        </a>
+        <a href="https://proxyyyy-pi.vercel.app" target="_blank">
+          <span>https://proxyyyy-pi.vercel.app</span>
+        </a>
+        <a href="https://proxyyy-dusky-five.vercel.app" target="_blank">
+          <span>https://proxyyy-dusky-five.vercel.app</span>
+        </a>
+        <a href="https://proxy-zeta-gilt.vercel.app/" target="_blank">
+          <span>https://proxy-zeta-gilt.vercel.app/</span>
+        </a>
+        <a href="https://proxyy-sepia-tau.vercel.app" target="_blank">
+          <span>https://proxyy-sepia-tau.vercel.app</span>
         </a>
       </div>
-      <div id="greeting"></div>
-      <div class="pingCounter">
-        <div id="pingDot" class="dot"></div>
-        <span id="pingValue"></span>
-      </div>
-      <div id="timeDisplay"></div>
-      <div id="studyTimer"></div>
-     
-      <footer>
-        <a href="https://github.com/jjtjtyt6644/proxyyy" target="_blank">GitHub</a>
-        <span>\</span>
-        
-      </footer>
+      <button id="close-notice"><span>Continue to Main Site</span></button>
     </div>
-    <script src="assets/js/index.js"></script>
-    <script src="assets/js/shortcuts.js"></script>
-    <script src="assets/js/elements/greeting.js"></script>
-    <script src="assets/js/elements/ping.js"></script>
-    <script src="assets/js/elements/time.js"></script>
-    <script src="assets/js/elements/timer.js"></script>
-    <script src="assets/js/settings.js"></script>
+  </div>
+  <div class="container">
+    <div class="raysContain">
+      <div class="rays"></div>
+    </div>
+    <nav>
+      <img src="assets/imgs/logo.png" alt="logo" />
+      <div class="flex">
+        <a href="/">Home</a>
+        <a href="/g">Games</a>
+        <a href="/a">Apps</a>
+        <a href="/about">About</a>
+        <a href="/devlogs">Dev Logs</a>
+      </div>
+      <div id="settings-btn" style="cursor: pointer; display: flex; align-items: center;">
+        <i data-lucide="settings"></i>
+      </div>
+    </nav>
+    <div class="news">
+      <i data-lucide=""></i>
+      <p></p>
+    </div>
+    <h1 class="title">Ambient</h1>
+    <div class="searchbarContainer">
+      <i data-lucide="search"></i>
+      <form id="uv-form">
+        <input class="searchbar" id="searchbar" type="text" required />
+      </form>
+    </div>
+    <div class="search-notice">
+      <i data-lucide="info"></i>
+      <span>Tip: Write full website links (e.g., https://google.com) as Google blocks direct access</span>
+    </div>
+    <div class="trouble-button">
+      <a href="/troubleshooting" class="trouble-link">
+        <i data-lucide="help-circle"></i>
+        Having Trouble?
+      </a>
+    </div>
+    <div id="greeting"></div>
+    <div class="pingCounter">
+      <div id="pingDot" class="dot"></div>
+      <span id="pingValue"></span>
+    </div>
+    <div id="timeDisplay"></div>
+    <div id="studyTimer"></div>
 
-  
-    <!-- UV Files -->
-    <script src="/search/bundle.js"></script>
-    <script src="/search/config.js"></script>
-    <!-- DO NOT REMOVE -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script>
-      lucide.createIcons();
-    </script>
-    <!-- DO NOT REMOVE -->
-    <script>
-      document.getElementById('close-notice').addEventListener('click', function() {
-        document.getElementById('notice-overlay').style.display = 'none';
-      });
-    </script>
-    <script>
-      const form = document.getElementById('uv-form');
-      const address = document.getElementById('searchbar');
-      const searchEngine = document.getElementById('uv-search-engine');
-      const error = document.getElementById('uv-error');
-      const errorCode = document.getElementById('uv-error-code');
-      const input = document.querySelector('input');
+    <footer>
+      <a href="https://github.com/jjtjtyt6644/proxyyy" target="_blank">GitHub</a>
+      <span>\</span>
 
-      function search(input) {
-        input = input.trim();
-        
-        // Prevent empty or invalid inputs
-        if (!input || input.length < 2) {
-          return 'https://google.com/search?q=';
+    </footer>
+  </div>
+  <script src="assets/js/index.js"></script>
+  <script src="assets/js/shortcuts.js"></script>
+  <script src="assets/js/elements/greeting.js"></script>
+  <script src="assets/js/elements/ping.js"></script>
+  <script src="assets/js/elements/time.js"></script>
+  <script src="assets/js/elements/timer.js"></script>
+  <script src="assets/js/settings.js"></script>
+
+
+  <!-- UV Files -->
+  <script src="/search/bundle.js"></script>
+  <script src="/search/config.js"></script>
+  <!-- DO NOT REMOVE -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+  <!-- DO NOT REMOVE -->
+  <script>
+    document.getElementById('close-notice').addEventListener('click', function () {
+      document.getElementById('notice-overlay').style.display = 'none';
+    });
+  </script>
+  <script>
+    const form = document.getElementById('uv-form');
+    const address = document.getElementById('searchbar');
+    const searchEngine = document.getElementById('uv-search-engine');
+    const error = document.getElementById('uv-error');
+    const errorCode = document.getElementById('uv-error-code');
+    const input = document.querySelector('input');
+
+    function search(input) {
+      input = input.trim();
+
+      // Prevent empty or invalid inputs
+      if (!input || input.length < 2) {
+        return 'https://google.com/search?q=';
+      }
+
+      const searchTemplate = localStorage.getItem('engine') || 'https://google.com/search?q=%s';
+
+      try {
+        const url = new URL(input);
+        // Validate protocol
+        if (!['http:', 'https:'].includes(url.protocol)) {
+          throw new Error('Invalid protocol');
         }
-        
-        const searchTemplate = localStorage.getItem('engine') || 'https://google.com/search?q=%s';
-
+        return url.toString();
+      } catch (err) {
         try {
-          const url = new URL(input);
-          // Validate protocol
-          if (!['http:', 'https:'].includes(url.protocol)) {
-            throw new Error('Invalid protocol');
+          const url = new URL(`http://${input}`);
+          if (url.hostname.includes('.') && url.hostname.length > 3) {
+            return url.toString();
           }
-          return url.toString();
+          throw new Error('Invalid hostname');
         } catch (err) {
-          try {
-            const url = new URL(`http://${input}`);
-            if (url.hostname.includes('.') && url.hostname.length > 3) {
-              return url.toString();
-            }
-            throw new Error('Invalid hostname');
-          } catch (err) {
-            return searchTemplate.replace('%s', encodeURIComponent(input));
-          }
+          return searchTemplate.replace('%s', encodeURIComponent(input));
         }
       }
-      if ('serviceWorker' in navigator) {
-        var proxySetting = 'uv';
-        let swConfig = {
-          uv: { file: '/search/sw.js', config: __uv$config },
-        };
+    }
+    if ('serviceWorker' in navigator) {
+      var proxySetting = 'uv';
+      let swConfig = {
+        uv: { file: '/search/sw.js', config: __uv$config },
+      };
 
-        let { file: swFile, config: swConfigSettings } = swConfig[proxySetting];
+      let { file: swFile, config: swConfigSettings } = swConfig[proxySetting];
 
-        navigator.serviceWorker
-          .register(swFile, { scope: swConfigSettings.prefix })
-          .then((registration) => {
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            form.addEventListener('submit', async (event) => {
-              event.preventDefault();
-              let encodedUrl = swConfigSettings.prefix + __uv$config.encodeUrl(search(address.value));
-              sessionStorage.setItem('encodedUrl', encodedUrl);
-              location.href = '/search';
-            });
-          })
-          .catch((error) => {
-            console.error('ServiceWorker registration failed:', error);
+      navigator.serviceWorker
+        .register(swFile, { scope: swConfigSettings.prefix })
+        .then((registration) => {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            let encodedUrl = swConfigSettings.prefix + __uv$config.encodeUrl(search(address.value));
+            sessionStorage.setItem('encodedUrl', encodedUrl);
+            location.href = '/search';
           });
-      }
-    </script>
-  </body>
+        })
+        .catch((error) => {
+          console.error('ServiceWorker registration failed:', error);
+        });
+    }
+  </script>
+</body>
+
 </html>
