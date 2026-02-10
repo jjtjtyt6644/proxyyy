@@ -1,467 +1,1450 @@
-<!doctype html>
-<html lang="en">
+<!doctype html><!doctype html>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="title" content="Ambient - Troubleshooting" />
-  <meta name="description" content="Troubleshooting guide for Ambient proxy issues and solutions." />
-  <link rel="icon" type="image/x-icon" href="/public/assets/imgs/logo.png" />
-  <title>Ambient | Troubleshooting</title>
-  <!-- Critical CSS -->
-  <link rel="stylesheet" href="/assets/css/global.css" />
-  <link rel="stylesheet" href="/assets/css/theme/default.css" />
-  <!-- Non-critical CSS -->
-  <link rel="stylesheet" href="/assets/css/rays.css" />
-  <link rel="stylesheet" href="/assets/css/nav.css" />
-  <link rel="stylesheet" href="/assets/css/glass.css" />
+<html lang="en"><html lang="en">
+
+
+
+<head><head>
+
+  <meta charset="UTF-8" />  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="title" content="Ambient - Troubleshooting Guide" />  <meta name="title" content="Ambient - Troubleshooting" />
+
+  <meta name="description" content="Comprehensive troubleshooting guide for Ambient proxy. Find solutions to common issues, FAQs, and quick fixes." />  <meta name="description" content="Troubleshooting guide for Ambient proxy issues and solutions." />
+
+  <link rel="icon" type="image/x-icon" href="/public/assets/imgs/logo.png" />  <link rel="icon" type="image/x-icon" href="/public/assets/imgs/logo.png" />
+
+  <title>Ambient | Troubleshooting</title>  <title>Ambient | Troubleshooting</title>
+
+  <!-- Critical CSS -->  <!-- Critical CSS -->
+
+  <link rel="stylesheet" href="/assets/css/global.css" />  <link rel="stylesheet" href="/assets/css/global.css" />
+
+  <link rel="stylesheet" href="/assets/css/theme/default.css" />  <link rel="stylesheet" href="/assets/css/theme/default.css" />
+
+  <!-- Non-critical CSS -->  <!-- Non-critical CSS -->
+
+  <link rel="stylesheet" href="/assets/css/rays.css" />  <link rel="stylesheet" href="/assets/css/rays.css" />
+
+  <link rel="stylesheet" href="/assets/css/nav.css" />  <link rel="stylesheet" href="/assets/css/nav.css" />
+
+  <link rel="stylesheet" href="/assets/css/glass.css" />  <link rel="stylesheet" href="/assets/css/glass.css" />
+
   <link rel="stylesheet" href="/assets/css/pages/about.css" />
 
   <style>
-    .troubleshooting-content {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      color: white;
+
+    .troubleshooting-content {  <style>
+
+      max-width: 1200px;    .troubleshooting-content {
+
+      margin: 0 auto;      max-width: 1000px;
+
+      padding: 40px 20px;      margin: 0 auto;
+
+      color: white;      padding: 40px 20px;
+
+    }      color: white;
+
     }
 
     .troubleshooting-content h1 {
-      font-size: 48px;
-      margin-bottom: 50px;
-      text-align: center;
-      color: white;
-    }
 
-    .troubleshooting-content h2 {
-      font-size: 28px;
-      margin: 40px 0 20px 0;
-      color: white;
-      display: flex;
-      align-items: center;
+      font-size: 52px;    .troubleshooting-content h1 {
+
+      margin-bottom: 20px;      font-size: 48px;
+
+      text-align: center;      margin-bottom: 50px;
+
+      background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 100%);      text-align: center;
+
+      -webkit-background-clip: text;      color: white;
+
+      -webkit-text-fill-color: transparent;    }
+
+      background-clip: text;
+
+      animation: fadeInUp 0.8s ease-out;    .troubleshooting-content h2 {
+
+      display: flex;      font-size: 28px;
+
+      align-items: center;      margin: 40px 0 20px 0;
+
+      justify-content: center;      color: white;
+
+      gap: 15px;      display: flex;
+
+    }      align-items: center;
+
       gap: 12px;
-    }
 
-    .troubleshooting-content h2 i {
-      color: #ff6b6b;
+    .subtitle {    }
+
+      text-align: center;
+
+      color: rgba(255, 255, 255, 0.7);    .troubleshooting-content h2 i {
+
+      margin-bottom: 50px;      color: #ff6b6b;
+
+      font-size: 18px;    }
+
     }
 
     .issue-card {
-      background: var(--element-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--border-radius);
-      padding: 25px;
-      margin: 20px 0;
-      transition: 0.2s ease;
-    }
 
-    .issue-card:hover {
+    .troubleshooting-content h2 {      background: var(--element-bg);
+
+      font-size: 32px;      border: 1px solid var(--border);
+
+      margin: 50px 0 25px 0;      border-radius: var(--border-radius);
+
+      color: white;      padding: 25px;
+
+      display: flex;      margin: 20px 0;
+
+      align-items: center;      transition: 0.2s ease;
+
+      gap: 15px;    }
+
+      position: relative;
+
+    }    .issue-card:hover {
+
       border-color: var(--border-h);
+
+    .troubleshooting-content h2::before {    }
+
+      content: '';
+
+      position: absolute;    .issue-title {
+
+      bottom: -5px;      font-size: 20px;
+
+      left: 0;      font-weight: 600;
+
+      width: 60px;      color: white;
+
+      height: 3px;      margin-bottom: 10px;
+
+      background: linear-gradient(90deg, #ff6b6b, #4ecdc4);      display: flex;
+
+      border-radius: 2px;      align-items: center;
+
+    }      gap: 10px;
+
     }
 
-    .issue-title {
-      font-size: 20px;
-      font-weight: 600;
-      color: white;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .troubleshooting-content h2 i {
 
-    .issue-title i {
-      color: #ff6b6b;
-    }
+      color: #ff6b6b;    .issue-title i {
 
-    .solution {
+      background: rgba(255, 107, 107, 0.1);      color: #ff6b6b;
+
+      padding: 8px;    }
+
+      border-radius: 8px;
+
+    }    .solution {
+
       background: rgba(255, 255, 255, 0.05);
-      border-left: 3px solid #4ecdc4;
-      padding: 15px;
-      margin: 15px 0;
-      border-radius: 0 8px 8px 0;
-    }
 
-    .solution h4 {
-      margin: 0 0 8px 0;
-      color: #4ecdc4;
-      font-size: 16px;
+    /* Quick Fix Section */      border-left: 3px solid #4ecdc4;
+
+    .clear-cache-section {      padding: 15px;
+
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(78, 205, 196, 0.15));      margin: 15px 0;
+
+      border: 2px solid rgba(255, 107, 107, 0.3);      border-radius: 0 8px 8px 0;
+
+      border-radius: 16px;    }
+
+      padding: 40px;
+
+      margin: 30px 0;    .solution h4 {
+
+      text-align: center;      margin: 0 0 8px 0;
+
+      position: relative;      color: #4ecdc4;
+
+      overflow: hidden;      font-size: 16px;
+
+      animation: fadeInUp 0.6s ease-out 0.2s both;    }
+
     }
 
     .solution p {
-      margin: 0;
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.6;
-    }
 
-    .code-snippet {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 6px;
+    .clear-cache-section::before {      margin: 0;
+
+      content: '';      color: rgba(255, 255, 255, 0.8);
+
+      position: absolute;      line-height: 1.6;
+
+      top: 0;    }
+
+      left: 0;
+
+      right: 0;    .code-snippet {
+
+      height: 4px;      background: rgba(0, 0, 0, 0.3);
+
+      background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #667eea);      border: 1px solid rgba(255, 255, 255, 0.1);
+
+    }      border-radius: 6px;
+
       padding: 12px;
-      font-family: 'Monaco', 'Menlo', monospace;
-      font-size: 14px;
-      color: #4ecdc4;
-      margin: 10px 0;
+
+    .clear-cache-section h2 {      font-family: 'Monaco', 'Menlo', monospace;
+
+      margin: 0 0 15px 0;      font-size: 14px;
+
+      font-size: 28px;      color: #4ecdc4;
+
+    }      margin: 10px 0;
+
       overflow-x: auto;
-    }
 
-    .clear-cache-section {
+    .clear-cache-section h2::before {    }
+
+      display: none;
+
+    }    .clear-cache-section {
+
       background: linear-gradient(135deg, rgba(255, 102, 107, 0.1), rgba(78, 205, 196, 0.1));
-      border: 1px solid rgba(255, 102, 107, 0.3);
-      border-radius: 16px;
-      padding: 30px;
-      margin: 30px 0;
-      text-align: center;
-    }
 
-    .clear-cache-btn {
-      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
-      color: white;
-      border: none;
-      padding: 15px 30px;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+    .clear-cache-section > p {      border: 1px solid rgba(255, 102, 107, 0.3);
+
+      color: rgba(255, 255, 255, 0.85);      border-radius: 16px;
+
+      margin-bottom: 25px;      padding: 30px;
+
+      font-size: 16px;      margin: 30px 0;
+
+      line-height: 1.6;      text-align: center;
+
+    }    }
+
+
+
+    .clear-cache-btn {    .clear-cache-btn {
+
+      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);      background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+
+      color: white;      color: white;
+
+      border: none;      border: none;
+
+      padding: 18px 40px;      padding: 15px 30px;
+
+      border-radius: 12px;      border-radius: 8px;
+
+      font-size: 18px;      font-size: 16px;
+
+      font-weight: 600;      font-weight: 600;
+
+      cursor: pointer;      cursor: pointer;
+
+      transition: all 0.3s ease;      transition: all 0.3s ease;
+
+      display: inline-flex;      display: inline-flex;
+
+      align-items: center;      align-items: center;
+
+      gap: 12px;      gap: 10px;
+
+      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);    }
+
     }
 
     .clear-cache-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+
+    .clear-cache-btn:hover {      transform: translateY(-2px);
+
+      transform: translateY(-3px) scale(1.02);      box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+
+      box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);    }
+
     }
 
     .clear-cache-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
+
+    .clear-cache-btn:active {      opacity: 0.6;
+
+      transform: translateY(-1px);      cursor: not-allowed;
+
+    }      transform: none;
+
     }
 
-    .alternative-links {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
+    .clear-cache-btn:disabled {
+
+      opacity: 0.6;    .alternative-links {
+
+      cursor: not-allowed;      background: rgba(255, 255, 255, 0.02);
+
+      transform: none;      border: 1px solid rgba(255, 255, 255, 0.1);
+
+    }      border-radius: 12px;
+
       padding: 20px;
-      margin: 20px 0;
-    }
 
-    .alternative-links h4 {
-      color: white;
-      margin-bottom: 15px;
-    }
+    /* Issue Cards */      margin: 20px 0;
 
-    .link-item {
-      display: flex;
-      align-items: center;
+    .issue-card {    }
+
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+
+      border: 1px solid rgba(255, 255, 255, 0.1);    .alternative-links h4 {
+
+      border-radius: 16px;      color: white;
+
+      padding: 30px;      margin-bottom: 15px;
+
+      margin: 25px 0;    }
+
+      transition: all 0.3s ease;
+
+      position: relative;    .link-item {
+
+      overflow: hidden;      display: flex;
+
+    }      align-items: center;
+
       gap: 10px;
-      margin: 8px 0;
-    }
 
-    .link-item a {
-      color: #4ecdc4;
-      text-decoration: none;
-      font-weight: 500;
+    .issue-card::before {      margin: 8px 0;
+
+      content: '';    }
+
+      position: absolute;
+
+      left: 0;    .link-item a {
+
+      top: 0;      color: #4ecdc4;
+
+      bottom: 0;      text-decoration: none;
+
+      width: 4px;      font-weight: 500;
+
+      background: linear-gradient(180deg, #ff6b6b, #4ecdc4);    }
+
     }
 
     .link-item a:hover {
-      text-decoration: underline;
+
+    .issue-card:hover {      text-decoration: underline;
+
+      transform: translateY(-3px);    }
+
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+
+      border-color: rgba(255, 107, 107, 0.3);    .priority-high {
+
+    }      border-left: 4px solid #ff6b6b;
+
     }
 
-    .priority-high {
-      border-left: 4px solid #ff6b6b;
+    .priority-high::before {
+
+      background: linear-gradient(180deg, #ff6b6b, #ef4444);    .priority-medium {
+
+    }      border-left: 4px solid #ffa500;
+
     }
 
-    .priority-medium {
-      border-left: 4px solid #ffa500;
+    .priority-medium::before {
+
+      background: linear-gradient(180deg, #ffa500, #ff8800);    .priority-low {
+
+    }      border-left: 4px solid #4ecdc4;
+
     }
 
-    .priority-low {
-      border-left: 4px solid #4ecdc4;
+    .priority-low::before {
+
+      background: linear-gradient(180deg, #4ecdc4, #10b981);    .faq-item {
+
+    }      margin: 25px 0;
+
     }
 
-    .faq-item {
-      margin: 25px 0;
-    }
+    .issue-title {
 
-    .faq-question {
-      font-size: 18px;
-      font-weight: 600;
-      color: white;
-      margin-bottom: 10px;
-    }
+      font-size: 22px;    .faq-question {
 
-    .faq-answer {
+      font-weight: 600;      font-size: 18px;
+
+      color: white;      font-weight: 600;
+
+      margin-bottom: 15px;      color: white;
+
+      display: flex;      margin-bottom: 10px;
+
+      align-items: center;    }
+
+      gap: 12px;
+
+    }    .faq-answer {
+
       color: rgba(255, 255, 255, 0.8);
-      line-height: 1.6;
+
+    .issue-title i {      line-height: 1.6;
+
+      color: #ff6b6b;    }
+
+      font-size: 24px;
+
+    }    .contact-info {
+
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+
+    .issue-description {      border: 1px solid rgba(102, 126, 234, 0.3);
+
+      color: rgba(255, 255, 255, 0.8);      border-radius: 12px;
+
+      margin-bottom: 20px;      padding: 25px;
+
+      line-height: 1.7;      margin: 30px 0;
+
+    }      text-align: center;
+
     }
+
+    .solution {
+
+      background: rgba(78, 205, 196, 0.1);    .contact-info h3 {
+
+      border-left: 3px solid #4ecdc4;      color: white;
+
+      padding: 20px;      margin-bottom: 15px;
+
+      margin: 15px 0;    }
+
+      border-radius: 0 10px 10px 0;
+
+    }    .contact-info p {
+
+      color: rgba(255, 255, 255, 0.8);
+
+    .solution h4 {      margin: 5px 0;
+
+      margin: 0 0 12px 0;    }
+
+      color: #4ecdc4;  </style>
+
+      font-size: 18px;</head>
+
+      font-weight: 600;
+
+      display: flex;<body>
+
+      align-items: center;  <div class="container">
+
+      gap: 8px;    <div class="raysContain">
+
+    }      <div class="rays"></div>
+
+    </div>
+
+    .solution p, .solution ul, .solution ol {    <nav>
+
+      margin: 10px 0;      <img src="assets/imgs/logo.png" alt="logo" />
+
+      color: rgba(255, 255, 255, 0.85);      <div class="flex">
+
+      line-height: 1.7;        <a href="/">Home</a>
+
+    }        <a href="/g">Games</a>
+
+        <a href="/a">Apps</a>
+
+    .solution ul, .solution ol {        <a href="/about">About</a>
+
+      padding-left: 25px;        <a href="/devlogs">Dev Logs</a>
+
+    }      </div>
+
+      <i data-lucide="settings"></i>
+
+    .solution li {    </nav>
+
+      margin: 8px 0;
+
+    }    <div class="glass">
+
+      <div class="troubleshooting-content">
+
+    .solution code {        <h1><i data-lucide="wrench"></i> Troubleshooting Guide</h1>
+
+      background: rgba(0, 0, 0, 0.3);
+
+      padding: 2px 8px;        <div class="clear-cache-section">
+
+      border-radius: 4px;          <h2><i data-lucide="trash-2"></i> Quick Fix: Clear Service Worker Cache</h2>
+
+      font-family: 'Monaco', 'Menlo', monospace;          <p>If you're experiencing loading issues, slow performance, or unusual behavior, clearing the cache often
+
+      font-size: 13px;            resolves the problem.</p>
+
+      color: #4ecdc4;          <button id="clearCacheBtn" class="clear-cache-btn">
+
+    }            <i data-lucide="trash-2"></i>
+
+            Clear Service Worker Cache
+
+    .code-snippet {          </button>
+
+      background: rgba(0, 0, 0, 0.4);          <p style="margin-top: 15px; font-size: 14px; opacity: 0.7;">The page will reload automatically after clearing
+
+      border: 1px solid rgba(78, 205, 196, 0.3);            the cache.</p>
+
+      border-radius: 8px;        </div>
+
+      padding: 15px;
+
+      font-family: 'Monaco', 'Menlo', 'Courier New', monospace;        <div class="dev-section">
+
+      font-size: 14px;          <h2><i data-lucide="alert-triangle"></i> Common Issues & Solutions</h2>
+
+      color: #4ecdc4;
+
+      margin: 15px 0;          <div class="issue-card priority-high">
+
+      overflow-x: auto;            <div class="issue-title">
+
+      line-height: 1.6;              <i data-lucide="x-circle"></i>
+
+    }              Websites Show Raw HTML Instead of Loading Properly
+
+            </div>
+
+    .tip-box {            <div class="solution">
+
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));              <h4>Solution:</h4>
+
+      border: 1px solid rgba(102, 126, 234, 0.3);              <p>This usually happens due to a service worker encoding mismatch. Click the "Clear Service Worker Cache"
+
+      border-radius: 12px;                button above, or try these steps:</p>
+
+      padding: 20px;              <ol>
+
+      margin: 20px 0;                <li>Open Developer Tools (F12)</li>
+
+      display: flex;                <li>Go to Application/Storage tab</li>
+
+      align-items: start;                <li>Clear all site data and service workers</li>
+
+      gap: 15px;                <li>Hard refresh the page (Ctrl+Shift+R)</li>
+
+    }              </ol>
+
+            </div>
+
+    .tip-box i {          </div>
+
+      color: #667eea;
+
+      font-size: 24px;          <div class="issue-card priority-high">
+
+      flex-shrink: 0;            <div class="issue-title">
+
+      margin-top: 2px;              <i data-lucide="globe"></i>
+
+    }              Search Bar Not Working or Returning Errors
+
+            </div>
+
+    .tip-box p {            <div class="solution">
+
+      margin: 0;              <h4>Solution:</h4>
+
+      color: rgba(255, 255, 255, 0.85);              <p>Ensure you're entering complete URLs. For example:</p>
+
+      line-height: 1.6;              <div class="code-snippet">✅ https://google.com<br>✅ https://youtube.com<br>❌ google.com (missing https://)
+
+    }              </div>
+
+              <p>If search still doesn't work, clear the cache using the button above.</p>
+
+    /* Alternative Links */            </div>
+
+    .alternative-links {          </div>
+
+      background: rgba(255, 255, 255, 0.03);
+
+      border: 1px solid rgba(255, 255, 255, 0.1);          <div class="issue-card priority-high">
+
+      border-radius: 12px;            <div class="issue-title">
+
+      padding: 25px;              <i data-lucide="server"></i>
+
+      margin: 20px 0;              Main Proxy Service Unavailable
+
+    }            </div>
+
+            <div class="solution">
+
+    .alternative-links h4 {              <h4>Solution:</h4>
+
+      color: white;              <p>If the main proxy is down or not working, try these alternative proxy instances:</p>
+
+      margin: 0 0 20px 0;              <div class="alternative-links">
+
+      font-size: 18px;                <h4>Alternative Proxy Links:</h4>
+
+      display: flex;                <div class="link-item"><i data-lucide="external-link"></i><a href="https://proxyyy-wrxa.onrender.com/"
+
+      align-items: center;                    target="_blank">https://proxyyy-wrxa.onrender.com/</a></div>
+
+      gap: 10px;                <div class="link-item"><i data-lucide="external-link"></i><a href="https://proxyyyy-pi.vercel.app"
+
+    }                    target="_blank">https://proxyyyy-pi.vercel.app</a></div>
+
+                <div class="link-item"><i data-lucide="external-link"></i><a
+
+    .link-item {                    href="https://proxyyy-dusky-five.vercel.app"
+
+      display: flex;                    target="_blank">https://proxyyy-dusky-five.vercel.app</a></div>
+
+      align-items: center;                <div class="link-item"><i data-lucide="external-link"></i><a href="https://proxy-zeta-gilt.vercel.app/"
+
+      gap: 12px;                    target="_blank">https://proxy-zeta-gilt.vercel.app/</a></div>
+
+      margin: 12px 0;                <div class="link-item"><i data-lucide="external-link"></i><a href="https://proxyy-sepia-tau.vercel.app"
+
+      padding: 12px;                    target="_blank">https://proxyy-sepia-tau.vercel.app</a></div>
+
+      background: rgba(255, 255, 255, 0.02);              </div>
+
+      border-radius: 8px;              <p>These are identical instances of Ambient running on different servers. Your bookmarks and settings
+
+      transition: all 0.2s ease;                won't transfer, but all functionality is the same.</p>
+
+    }            </div>
+
+          </div>
+
+    .link-item:hover {
+
+      background: rgba(255, 255, 255, 0.05);          <div class="issue-card priority-medium">
+
+      transform: translateX(5px);            <div class="issue-title">
+
+    }              <i data-lucide="zap"></i>
+
+              Slow Loading or Performance Issues
+
+    .link-item i {            </div>
+
+      color: #4ecdc4;            <div class="solution">
+
+      flex-shrink: 0;              <h4>Solution:</h4>
+
+    }              <p>Performance issues are often caused by cached service workers. Clear the cache using the button above,
+
+                or:</p>
+
+    .link-item a {              <ul>
+
+      color: #4ecdc4;                <li>Try a different browser</li>
+
+      text-decoration: none;                <li>Disable browser extensions temporarily</li>
+
+      font-weight: 500;                <li>Check your internet connection</li>
+
+      transition: color 0.2s ease;                <li>Use an incognito/private browsing window</li>
+
+    }              </ul>
+
+            </div>
+
+    .link-item a:hover {          </div>
+
+      color: #67e8dd;
+
+      text-decoration: underline;          <div class="issue-card priority-medium">
+
+    }            <div class="issue-title">
+
+              <i data-lucide="shield"></i>
+
+    /* FAQ Section */              Some Websites Block Access or Show CAPTCHAs
+
+    .faq-section {            </div>
+
+      margin: 40px 0;            <div class="solution">
+
+    }              <h4>Solution:</h4>
+
+              <p>This is normal behavior for security-conscious websites. Try these alternatives:</p>
+
+    .faq-item {              <div class="alternative-links">
+
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));                <h4>Alternative Search Engines:</h4>
+
+      border: 1px solid rgba(255, 255, 255, 0.1);                <div class="link-item"><i data-lucide="search"></i><a href="https://startpage.com"
+
+      border-radius: 12px;                    target="_blank">Startpage</a> - Anonymous search</div>
+
+      padding: 25px;                <div class="link-item"><i data-lucide="search"></i><a href="https://search.brave.com"
+
+      margin: 20px 0;                    target="_blank">Brave Search</a> - Independent search</div>
+
+      transition: all 0.3s ease;              </div>
+
+      cursor: pointer;            </div>
+
+    }          </div>
+
+
+
+    .faq-item:hover {          <div class="issue-card priority-low">
+
+      border-color: rgba(102, 126, 234, 0.3);            <div class="issue-title">
+
+      transform: translateY(-2px);              <i data-lucide="monitor"></i>
+
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);              Mobile/Tablet Display Issues
+
+    }            </div>
+
+            <div class="solution">
+
+    .faq-question {              <h4>Solution:</h4>
+
+      font-size: 19px;              <p>The app is optimized for desktop but works on mobile. If you experience issues:</p>
+
+      font-weight: 600;              <ul>
+
+      color: white;                <li>Try rotating your device to landscape mode</li>
+
+      margin-bottom: 12px;                <li>Zoom out if elements appear too large</li>
+
+      display: flex;                <li>Use a modern mobile browser (Chrome, Safari)</li>
+
+      align-items: center;                <li>Ensure JavaScript is enabled in browser settings</li>
+
+      gap: 12px;              </ul>
+
+    }            </div>
+
+          </div>
+
+    .faq-question i {
+
+      color: #667eea;          <div class="issue-card priority-low">
+
+      font-size: 20px;            <div class="issue-title">
+
+    }              <i data-lucide="clock"></i>
+
+              Study Timer Not Working
+
+    .faq-answer {            </div>
+
+      color: rgba(255, 255, 255, 0.8);            <div class="solution">
+
+      line-height: 1.7;              <h4>Solution:</h4>
+
+      font-size: 16px;              <p>The study timer requires JavaScript to be enabled. If it's not working:</p>
+
+    }              <ul>
+
+                <li>Refresh the page</li>
+
+    .faq-answer a {                <li>Clear browser cache</li>
+
+      color: #4ecdc4;                <li>Ensure JavaScript is enabled</li>
+
+      text-decoration: none;                <li>Try a different browser</li>
+
+    }              </ul>
+
+            </div>
+
+    .faq-answer a:hover {          </div>
+
+      text-decoration: underline;        </div>
+
+    }
+
+        <div class="dev-section">
+
+    /* Contact Info */          <h2><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
 
     .contact-info {
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-      border: 1px solid rgba(102, 126, 234, 0.3);
-      border-radius: 12px;
-      padding: 25px;
-      margin: 30px 0;
-      text-align: center;
-    }
 
-    .contact-info h3 {
-      color: white;
-      margin-bottom: 15px;
-    }
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));          <div class="faq-item">
 
-    .contact-info p {
-      color: rgba(255, 255, 255, 0.8);
-      margin: 5px 0;
-    }
-  </style>
-</head>
+      border: 2px solid rgba(102, 126, 234, 0.3);            <div class="faq-question">Is Ambient safe to use?</div>
 
-<body>
-  <div class="container">
-    <div class="raysContain">
-      <div class="rays"></div>
+      border-radius: 16px;            <div class="faq-answer">Ambient uses industry-standard proxy technology (Ultraviolet) and doesn't store any
+
+      padding: 35px;              personal data. However, remember that no proxy can guarantee 100% anonymity. Use at your own discretion
+
+      margin: 50px 0 30px 0;              and avoid accessing sensitive information.</div>
+
+      text-align: center;          </div>
+
+      position: relative;
+
+      overflow: hidden;          <div class="faq-item">
+
+    }            <div class="faq-question">Why do some websites not work?</div>
+
+            <div class="faq-answer">Some websites implement advanced anti-proxy measures. This is common with major web
+
+    .contact-info::before {              services, social media platforms, and banking sites. Try alternative services or use the direct web when
+
+      content: '';              possible.</div>
+
+      position: absolute;          </div>
+
+      top: 0;
+
+      left: 0;          <div class="faq-item">
+
+      right: 0;            <div class="faq-question">Can I use Ambient on mobile devices?</div>
+
+      height: 4px;            <div class="faq-answer">Yes, Ambient works on mobile devices, but the experience is optimized for desktop.
+
+      background: linear-gradient(90deg, #667eea, #764ba2, #667eea);              Mobile browsers may have limitations with service workers and proxy functionality.</div>
+
+    }          </div>
+
+
+
+    .contact-info h3 {          <div class="faq-item">
+
+      color: white;            <div class="faq-question">How do I access Games and Apps sections?</div>
+
+      margin: 0 0 20px 0;            <div class="faq-answer">Use the navigation menu at the top. The Games section (/g) and Apps section (/a)
+
+      font-size: 26px;              provide curated lists of web-based games and applications that work well with the proxy.</div>
+
+      display: flex;          </div>
+
+      align-items: center;
+
+      justify-content: center;          <div class="faq-item">
+
+      gap: 12px;            <div class="faq-question">What should I do if the proxy stops working?</div>
+
+    }            <div class="faq-answer">First, try clearing the service worker cache using the button at the top of this
+
+              page. If that doesn't help, try a different browser, clear all browser data, or use an incognito window.
+
+    .contact-info p {            </div>
+
+      color: rgba(255, 255, 255, 0.85);          </div>
+
+      margin: 12px 0;
+
+      font-size: 16px;          <div class="faq-item">
+
+      line-height: 1.6;            <div class="faq-question">How do I bookmark websites for easy access?</div>
+
+    }            <div class="faq-answer">When browsing through the proxy, you can bookmark the proxied URLs directly.
+
+              However, these bookmarks may not work if the proxy service changes. For reliable access, bookmark the
+
+    .contact-info a {              original website URLs and access them through Ambient's search bar.</div>
+
+      color: #4ecdc4;          </div>
+
+      text-decoration: none;
+
+      font-weight: 600;          <div class="faq-item">
+
+      transition: color 0.2s ease;            <div class="faq-question">Which browsers work best with Ambient?</div>
+
+    }            <div class="faq-answer">Ambient works best with modern browsers like Chrome, Edge, and Safari. Chrome
+
+              generally provides the best performance and compatibility with service workers. Avoid using Internet
+
+    .contact-info a:hover {              Explorer or very old browser versions.</div>
+
+      color: #67e8dd;          </div>
+
+      text-decoration: underline;
+
+    }          <div class="faq-item">
+
+            <div class="faq-question">How can I improve loading speeds?</div>
+
+    /* Animations */            <div class="faq-answer">For better performance: use a fast internet connection, close unnecessary browser
+
+    @keyframes fadeInUp {              tabs, disable browser extensions that might interfere, and ensure your browser is up to date. If a site
+
+      from {              loads slowly, try refreshing or using a different browser.</div>
+
+        opacity: 0;          </div>
+
+        transform: translateY(30px);
+
+      }          <div class="faq-item">
+
+      to {            <div class="faq-question">Can I use Ambient with VPNs or other proxies?</div>
+
+        opacity: 1;            <div class="faq-answer">Yes, but using multiple proxies simultaneously may cause conflicts or reduced
+
+        transform: translateY(0);              performance. If you experience issues, try disabling your VPN temporarily or use Ambient without
+
+      }              additional proxy layers.</div>
+
+    }          </div>
+
+
+
+    .dev-section {          <div class="faq-item">
+
+      animation: fadeInUp 0.6s ease-out;            <div class="faq-question">How do I report bugs or suggest features?</div>
+
+      animation-fill-mode: both;            <div class="faq-answer">Check the Dev Logs page for recent updates and known issues. For bug reports or
+
+    }              feature suggestions, visit the GitHub repository linked in the footer. Please include details about your
+
+              browser, operating system, and steps to reproduce the issue.</div>
+
+    .dev-section:nth-child(2) { animation-delay: 0.1s; }          </div>
+
+    .dev-section:nth-child(3) { animation-delay: 0.2s; }        </div>
+
+    .dev-section:nth-child(4) { animation-delay: 0.3s; }
+
+    .dev-section:nth-child(5) { animation-delay: 0.4s; }        <div class="contact-info">
+
+          <h3><i data-lucide="message-circle"></i> Still Having Issues?</h3>
+
+    /* Responsive Design */          <p>If none of these solutions work, you can:</p>
+
+    @media (max-width: 768px) {          <p>• Check the <a href="/devlogs" style="color: #4ecdc4;">Dev Logs</a> for recent updates</p>
+
+      .troubleshooting-content h1 {          <p>• Visit the <a href="/about" style="color: #4ecdc4;">About page</a> for more information</p>
+
+        font-size: 36px;          <p>• Try alternative proxy services if available</p>
+
+        flex-direction: column;        </div>
+
+      }      </div>
+
     </div>
+
+      .troubleshooting-content h2 {  </div>
+
+        font-size: 24px;
+
+      }  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script src="/assets/js/settings.js"></script>
+
+      .clear-cache-section {  <script>
+
+        padding: 25px 20px;    lucide.createIcons();
+
+      }
+
+    // Clear cache button functionality
+
+      .clear-cache-btn {    document.getElementById('clearCacheBtn').addEventListener('click', async () => {
+
+        padding: 15px 30px;      const btn = document.getElementById('clearCacheBtn');
+
+        font-size: 16px;      const originalHTML = btn.innerHTML;
+
+      }
+
+      try {
+
+      .issue-card {        btn.innerHTML = '<i data-lucide="loader-2"></i> Clearing...';
+
+        padding: 20px;        btn.disabled = true;
+
+      }        lucide.createIcons();
+
+
+
+      .issue-title {        const success = await window.clearServiceWorkerCache();
+
+        font-size: 18px;
+
+        flex-wrap: wrap;        if (success) {
+
+      }          btn.innerHTML = '<i data-lucide="check"></i> Cache Cleared!';
+
+          btn.style.background = 'linear-gradient(135deg, #10b981, #4ecdc4)';
+
+      .faq-question {
+
+        font-size: 17px;          // Reload page after 2 seconds
+
+      }          setTimeout(() => {
+
+    }            window.location.reload();
+
+  </style>          }, 2000);
+
+</head>        } else {
+
+          throw new Error('Cache clearing not supported');
+
+<body>        }
+
+  <div class="container">      } catch (error) {
+
+    <div class="raysContain">        console.error('Failed to clear cache:', error);
+
+      <div class="rays"></div>        btn.innerHTML = '<i data-lucide="x"></i> Failed to Clear';
+
+    </div>        btn.style.background = 'linear-gradient(135deg, #ef4444, #ff6b6b)';
+
     <nav>
-      <img src="assets/imgs/logo.png" alt="logo" />
-      <div class="flex">
-        <a href="/">Home</a>
-        <a href="/g">Games</a>
-        <a href="/a">Apps</a>
-        <a href="/about">About</a>
-        <a href="/devlogs">Dev Logs</a>
-      </div>
-      <i data-lucide="settings"></i>
-    </nav>
+
+      <img src="assets/imgs/logo.png" alt="logo" />        // Reset button after 3 seconds
+
+      <div class="flex">        setTimeout(() => {
+
+        <a href="/">Home</a>          btn.innerHTML = originalHTML;
+
+        <a href="/g">Games</a>          btn.disabled = false;
+
+        <a href="/a">Apps</a>          btn.style.background = '';
+
+        <a href="/about">About</a>          lucide.createIcons();
+
+        <a href="/devlogs">Dev Logs</a>        }, 3000);
+
+      </div>      }
+
+      <i data-lucide="settings"></i>    });
+
+    </nav>  </script>
+
+</body>
 
     <div class="glass">
-      <div class="troubleshooting-content">
-        <h1><i data-lucide="wrench"></i> Troubleshooting Guide</h1>
 
+      <div class="troubleshooting-content"></html>
+        <h1><i data-lucide="wrench"></i> Troubleshooting Guide</h1>
+        <p class="subtitle">Quick solutions to common issues and frequently asked questions</p>
+
+        <!-- Quick Fix Section -->
         <div class="clear-cache-section">
-          <h2><i data-lucide="trash-2"></i> Quick Fix: Clear Service Worker Cache</h2>
-          <p>If you're experiencing loading issues, slow performance, or unusual behavior, clearing the cache often
-            resolves the problem.</p>
+          <h2><i data-lucide="trash-2"></i> Quick Fix: Clear Cache & Reset</h2>
+          <p>Experiencing issues? This button clears all service worker caches and resets your proxy session. This solves 90% of common problems instantly!</p>
           <button id="clearCacheBtn" class="clear-cache-btn">
-            <i data-lucide="trash-2"></i>
+            <i data-lucide="refresh-cw"></i>
             Clear Service Worker Cache
           </button>
-          <p style="margin-top: 15px; font-size: 14px; opacity: 0.7;">The page will reload automatically after clearing
-            the cache.</p>
+          <p style="margin-top: 20px; font-size: 14px; color: rgba(255, 255, 255, 0.6);">
+            <i data-lucide="info"></i> The page will reload automatically after clearing the cache.
+          </p>
         </div>
 
+        <!-- Common Issues -->
         <div class="dev-section">
           <h2><i data-lucide="alert-triangle"></i> Common Issues & Solutions</h2>
 
           <div class="issue-card priority-high">
             <div class="issue-title">
-              <i data-lucide="x-circle"></i>
-              Websites Show Raw HTML Instead of Loading Properly
+              <i data-lucide="code"></i>
+              Websites Display Raw HTML/Code Instead of Loading
+            </div>
+            <div class="issue-description">
+              Pages show unformatted HTML code, JavaScript errors, or refuse to load properly.
             </div>
             <div class="solution">
-              <h4>Solution:</h4>
-              <p>This usually happens due to a service worker encoding mismatch. Click the "Clear Service Worker Cache"
-                button above, or try these steps:</p>
+              <h4><i data-lucide="check-circle"></i> Solution:</h4>
+              <p><strong>Primary Fix:</strong> Click the "Clear Service Worker Cache" button above.</p>
+              <p><strong>Manual Method:</strong></p>
               <ol>
-                <li>Open Developer Tools (F12)</li>
-                <li>Go to Application/Storage tab</li>
-                <li>Clear all site data and service workers</li>
-                <li>Hard refresh the page (Ctrl+Shift+R)</li>
+                <li>Press <code>F12</code> to open Developer Tools</li>
+                <li>Navigate to the <strong>Application</strong> (Chrome) or <strong>Storage</strong> (Firefox) tab</li>
+                <li>Find "Service Workers" in the left sidebar</li>
+                <li>Click "Unregister" for all service workers</li>
+                <li>Go to "Storage" and click "Clear site data"</li>
+                <li>Hard refresh: <code>Ctrl+Shift+R</code> (Windows/Linux) or <code>Cmd+Shift+R</code> (Mac)</li>
               </ol>
             </div>
-          </div>
-
-          <div class="issue-card priority-high">
-            <div class="issue-title">
-              <i data-lucide="globe"></i>
-              Search Bar Not Working or Returning Errors
-            </div>
-            <div class="solution">
-              <h4>Solution:</h4>
-              <p>Ensure you're entering complete URLs. For example:</p>
-              <div class="code-snippet">✅ https://google.com<br>✅ https://youtube.com<br>❌ google.com (missing https://)
-              </div>
-              <p>If search still doesn't work, clear the cache using the button above.</p>
+            <div class="tip-box">
+              <i data-lucide="lightbulb"></i>
+              <p><strong>Prevention Tip:</strong> This issue occurs after proxy updates. Bookmark this troubleshooting page for quick access!</p>
             </div>
           </div>
 
           <div class="issue-card priority-high">
             <div class="issue-title">
-              <i data-lucide="server"></i>
-              Main Proxy Service Unavailable
+              <i data-lucide="search-x"></i>
+              Search Bar Not Working or Shows 404 Error
+            </div>
+            <div class="issue-description">
+              Entering a URL in the search bar doesn't navigate, returns an error, or shows a blank page.
             </div>
             <div class="solution">
-              <h4>Solution:</h4>
-              <p>If the main proxy is down or not working, try these alternative proxy instances:</p>
-              <div class="alternative-links">
-                <h4>Alternative Proxy Links:</h4>
-                <div class="link-item"><i data-lucide="external-link"></i><a href="https://proxyyy-wrxa.onrender.com/"
-                    target="_blank">https://proxyyy-wrxa.onrender.com/</a></div>
-                <div class="link-item"><i data-lucide="external-link"></i><a href="https://proxyyyy-pi.vercel.app"
-                    target="_blank">https://proxyyyy-pi.vercel.app</a></div>
-                <div class="link-item"><i data-lucide="external-link"></i><a
-                    href="https://proxyyy-dusky-five.vercel.app"
-                    target="_blank">https://proxyyy-dusky-five.vercel.app</a></div>
-                <div class="link-item"><i data-lucide="external-link"></i><a href="https://proxy-zeta-gilt.vercel.app/"
-                    target="_blank">https://proxy-zeta-gilt.vercel.app/</a></div>
-                <div class="link-item"><i data-lucide="external-link"></i><a href="https://proxyy-sepia-tau.vercel.app"
-                    target="_blank">https://proxyy-sepia-tau.vercel.app</a></div>
-              </div>
-              <p>These are identical instances of Ambient running on different servers. Your bookmarks and settings
-                won't transfer, but all functionality is the same.</p>
-            </div>
-          </div>
-
-          <div class="issue-card priority-medium">
-            <div class="issue-title">
-              <i data-lucide="zap"></i>
-              Slow Loading or Performance Issues
-            </div>
-            <div class="solution">
-              <h4>Solution:</h4>
-              <p>Performance issues are often caused by cached service workers. Clear the cache using the button above,
-                or:</p>
+              <h4><i data-lucide="check-circle"></i> Solution:</h4>
+              <p><strong>URL Format:</strong> Always include the full protocol in your URLs.</p>
+              <div class="code-snippet">✅ Correct Format:<br>
+https://google.com<br>
+https://youtube.com<br>
+https://github.com<br><br>
+❌ Incorrect Format:<br>
+google.com (missing protocol)<br>
+www.youtube.com (missing protocol)<br>
+http://google (incomplete domain)</div>
+              <p><strong>If URLs are formatted correctly:</strong></p>
               <ul>
-                <li>Try a different browser</li>
+                <li>Clear the service worker cache (button above)</li>
+                <li>Try using "http://" instead of "https://" for some sites</li>
                 <li>Disable browser extensions temporarily</li>
-                <li>Check your internet connection</li>
-                <li>Use an incognito/private browsing window</li>
+                <li>Try an incognito/private window</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="issue-card priority-high">
+            <div class="issue-title">
+              <i data-lucide="server-off"></i>
+              Main Proxy Service Unavailable (503/504 Errors)
+            </div>
+            <div class="issue-description">
+              The proxy service is down for maintenance, experiencing high traffic, or unreachable.
+            </div>
+            <div class="solution">
+              <h4><i data-lucide="check-circle"></i> Solution:</h4>
+              <p>Use one of our alternative proxy instances. All instances have identical features:</p>
+              <div class="alternative-links">
+                <h4><i data-lucide="link"></i> Alternative Ambient Instances:</h4>
+                <div class="link-item">
+                  <i data-lucide="server"></i>
+                  <a href="https://proxyyy-wrxa.onrender.com/" target="_blank">proxyyy-wrxa.onrender.com</a>
+                  <span style="color: rgba(255,255,255,0.5); font-size: 13px; margin-left: auto;">(Render)</span>
+                </div>
+                <div class="link-item">
+                  <i data-lucide="server"></i>
+                  <a href="https://proxyyyy-pi.vercel.app" target="_blank">proxyyyy-pi.vercel.app</a>
+                  <span style="color: rgba(255,255,255,0.5); font-size: 13px; margin-left: auto;">(Vercel)</span>
+                </div>
+                <div class="link-item">
+                  <i data-lucide="server"></i>
+                  <a href="https://proxyyy-dusky-five.vercel.app" target="_blank">proxyyy-dusky-five.vercel.app</a>
+                  <span style="color: rgba(255,255,255,0.5); font-size: 13px; margin-left: auto;">(Vercel)</span>
+                </div>
+                <div class="link-item">
+                  <i data-lucide="server"></i>
+                  <a href="https://proxy-zeta-gilt.vercel.app/" target="_blank">proxy-zeta-gilt.vercel.app</a>
+                  <span style="color: rgba(255,255,255,0.5); font-size: 13px; margin-left: auto;">(Vercel)</span>
+                </div>
+                <div class="link-item">
+                  <i data-lucide="server"></i>
+                  <a href="https://proxyy-sepia-tau.vercel.app" target="_blank">proxyy-sepia-tau.vercel.app</a>
+                  <span style="color: rgba(255,255,255,0.5); font-size: 13px; margin-left: auto;">(Vercel)</span>
+                </div>
+              </div>
+            </div>
+            <div class="tip-box">
+              <i data-lucide="bookmark"></i>
+              <p><strong>Pro Tip:</strong> Bookmark 2-3 alternative instances for instant access when one goes down. Your settings won't transfer, but all functionality is identical.</p>
+            </div>
+          </div>
+
+          <div class="issue-card priority-medium">
+            <div class="issue-title">
+              <i data-lucide="turtle"></i>
+              Slow Loading Times or Performance Issues
+            </div>
+            <div class="issue-description">
+              Pages take forever to load, videos buffer constantly, or the proxy feels sluggish.
+            </div>
+            <div class="solution">
+              <h4><i data-lucide="check-circle"></i> Solution:</h4>
+              <p><strong>Immediate Fixes:</strong></p>
+              <ul>
+                <li>Clear service worker cache (button above)</li>
+                <li>Close other tabs and unnecessary applications</li>
+                <li>Disable browser extensions (especially ad blockers and VPNs)</li>
+                <li>Try a different browser (Chrome usually performs best)</li>
+                <li>Use an incognito/private window to test</li>
+              </ul>
+              <p><strong>Long-term Improvements:</strong></p>
+              <ul>
+                <li>Upgrade your internet connection if possible</li>
+                <li>Use a wired connection instead of WiFi</li>
+                <li>Try accessing during off-peak hours</li>
+                <li>Switch to a different Ambient instance (see above)</li>
+                <li>Keep your browser updated to the latest version</li>
               </ul>
             </div>
           </div>
 
           <div class="issue-card priority-medium">
             <div class="issue-title">
-              <i data-lucide="shield"></i>
-              Some Websites Block Access or Show CAPTCHAs
+              <i data-lucide="shield-alert"></i>
+              Websites Block Access or Show CAPTCHAs Repeatedly
+            </div>
+            <div class="issue-description">
+              Some websites detect proxy usage and block access, show endless CAPTCHAs, or display security warnings.
             </div>
             <div class="solution">
-              <h4>Solution:</h4>
-              <p>This is normal behavior for security-conscious websites. Try these alternatives:</p>
+              <h4><i data-lucide="check-circle"></i> Solution:</h4>
+              <p>This is expected behavior for security-conscious sites (Google, Facebook, banking sites, etc.). They actively detect and block proxy traffic.</p>
+              <p><strong>Alternatives:</strong></p>
               <div class="alternative-links">
-                <h4>Alternative Search Engines:</h4>
-                <div class="link-item"><i data-lucide="search"></i><a href="https://startpage.com"
-                    target="_blank">Startpage</a> - Anonymous search</div>
-                <div class="link-item"><i data-lucide="search"></i><a href="https://search.brave.com"
-                    target="_blank">Brave Search</a> - Independent search</div>
+                <h4><i data-lucide="search"></i> Privacy-Focused Search Engines:</h4>
+                <div class="link-item">
+                  <i data-lucide="shield"></i>
+                  <a href="https://duckduckgo.com" target="_blank">DuckDuckGo</a>
+                  <span style="color: rgba(255,255,255,0.5); margin-left: auto;">- No tracking</span>
+                </div>
+                <div class="link-item">
+                  <i data-lucide="shield"></i>
+                  <a href="https://startpage.com" target="_blank">Startpage</a>
+                  <span style="color: rgba(255,255,255,0.5); margin-left: auto;">- Anonymous Google results</span>
+                </div>
+                <div class="link-item">
+                  <i data-lucide="shield"></i>
+                  <a href="https://search.brave.com" target="_blank">Brave Search</a>
+                  <span style="color: rgba(255,255,255,0.5); margin-left: auto;">- Independent index</span>
+                </div>
+                <div class="link-item">
+                  <i data-lucide="shield"></i>
+                  <a href="https://www.qwant.com" target="_blank">Qwant</a>
+                  <span style="color: rgba(255,255,255,0.5); margin-left: auto;">- European privacy</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="issue-card priority-low">
+          <div class="issue-card priority-medium">
             <div class="issue-title">
-              <i data-lucide="monitor"></i>
-              Mobile/Tablet Display Issues
+              <i data-lucide="video-off"></i>
+              Videos Won't Play or Audio Issues
+            </div>
+            <div class="issue-description">
+              Streaming videos fail to load, audio doesn't play, or media content shows errors.
             </div>
             <div class="solution">
-              <h4>Solution:</h4>
-              <p>The app is optimized for desktop but works on mobile. If you experience issues:</p>
+              <h4><i data-lucide="check-circle"></i> Solution:</h4>
               <ul>
-                <li>Try rotating your device to landscape mode</li>
-                <li>Zoom out if elements appear too large</li>
-                <li>Use a modern mobile browser (Chrome, Safari)</li>
-                <li>Ensure JavaScript is enabled in browser settings</li>
+                <li>Clear service worker cache</li>
+                <li>Try a different video quality/resolution</li>
+                <li>Disable hardware acceleration in browser settings</li>
+                <li>Check if the site works in normal browsing (some sites block proxies)</li>
+                <li>Try a different browser (Firefox often handles media better)</li>
+                <li>Ensure your browser has permission to use media codecs</li>
               </ul>
             </div>
           </div>
 
           <div class="issue-card priority-low">
             <div class="issue-title">
-              <i data-lucide="clock"></i>
-              Study Timer Not Working
+              <i data-lucide="smartphone"></i>
+              Mobile/Tablet Display or Touch Issues
+            </div>
+            <div class="issue-description">
+              Interface looks broken on mobile, touch gestures don't work, or buttons are unresponsive.
             </div>
             <div class="solution">
-              <h4>Solution:</h4>
-              <p>The study timer requires JavaScript to be enabled. If it's not working:</p>
+              <h4><i data-lucide="check-circle"></i> Solution:</h4>
+              <p>Ambient is optimized for desktop but supports mobile devices:</p>
               <ul>
-                <li>Refresh the page</li>
-                <li>Clear browser cache</li>
-                <li>Ensure JavaScript is enabled</li>
-                <li>Try a different browser</li>
+                <li>Rotate device to landscape mode for better experience</li>
+                <li>Use pinch-to-zoom if elements appear too small/large</li>
+                <li>Use Chrome (Android) or Safari (iOS) for best compatibility</li>
+                <li>Enable JavaScript in browser settings</li>
+                <li>Clear mobile browser cache: Settings → Privacy → Clear Data</li>
+                <li>Try requesting desktop site (browser menu)</li>
               </ul>
+            </div>
+          </div>
+
+          <div class="issue-card priority-low">
+            <div class="issue-title">
+              <i data-lucide="download"></i>
+              Downloads Don't Work or Files Are Corrupted
+            </div>
+            <div class="issue-description">
+              File downloads fail, get stuck, or downloaded files won't open properly.
+            </div>
+            <div class="solution">
+              <h4><i data-lucide="check-circle"></i> Solution:</h4>
+              <p><strong>Important:</strong> Direct downloads through proxies may not work reliably due to how files are encoded.</p>
+              <ul>
+                <li>For important downloads, access the site directly (without proxy)</li>
+                <li>Try right-click → "Save Link As" instead of direct downloads</li>
+                <li>Clear cache and try downloading again</li>
+                <li>Check download folder for partially downloaded files</li>
+                <li>Verify file integrity after download if possible</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="issue-card priority-low">
+            <div class="issue-title">
+              <i data-lucide="cookie"></i>
+              Can't Stay Logged In or Cookies Not Working
+            </div>
+            <div class="issue-description">
+              Websites keep logging you out, sessions don't persist, or "remember me" doesn't work.
+            </div>
+            <div class="solution">
+              <h4><i data-lucide="check-circle"></i> Solution:</h4>
+              <p>Cookies are handled differently through proxies:</p>
+              <ul>
+                <li>Enable third-party cookies in browser settings</li>
+                <li>Don't clear browser data while using the proxy</li>
+                <li>Use the same Ambient instance consistently</li>
+                <li>Some sites don't support persistent logins through proxies</li>
+                <li>For important accounts, consider using direct access</li>
+              </ul>
+            </div>
+            <div class="tip-box">
+              <i data-lucide="alert-circle"></i>
+              <p><strong>Security Note:</strong> Avoid logging into sensitive accounts (banking, email, social media) through proxies. Use them primarily for browsing and research.</p>
             </div>
           </div>
         </div>
 
-        <div class="dev-section">
+        <!-- FAQ Section -->
+        <div class="dev-section faq-section">
           <h2><i data-lucide="help-circle"></i> Frequently Asked Questions</h2>
 
           <div class="faq-item">
-            <div class="faq-question">Is Ambient safe to use?</div>
-            <div class="faq-answer">Ambient uses industry-standard proxy technology (Ultraviolet) and doesn't store any
-              personal data. However, remember that no proxy can guarantee 100% anonymity. Use at your own discretion
-              and avoid accessing sensitive information.</div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">Why do some websites not work?</div>
-            <div class="faq-answer">Some websites implement advanced anti-proxy measures. This is common with major web
-              services, social media platforms, and banking sites. Try alternative services or use the direct web when
-              possible.</div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">Can I use Ambient on mobile devices?</div>
-            <div class="faq-answer">Yes, Ambient works on mobile devices, but the experience is optimized for desktop.
-              Mobile browsers may have limitations with service workers and proxy functionality.</div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">How do I access Games and Apps sections?</div>
-            <div class="faq-answer">Use the navigation menu at the top. The Games section (/g) and Apps section (/a)
-              provide curated lists of web-based games and applications that work well with the proxy.</div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">What should I do if the proxy stops working?</div>
-            <div class="faq-answer">First, try clearing the service worker cache using the button at the top of this
-              page. If that doesn't help, try a different browser, clear all browser data, or use an incognito window.
+            <div class="faq-question">
+              <i data-lucide="shield-check"></i>
+              Is Ambient safe and secure to use?
+            </div>
+            <div class="faq-answer">
+              Ambient uses industry-standard Ultraviolet proxy technology with XOR encoding. We don't log, store, or track any personal data or browsing history. However, no proxy can guarantee 100% anonymity. Avoid accessing sensitive information (banking, passwords, personal data) through any proxy service. Use at your own discretion for general browsing and research.
             </div>
           </div>
 
           <div class="faq-item">
-            <div class="faq-question">How do I bookmark websites for easy access?</div>
-            <div class="faq-answer">When browsing through the proxy, you can bookmark the proxied URLs directly.
-              However, these bookmarks may not work if the proxy service changes. For reliable access, bookmark the
-              original website URLs and access them through Ambient's search bar.</div>
+            <div class="faq-question">
+              <i data-lucide="globe-2"></i>
+              Why don't all websites work through the proxy?
+            </div>
+            <div class="faq-answer">
+              Some websites implement sophisticated anti-proxy measures including IP detection, JavaScript fingerprinting, and behavior analysis. Major services like Google, Facebook, Netflix, and banking sites actively block proxy traffic for security reasons. Additionally, some sites use technologies (WebRTC, WebSockets) that don't always work well through proxies. This is a limitation of all web proxies, not specific to Ambient.
+            </div>
           </div>
 
           <div class="faq-item">
-            <div class="faq-question">Which browsers work best with Ambient?</div>
-            <div class="faq-answer">Ambient works best with modern browsers like Chrome, Edge, and Safari. Chrome
-              generally provides the best performance and compatibility with service workers. Avoid using Internet
-              Explorer or very old browser versions.</div>
+            <div class="faq-question">
+              <i data-lucide="smartphone"></i>
+              Does Ambient work on mobile devices and tablets?
+            </div>
+            <div class="faq-answer">
+              Yes! Ambient is responsive and works on mobile devices, though the experience is optimized for desktop browsers. On mobile, use Chrome (Android) or Safari (iOS) for best results. Service Workers (required for the proxy) work on mobile but with some limitations. If you experience issues, try rotating to landscape mode or requesting the desktop site in your browser settings.
+            </div>
           </div>
 
           <div class="faq-item">
-            <div class="faq-question">How can I improve loading speeds?</div>
-            <div class="faq-answer">For better performance: use a fast internet connection, close unnecessary browser
-              tabs, disable browser extensions that might interfere, and ensure your browser is up to date. If a site
-              loads slowly, try refreshing or using a different browser.</div>
+            <div class="faq-question">
+              <i data-lucide="gamepad-2"></i>
+              How do I access the Games and Apps sections?
+            </div>
+            <div class="faq-answer">
+              Click "Games" or "Apps" in the top navigation menu, or navigate directly to <strong>/g</strong> (games) or <strong>/a</strong> (apps). These sections feature curated collections of web-based games and applications that work well through the proxy. Content is regularly updated with new additions.
+            </div>
           </div>
 
           <div class="faq-item">
-            <div class="faq-question">Can I use Ambient with VPNs or other proxies?</div>
-            <div class="faq-answer">Yes, but using multiple proxies simultaneously may cause conflicts or reduced
-              performance. If you experience issues, try disabling your VPN temporarily or use Ambient without
-              additional proxy layers.</div>
+            <div class="faq-question">
+              <i data-lucide="zap"></i>
+              What should I do if the proxy suddenly stops working?
+            </div>
+            <div class="faq-answer">
+              First, try clearing the service worker cache using the button at the top of this page - this fixes most issues instantly. If that doesn't work: (1) Try a different browser, (2) Use an incognito window, (3) Clear all browser data, (4) Check if you can access alternative instances listed above, (5) Wait a few minutes if the service is experiencing high traffic. Check the Dev Logs page for announcements about maintenance or known issues.
+            </div>
           </div>
 
           <div class="faq-item">
-            <div class="faq-question">How do I report bugs or suggest features?</div>
-            <div class="faq-answer">Check the Dev Logs page for recent updates and known issues. For bug reports or
-              feature suggestions, visit the GitHub repository linked in the footer. Please include details about your
-              browser, operating system, and steps to reproduce the issue.</div>
+            <div class="faq-question">
+              <i data-lucide="bookmark"></i>
+              How do I bookmark websites for easy access later?
+            </div>
+            <div class="faq-answer">
+              You can bookmark proxied URLs directly, but these may break if the proxy service changes or updates. For more reliable access: (1) Bookmark the original URL, then access it through Ambient's search bar each time, (2) Use Ambient's shortcuts feature on the homepage to save frequently visited sites, (3) Consider bookmarking multiple Ambient instances so you always have access.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <i data-lucide="chrome"></i>
+              Which browsers work best with Ambient?
+            </div>
+            <div class="faq-answer">
+              <strong>Best:</strong> Google Chrome, Microsoft Edge (Chromium-based browsers) offer the best performance and full compatibility.<br>
+              <strong>Good:</strong> Firefox, Brave, Opera also work well with minor limitations.<br>
+              <strong>Acceptable:</strong> Safari works but may have occasional issues with service workers.<br>
+              <strong>Not Recommended:</strong> Internet Explorer, very old browser versions, and heavily modified browsers may not work at all. Always keep your browser updated to the latest version.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <i data-lucide="rocket"></i>
+              How can I make Ambient load faster?
+            </div>
+            <div class="faq-answer">
+              Performance tips: (1) Use a fast, stable internet connection (wired if possible), (2) Close unnecessary browser tabs and applications, (3) Disable browser extensions temporarily - especially ad blockers and VPNs, (4) Keep your browser updated, (5) Clear cache regularly, (6) Use Chrome or Edge for best performance, (7) Try different Ambient instances if one is slow, (8) Access during off-peak hours if possible.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <i data-lucide="shield"></i>
+              Can I use Ambient with a VPN or other proxies?
+            </div>
+            <div class="faq-answer">
+              You can, but it's not recommended. Combining multiple proxy layers (VPN + Ambient, or Ambient + another proxy) often causes conflicts, significantly reduces speed, and may break functionality. If you experience issues, try disabling your VPN temporarily. For maximum privacy, use either a VPN OR Ambient, not both simultaneously.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <i data-lucide="bug"></i>
+              How do I report bugs or suggest new features?
+            </div>
+            <div class="faq-answer">
+              Check the <a href="/devlogs">Dev Logs</a> page for recent updates and known issues first. To report bugs or suggest features, visit our <a href="https://github.com/jjtjtyt6644/proxyyy" target="_blank">GitHub repository</a>. When reporting bugs, include: (1) Browser and version, (2) Operating system, (3) Steps to reproduce the issue, (4) Screenshots if applicable, (5) Any error messages from the browser console.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <i data-lucide="clock"></i>
+              Why does the proxy sometimes show an old version of a website?
+            </div>
+            <div class="faq-answer">
+              This happens when the service worker has cached an older version of the site. The cache helps improve load times but can occasionally serve stale content. Solution: Clear the service worker cache (button above), or perform a hard refresh (Ctrl+Shift+R). If you need to see the absolute latest version of a site, consider accessing it directly without the proxy.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <i data-lucide="school"></i>
+              Does Ambient work at school or work networks?
+            </div>
+            <div class="faq-answer">
+              It depends on the network's security configuration. Some educational institutions and workplaces block known proxy services using firewalls, content filters, or DNS blocking. If Ambient is blocked, using it may violate your school's or employer's acceptable use policy. Always respect network policies and rules. The alternative instances listed above may work if the main site is blocked, but be aware that attempting to bypass network restrictions may have consequences.
+            </div>
           </div>
         </div>
 
+        <!-- Contact Section -->
         <div class="contact-info">
-          <h3><i data-lucide="message-circle"></i> Still Having Issues?</h3>
-          <p>If none of these solutions work, you can:</p>
-          <p>• Check the <a href="/devlogs" style="color: #4ecdc4;">Dev Logs</a> for recent updates</p>
-          <p>• Visit the <a href="/about" style="color: #4ecdc4;">About page</a> for more information</p>
-          <p>• Try alternative proxy services if available</p>
+          <h3><i data-lucide="message-circle"></i> Still Need Help?</h3>
+          <p>If you've tried everything and still experiencing issues:</p>
+          <p>📖 Check the <a href="/devlogs">Dev Logs</a> for recent updates, known issues, and changelogs</p>
+          <p>ℹ️ Visit the <a href="/about">About</a> page for more information about the project</p>
+          <p>🌐 Try one of the <strong>alternative instances</strong> listed above</p>
+          <p>💬 Visit our <a href="https://github.com/jjtjtyt6644/proxyyy" target="_blank">GitHub repository</a> to report issues or contribute</p>
+          <p style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);">
+            <strong>Remember:</strong> Most issues are solved by simply clearing the service worker cache. When in doubt, click that button first! ⬆️
+          </p>
         </div>
       </div>
     </div>
@@ -478,36 +1461,77 @@
       const originalHTML = btn.innerHTML;
 
       try {
-        btn.innerHTML = '<i data-lucide="loader-2"></i> Clearing...';
+        btn.innerHTML = '<i data-lucide="loader"></i> Clearing Cache...';
         btn.disabled = true;
+        btn.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
         lucide.createIcons();
 
-        const success = await window.clearServiceWorkerCache();
+        // Check if clearServiceWorkerCache function exists
+        if (typeof window.clearServiceWorkerCache === 'function') {
+          const success = await window.clearServiceWorkerCache();
+          
+          if (success) {
+            btn.innerHTML = '<i data-lucide="check-circle"></i> Cache Cleared! Reloading...';
+            btn.style.background = 'linear-gradient(135deg, #10b981, #4ecdc4)';
+            lucide.createIcons();
 
-        if (success) {
-          btn.innerHTML = '<i data-lucide="check"></i> Cache Cleared!';
-          btn.style.background = 'linear-gradient(135deg, #10b981, #4ecdc4)';
-
-          // Reload page after 2 seconds
-          setTimeout(() => {
-            window.location.reload();
-          }, 2000);
+            // Reload page after 1.5 seconds
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500);
+          } else {
+            throw new Error('Cache clearing returned false');
+          }
         } else {
-          throw new Error('Cache clearing not supported');
+          // Fallback method if function doesn't exist
+          if ('serviceWorker' in navigator) {
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            for (const registration of registrations) {
+              await registration.unregister();
+            }
+            
+            if ('caches' in window) {
+              const cacheNames = await caches.keys();
+              for (const cacheName of cacheNames) {
+                await caches.delete(cacheName);
+              }
+            }
+
+            btn.innerHTML = '<i data-lucide="check-circle"></i> Cache Cleared! Reloading...';
+            btn.style.background = 'linear-gradient(135deg, #10b981, #4ecdc4)';
+            lucide.createIcons();
+
+            setTimeout(() => {
+              window.location.reload();
+            }, 1500);
+          } else {
+            throw new Error('Service Workers not supported');
+          }
         }
       } catch (error) {
         console.error('Failed to clear cache:', error);
-        btn.innerHTML = '<i data-lucide="x"></i> Failed to Clear';
+        btn.innerHTML = '<i data-lucide="x-circle"></i> Error - Try Manual Method';
         btn.style.background = 'linear-gradient(135deg, #ef4444, #ff6b6b)';
+        lucide.createIcons();
 
-        // Reset button after 3 seconds
+        // Reset button after 4 seconds
         setTimeout(() => {
           btn.innerHTML = originalHTML;
           btn.disabled = false;
-          btn.style.background = '';
+          btn.style.background = 'linear-gradient(135deg, #ff6b6b, #4ecdc4)';
           lucide.createIcons();
-        }, 3000);
+        }, 4000);
       }
+    });
+
+    // Add smooth scroll behavior to FAQ items
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', function() {
+        this.style.backgroundColor = 'rgba(102, 126, 234, 0.1)';
+        setTimeout(() => {
+          this.style.backgroundColor = '';
+        }, 300);
+      });
     });
   </script>
 </body>
