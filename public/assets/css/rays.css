@@ -4,16 +4,26 @@
 }
 
 @keyframes smoothBg {
-  from {
-    background-position:
-      50% 50%,
-      50% 50%;
+  0% {
+    background-position: 0% 50%, 0% 50%;
   }
+  50% {
+    background-position: 100% 50%, 100% 50%;
+  }
+  100% {
+    background-position: 200% 50%, 200% 50%;
+  }
+}
 
-  to {
-    background-position:
-      350% 50%,
-      350% 50%;
+@keyframes rayRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(5deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
   }
 }
 
@@ -50,22 +60,15 @@
     var(--solid-color) 15%,
     var(--solid-color) 20%,
     var(--solid-color) 25%,
-    var(--solid-color) 30% /* Archived Colors */
-      /* #60d9fa 10%,
-      #9579f9 15%,
-      #60a0fa 20%,
-      #b75eea 25%,
-      #60e3fa 30% */
+    var(--solid-color) 30%
   );
   background-image: var(--stripes), var(--rainbow);
   background-size: 300%, 200%;
-  background-position:
-    50% 50%,
-    50% 50%;
+  background-position: 50% 50%, 50% 50%;
 
   filter: blur(10px) opacity(50%) saturate(200%);
-
   mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
+  animation: rayRotate 20s ease-in-out infinite;
 
   &::after {
     content: '';
@@ -73,7 +76,7 @@
     inset: 0;
     background-image: var(--stripes), var(--rainbow);
     background-size: 200%, 100%;
-    animation: smoothBg 60s linear infinite;
+    animation: smoothBg 45s ease-in-out infinite;
     background-attachment: fixed;
     mix-blend-mode: difference;
     filter: blur(10px) opacity(50%) saturate(200%);

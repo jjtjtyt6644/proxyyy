@@ -13,13 +13,45 @@
   font-size: 18px;
   text-align: left;
   color: var(--text);
-  transition: 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.searchbarContainer::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(181, 120, 255, 0.3), rgba(120, 180, 255, 0.3));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
 }
 
 .searchbarContainer:focus-within {
   border: 1px solid var(--border-h);
-  box-shadow: 0 0 1px 2px var(--border);
+  box-shadow: 0 8px 40px rgba(181, 120, 255, 0.3), 0 0 0 4px rgba(181, 120, 255, 0.1);
   width: 550px;
+  transform: translateY(-2px);
+}
+
+.searchbarContainer:focus-within::before {
+  opacity: 1;
+  animation: borderGlow 2s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  50% {
+    filter: hue-rotate(30deg) brightness(1.2);
+  }
+}
+
+.searchbarContainer:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
 }
 
 .searchbarContainer svg {
