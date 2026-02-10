@@ -1,13 +1,16 @@
 [VERSION]
-1.4.0
+1.4.1
 
 [RELEASE DATE]
-2026-02-07
+2026-02-10
 
 [CHANGES]
-- Complete overlay redesign with glassmorphism, animations, and new stats UI
-- Fix overlay scrolling issues on mobile and touch devices
-- Add security indicator (HTTPS/HTTP) and connection quality gradient
+- Enhanced animations with dynamic particle system and elastic effects
+- Smooth gradient transitions and modern micro-interactions
+- Improved visual effects with varied speeds and glow effects
+- Refined background animations with depth and movement
+- Complete troubleshooting guide overhaul with comprehensive solutions
+- Updated devlogs with recent commits and contributor information
 - Refined styles for study timer and UI buttons
 - Updated time.css for better styling
 - Added comprehensive about page with developer credits
