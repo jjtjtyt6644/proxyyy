@@ -44,7 +44,7 @@
       position: absolute;
       width: 200%;
       height: 200%;
-      background: 
+      background:
         radial-gradient(circle at 20% 50%, rgba(181, 120, 255, 0.15) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(120, 180, 255, 0.15) 0%, transparent 50%),
         radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
@@ -53,18 +53,24 @@
     }
 
     @keyframes gridMove {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translate(0, 0);
       }
+
       50% {
         transform: translate(50px, 50px);
       }
     }
 
     @keyframes colorPulse {
-      0%, 100% {
+
+      0%,
+      100% {
         opacity: 1;
       }
+
       50% {
         opacity: 0.7;
       }
@@ -114,9 +120,11 @@
         transform: translateY(30px) scale(0.95) rotateX(10deg);
         filter: blur(10px);
       }
+
       60% {
         transform: translateY(-5px) scale(1.02) rotateX(0deg);
       }
+
       100% {
         opacity: 1;
         transform: translateY(0) scale(1) rotateX(0deg);
@@ -129,6 +137,7 @@
         transform: translateX(-50%) scaleX(0);
         opacity: 0;
       }
+
       100% {
         transform: translateX(-50%) scaleX(1);
         opacity: 1;
@@ -145,6 +154,7 @@
         transform: translateY(0) scale(1);
         filter: blur(0);
       }
+
       100% {
         opacity: 0;
         transform: translateY(-30px) scale(0.9);
@@ -162,343 +172,349 @@
         transform: scale(1);
         filter: blur(0);
       }
+
       50% {
         opacity: 0.5;
         transform: scale(1.05);
       }
+
       100% {
         opacity: 0;
-    .gradient-text {
-      background: linear-gradient(135deg, #ffffff, #b578ff, #78b4ff, #ffffff);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradientFlow 3s ease-in-out infinite;
-    }
 
-    @keyframes gradientFlow {
-      0%, 100% {
-        background-position: 0% center;
-      }
-      50% {
-        background-position: 100% center;
-      }
-    }
+        .gradient-text {
+          background: linear-gradient(135deg, #ffffff, #b578ff, #78b4ff, #ffffff);
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: gradientFlow 3s ease-in-out infinite;
+        }
 
-    .gradient-text {
-      background: linear-gradient(135deg, #ffffff, #a0a0a0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+        @keyframes gradientFlow {
 
-    .creator-text {
-      font-size: 18px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.6);
-      margin-top: 10px;
-      letter-spacing: 1px;
-    }
+          0%,
+          100% {
+            background-position: 0% center;
+          }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.95);
-      }
+          50% {
+            background-position: 100% center;
+          }
+        }
 
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
+        .gradient-text {
+          background: linear-gradient(135deg, #ffffff, #a0a0a0);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
 
-    @keyframes gradientShift {
+        .creator-text {
+          font-size: 18px;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 0.6);
+          margin-top: 10px;
+          letter-spacing: 1px;
+        }
 
-      0%,
-      100% {
-        background-position: 0% 50%;
-      }
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
 
-      50% {
-        background-position: 100% 50%;
-      }
-    }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
 
-    @keyframes shimmer {
-      0% {
-        background-position: -1000px 0;
-      }
+        @keyframes gradientShift {
 
-      100% {
-        background-position: 1000px 0;
-      }
-    }
+          0%,
+          100% {
+            background-position: 0% 50%;
+          }
 
-    @keyframes pulse {
+          50% {
+            background-position: 100% 50%;
+          }
+        }
 
-      0%,
-      100% {
-        opacity: 1;
-      }
+        @keyframes shimmer {
+          0% {
+            background-position: -1000px 0;
+          }
 
-      50% {
-        opacity: 0.5;
-      }
-    }
+          100% {
+            background-position: 1000px 0;
+          }
+        }
 
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--bg);
-      backdrop-filter: blur(15px) saturate(180%);
-      -webkit-backdrop-filter: blur(15px) saturate(180%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      animation: fadeIn 0.3s ease-out;
-    }
+        @keyframes pulse {
 
-    .overlay-content {
-      background: var(--element-bg);
-      border: 2px solid transparent;
-      background-clip: padding-box;
-      position: relative;
-      border-radius: 20px;
-      padding: 40px 35px;
-      text-align: center;
-      max-width: 550px;
-      width: 90%;
-      color: var(--text);
-      box-shadow:
-        0 25px 50px -12px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(78, 205, 196, 0.1),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
-      animation: fadeIn 0.4s ease-out 0.1s both;
-    }
+          0%,
+          100% {
+            opacity: 1;
+          }
 
-    .overlay-content::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg,
-          #4ecdc4 0%,
-          #10b981 25%,
-          #06b6d4 50%,
-          #10b981 75%,
-          #4ecdc4 100%);
-      background-size: 200% 100%;
-      animation: gradientShift 4s ease-in-out infinite;
-      border-radius: 20px 20px 0 0;
-    }
+          50% {
+            opacity: 0.5;
+          }
+        }
 
-    .overlay-content::after {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(135deg,
-          rgba(78, 205, 196, 0.3),
-          rgba(16, 185, 129, 0.3),
-          rgba(6, 182, 212, 0.3));
-      border-radius: 20px;
-      z-index: -1;
-      opacity: 0.5;
-      filter: blur(10px);
-    }
+        .overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: var(--bg);
+          backdrop-filter: blur(15px) saturate(180%);
+          -webkit-backdrop-filter: blur(15px) saturate(180%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 1000;
+          animation: fadeIn 0.3s ease-out;
+        }
 
-    .overlay-content h2 {
-      margin: 0 0 15px 0;
-      font-size: 32px;
-      font-weight: 700;
-      background: linear-gradient(135deg, #4ecdc4, #10b981, #06b6d4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-    }
+        .overlay-content {
+          background: var(--element-bg);
+          border: 2px solid transparent;
+          background-clip: padding-box;
+          position: relative;
+          border-radius: 20px;
+          padding: 40px 35px;
+          text-align: center;
+          max-width: 550px;
+          width: 90%;
+          color: var(--text);
+          box-shadow:
+            0 25px 50px -12px rgba(0, 0, 0, 0.5),
+            0 0 0 1px rgba(78, 205, 196, 0.1),
+            inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+          animation: fadeIn 0.4s ease-out 0.1s both;
+        }
 
-    .overlay-content h2::before {
-      content: '🚀';
-      font-size: 36px;
-      animation: pulse 2s ease-in-out infinite;
-    }
+        .overlay-content::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: linear-gradient(90deg,
+              #4ecdc4 0%,
+              #10b981 25%,
+              #06b6d4 50%,
+              #10b981 75%,
+              #4ecdc4 100%);
+          background-size: 200% 100%;
+          animation: gradientShift 4s ease-in-out infinite;
+          border-radius: 20px 20px 0 0;
+        }
 
-    .overlay-content p {
-      margin: 0 0 25px 0;
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.7;
-      font-size: 16px;
-      font-weight: 400;
-    }
+        .overlay-content::after {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          background: linear-gradient(135deg,
+              rgba(78, 205, 196, 0.3),
+              rgba(16, 185, 129, 0.3),
+              rgba(6, 182, 212, 0.3));
+          border-radius: 20px;
+          z-index: -1;
+          opacity: 0.5;
+          filter: blur(10px);
+        }
 
-    .overlay-content .subtitle {
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 20px;
-      font-style: italic;
-    }
+        .overlay-content h2 {
+          margin: 0 0 15px 0;
+          font-size: 32px;
+          font-weight: 700;
+          background: linear-gradient(135deg, #4ecdc4, #10b981, #06b6d4);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          letter-spacing: -0.5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+        }
 
-    .overlay-content .links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin: 25px 0;
-    }
+        .overlay-content h2::before {
+          content: '🚀';
+          font-size: 36px;
+          animation: pulse 2s ease-in-out infinite;
+        }
 
-    .overlay-content a {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: #4ecdc4;
-      text-decoration: none;
-      padding: 16px 20px;
-      background: linear-gradient(135deg,
-          rgba(78, 205, 196, 0.08) 0%,
-          rgba(16, 185, 129, 0.08) 100%);
-      border: 1.5px solid rgba(78, 205, 196, 0.25);
-      border-radius: 12px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
-      font-size: 13px;
-      position: relative;
-      overflow: hidden;
-    }
+        .overlay-content p {
+          margin: 0 0 25px 0;
+          color: rgba(255, 255, 255, 0.85);
+          line-height: 1.7;
+          font-size: 16px;
+          font-weight: 400;
+        }
 
-    .overlay-content a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg,
-          transparent,
-          rgba(78, 205, 196, 0.15),
-          transparent);
-      transition: left 0.5s ease;
-    }
+        .overlay-content .subtitle {
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.6);
+          margin-bottom: 20px;
+          font-style: italic;
+        }
 
-    .overlay-content a:hover::before {
-      left: 100%;
-    }
+        .overlay-content .links {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          margin: 25px 0;
+        }
 
-    .overlay-content a::after {
-      content: '→';
-      font-size: 18px;
-      opacity: 0;
-      transform: translateX(-10px);
-      transition: all 0.3s ease;
-    }
+        .overlay-content a {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: #4ecdc4;
+          text-decoration: none;
+          padding: 16px 20px;
+          background: linear-gradient(135deg,
+              rgba(78, 205, 196, 0.08) 0%,
+              rgba(16, 185, 129, 0.08) 100%);
+          border: 1.5px solid rgba(78, 205, 196, 0.25);
+          border-radius: 12px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+          font-size: 13px;
+          position: relative;
+          overflow: hidden;
+        }
 
-    .overlay-content a:hover {
-      background: linear-gradient(135deg,
-          rgba(78, 205, 196, 0.18) 0%,
-          rgba(16, 185, 129, 0.18) 100%);
-      border-color: #4ecdc4;
-      transform: translateX(5px);
-      box-shadow:
-        0 8px 20px rgba(78, 205, 196, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    }
+        .overlay-content a::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg,
+              transparent,
+              rgba(78, 205, 196, 0.15),
+              transparent);
+          transition: left 0.5s ease;
+        }
 
-    .overlay-content a:hover::after {
-      opacity: 1;
-      transform: translateX(0);
-    }
+        .overlay-content a:hover::before {
+          left: 100%;
+        }
 
-    .overlay-content a:active {
-      transform: translateX(3px) scale(0.98);
-    }
+        .overlay-content a::after {
+          content: '→';
+          font-size: 18px;
+          opacity: 0;
+          transform: translateX(-10px);
+          transition: all 0.3s ease;
+        }
 
-    .overlay-content a span {
-      flex: 1;
-      text-align: left;
-      word-break: break-all;
-    }
+        .overlay-content a:hover {
+          background: linear-gradient(135deg,
+              rgba(78, 205, 196, 0.18) 0%,
+              rgba(16, 185, 129, 0.18) 100%);
+          border-color: #4ecdc4;
+          transform: translateX(5px);
+          box-shadow:
+            0 8px 20px rgba(78, 205, 196, 0.25),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
 
-    #close-notice {
-      margin-top: 30px;
-      padding: 14px 32px;
-      background: linear-gradient(135deg, #4ecdc4 0%, #10b981 100%);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: 0.5px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow:
-        0 4px 15px rgba(78, 205, 196, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-      position: relative;
-      overflow: hidden;
-    }
+        .overlay-content a:hover::after {
+          opacity: 1;
+          transform: translateX(0);
+        }
 
-    #close-notice::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-      transform: translate(-50%, -50%);
-      transition: width 0.5s ease, height 0.5s ease;
-    }
+        .overlay-content a:active {
+          transform: translateX(3px) scale(0.98);
+        }
 
-    #close-notice:hover::before {
-      width: 300px;
-      height: 300px;
-    }
+        .overlay-content a span {
+          flex: 1;
+          text-align: left;
+          word-break: break-all;
+        }
 
-    #close-notice:hover {
-      transform: translateY(-3px);
-      box-shadow:
-        0 8px 25px rgba(78, 205, 196, 0.45),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    }
+        #close-notice {
+          margin-top: 30px;
+          padding: 14px 32px;
+          background: linear-gradient(135deg, #4ecdc4 0%, #10b981 100%);
+          color: white;
+          border: none;
+          border-radius: 12px;
+          cursor: pointer;
+          font-weight: 700;
+          font-size: 15px;
+          letter-spacing: 0.5px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow:
+            0 4px 15px rgba(78, 205, 196, 0.35),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+          position: relative;
+          overflow: hidden;
+        }
 
-    #close-notice:active {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(78, 205, 196, 0.35);
-    }
+        #close-notice::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.3);
+          transform: translate(-50%, -50%);
+          transition: width 0.5s ease, height 0.5s ease;
+        }
 
-    #close-notice span {
-      position: relative;
-      z-index: 1;
-    }
+        #close-notice:hover::before {
+          width: 300px;
+          height: 300px;
+        }
 
-    @media (max-width: 600px) {
-      .overlay-content {
-        padding: 30px 25px;
-        max-width: 95%;
-      }
+        #close-notice:hover {
+          transform: translateY(-3px);
+          box-shadow:
+            0 8px 25px rgba(78, 205, 196, 0.45),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
 
-      .overlay-content h2 {
-        font-size: 26px;
-      }
+        #close-notice:active {
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(78, 205, 196, 0.35);
+        }
 
-      .overlay-content a {
-        padding: 14px 16px;
-        font-size: 12px;
-      }
-    }
+        #close-notice span {
+          position: relative;
+          z-index: 1;
+        }
+
+        @media (max-width: 600px) {
+          .overlay-content {
+            padding: 30px 25px;
+            max-width: 95%;
+          }
+
+          .overlay-content h2 {
+            font-size: 26px;
+          }
+
+          .overlay-content a {
+            padding: 14px 16px;
+            font-size: 12px;
+          }
+        }
   </style>
 
 </head>
