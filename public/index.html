@@ -515,6 +515,222 @@
             font-size: 12px;
           }
         }
+
+        /* Learn More Button */
+        .learn-more-btn {
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          color: white;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 8px;
+          font-size: 13px;
+          font-weight: 600;
+          cursor: pointer;
+          margin-left: 10px;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .learn-more-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
+          background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+
+        .learn-more-btn:active {
+          transform: translateY(0);
+        }
+
+        /* Limitations Overlay */
+        .limitations-content {
+          max-width: 700px;
+          max-height: 85vh;
+          overflow-y: auto;
+          padding: 40px;
+        }
+
+        .limitations-header {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
+          margin-bottom: 30px;
+        }
+
+        .limitations-header i {
+          color: #ff6b6b;
+          font-size: 32px;
+        }
+
+        .limitations-header h2 {
+          font-size: 28px;
+          margin: 0;
+          color: white;
+        }
+
+        .limitations-intro {
+          text-align: center;
+          font-size: 16px;
+          color: rgba(255, 255, 255, 0.9);
+          margin-bottom: 30px;
+          line-height: 1.6;
+        }
+
+        .limitation-section {
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 12px;
+          padding: 20px;
+          margin-bottom: 20px;
+          border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .limitation-section.can-do {
+          border-color: rgba(78, 205, 196, 0.4);
+          background: linear-gradient(135deg, rgba(78, 205, 196, 0.08), rgba(16, 185, 129, 0.08));
+        }
+
+        .limitation-section.cannot-do {
+          border-color: rgba(255, 107, 107, 0.4);
+          background: linear-gradient(135deg, rgba(255, 107, 107, 0.08), rgba(239, 68, 68, 0.08));
+        }
+
+        .limitation-section.why {
+          border-color: rgba(102, 126, 234, 0.4);
+          background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+        }
+
+        .limitation-section h3 {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin: 0 0 15px 0;
+          font-size: 20px;
+          color: white;
+        }
+
+        .can-do h3 i {
+          color: #4ecdc4;
+        }
+
+        .cannot-do h3 i {
+          color: #ff6b6b;
+        }
+
+        .why h3 i {
+          color: #667eea;
+        }
+
+        .limitation-section ul {
+          margin: 10px 0 0 0;
+          padding-left: 25px;
+        }
+
+        .limitation-section li {
+          color: rgba(255, 255, 255, 0.85);
+          line-height: 1.8;
+          margin-bottom: 8px;
+        }
+
+        .limitation-section p {
+          color: rgba(255, 255, 255, 0.85);
+          line-height: 1.7;
+          margin-bottom: 10px;
+        }
+
+        .verification-section {
+          background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+          border: 2px solid rgba(102, 126, 234, 0.4);
+          border-radius: 12px;
+          padding: 25px;
+          margin-top: 25px;
+          text-align: center;
+        }
+
+        .verification-text {
+          color: white;
+          font-size: 16px;
+          margin-bottom: 15px;
+        }
+
+        #verification-input {
+          width: 100%;
+          max-width: 400px;
+          padding: 12px 20px;
+          background: rgba(255, 255, 255, 0.1);
+          border: 2px solid rgba(255, 255, 255, 0.2);
+          border-radius: 8px;
+          color: white;
+          font-size: 15px;
+          text-align: center;
+          transition: all 0.3s ease;
+        }
+
+        #verification-input:focus {
+          outline: none;
+          border-color: #667eea;
+          background: rgba(255, 255, 255, 0.15);
+          box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+
+        #verification-input::placeholder {
+          color: rgba(255, 255, 255, 0.4);
+        }
+
+        .verification-hint {
+          color: rgba(255, 255, 255, 0.6);
+          font-size: 13px;
+          margin-top: 10px;
+          font-style: italic;
+        }
+
+        .limitations-close-btn {
+          margin-top: 25px;
+          padding: 14px 40px;
+          background: linear-gradient(135deg, #4ecdc4 0%, #10b981 100%);
+          color: white;
+          border: none;
+          border-radius: 12px;
+          cursor: pointer;
+          font-weight: 700;
+          font-size: 16px;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(78, 205, 196, 0.35);
+        }
+
+        .limitations-close-btn:disabled {
+          background: linear-gradient(135deg, #666, #888);
+          cursor: not-allowed;
+          opacity: 0.5;
+          box-shadow: none;
+        }
+
+        .limitations-close-btn:not(:disabled):hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 25px rgba(78, 205, 196, 0.5);
+        }
+
+        .limitations-close-btn:not(:disabled):active {
+          transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+          .limitations-content {
+            padding: 25px;
+            max-height: 90vh;
+          }
+
+          .limitations-header h2 {
+            font-size: 22px;
+          }
+
+          .limitation-section {
+            padding: 15px;
+          }
+
+          #verification-input {
+            font-size: 14px;
+          }
+        }
   </style>
 
 </head>
@@ -561,6 +777,65 @@
       <button id="close-notice"><span>Continue to Main Site</span></button>
     </div>
   </div>
+
+  <!-- Limitations Overlay -->
+  <div id="limitations-overlay" class="overlay" style="display: none;">
+    <div class="overlay-content limitations-content">
+      <div class="limitations-header">
+        <i data-lucide="alert-triangle"></i>
+        <h2>Proxy Limitations & Important Notice</h2>
+      </div>
+      
+      <div class="limitations-body">
+        <p class="limitations-intro">This proxy has technical limitations. Please understand what it CAN and CANNOT do:</p>
+        
+        <div class="limitation-section can-do">
+          <h3><i data-lucide="check-circle"></i> What Works</h3>
+          <ul>
+            <li>Basic URL obfuscation and privacy</li>
+            <li>Routing traffic through bare server</li>
+            <li>Content rewriting (HTML/CSS/JS)</li>
+            <li>Cookie and header management</li>
+            <li>Simple sites without bot protection</li>
+          </ul>
+        </div>
+
+        <div class="limitation-section cannot-do">
+          <h3><i data-lucide="x-circle"></i> What Does NOT Work</h3>
+          <ul>
+            <li><strong>Google reCAPTCHA</strong> (v2/v3) - Cannot bypass</li>
+            <li><strong>Cloudflare bot detection</strong> - Turnstile, WAF, challenges blocked</li>
+            <li><strong>TLS fingerprinting</strong> - Browser detection at connection level</li>
+            <li><strong>Canvas/WebGL fingerprinting</strong> - Unique device identification</li>
+            <li><strong>Advanced bot protection</strong> - Machine learning detection systems</li>
+            <li><strong>IP reputation checks</strong> - Server IPs may be flagged</li>
+          </ul>
+        </div>
+
+        <div class="limitation-section why">
+          <h3><i data-lucide="info"></i> Why These Limitations Exist</h3>
+          <p>Modern websites use sophisticated detection methods including TLS fingerprinting, JavaScript challenges, behavioral analysis, and machine learning to identify proxies and bots. Bypassing these systems:</p>
+          <ul>
+            <li>Often violates Terms of Service</li>
+            <li>May be illegal in many jurisdictions</li>
+            <li>Requires expensive residential IPs and complex techniques</li>
+            <li>Is actively prevented by security systems</li>
+          </ul>
+        </div>
+
+        <div class="verification-section">
+          <p class="verification-text"><strong>To acknowledge you understand these limitations, please type "I understand" below:</strong></p>
+          <input type="text" id="verification-input" placeholder="Type 'I understand' here" autocomplete="off" />
+          <p class="verification-hint">Full address URLs are required (e.g., https://example.com)</p>
+        </div>
+      </div>
+
+      <button id="close-limitations" class="limitations-close-btn" disabled>
+        <span>Continue</span>
+      </button>
+    </div>
+  </div>
+
   <div class="container">
     <div class="raysContain">
       <div class="rays"></div>
@@ -592,6 +867,7 @@
     <div class="search-notice">
       <i data-lucide="info"></i>
       <span>Tip: Write full website links (e.g., https://google.com) as Google blocks direct access</span>
+      <button id="learn-more-btn" class="learn-more-btn">Learn More</button>
     </div>
     <div class="trouble-button">
       <a href="/troubleshooting" class="trouble-link">
@@ -634,6 +910,35 @@
   <script>
     document.getElementById('close-notice').addEventListener('click', function () {
       document.getElementById('notice-overlay').style.display = 'none';
+    });
+
+    // Learn More button functionality
+    document.getElementById('learn-more-btn').addEventListener('click', function () {
+      document.getElementById('limitations-overlay').style.display = 'flex';
+      lucide.createIcons(); // Re-initialize icons in the overlay
+    });
+
+    // Verification input and close button
+    const verificationInput = document.getElementById('verification-input');
+    const closeLimitationsBtn = document.getElementById('close-limitations');
+
+    verificationInput.addEventListener('input', function () {
+      const inputValue = this.value.trim().toLowerCase();
+      if (inputValue === 'i understand') {
+        closeLimitationsBtn.disabled = false;
+        closeLimitationsBtn.style.cursor = 'pointer';
+      } else {
+        closeLimitationsBtn.disabled = true;
+        closeLimitationsBtn.style.cursor = 'not-allowed';
+      }
+    });
+
+    closeLimitationsBtn.addEventListener('click', function () {
+      if (!this.disabled) {
+        document.getElementById('limitations-overlay').style.display = 'none';
+        verificationInput.value = ''; // Reset input
+        this.disabled = true; // Reset button state
+      }
     });
   </script>
   <script>
