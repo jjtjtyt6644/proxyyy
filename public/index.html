@@ -562,35 +562,96 @@
     </div>
   </div>
   <div id="reasons-overlay" class="overlay" style="display: none;">
-    <div class="overlay-content">
-      <h2>Why Full Addresses?</h2>
-      <p>Modern bot detection systems like Google and Cloudflare have sophisticated methods to block proxy traffic.</p>
+    <div class="overlay-content" style="max-width: 650px; max-height: 80vh; overflow-y: auto;">
+      <h2 style="margin-bottom: 10px;">Why Full Addresses?</h2>
+      <p style="font-size: 14px; opacity: 0.85; margin-bottom: 20px;">Modern bot detection systems like Google and
+        Cloudflare have sophisticated methods to block proxy traffic. Here's what you're up against:</p>
 
       <div class="reason-cards" style="display: grid; gap: 15px; margin: 25px 0; text-align: left;">
-        <div class="reason-card" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
-          <h3 style="color: #ff6b6b; font-size: 16px; margin-bottom: 5px; display: flex; align-items: center; gap: 8px;">
+        <div class="reason-card"
+          style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+          <h3
+            style="color: #ff6b6b; font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
             <i data-lucide="shield-alert"></i> TLS Fingerprinting
           </h3>
-          <p style="font-size: 13px; opacity: 0.8; margin: 0;">Proxies can't perfectly mimic legitimate browser security handshakes, which major sites detect instantly.</p>
+          <p style="font-size: 13px; opacity: 0.8; margin: 0; line-height: 1.6;">Proxies can't perfectly mimic
+            legitimate browser security handshakes. Every browser has a unique "fingerprint" in how it establishes
+            secure connections, and major sites detect when something doesn't match.</p>
         </div>
 
-        <div class="reason-card" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
-          <h3 style="color: #4ecdc4; font-size: 16px; margin-bottom: 5px; display: flex; align-items: center; gap: 8px;">
+        <div class="reason-card"
+          style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+          <h3
+            style="color: #4ecdc4; font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
             <i data-lucide="mouse-pointer"></i> Behavioral Analysis
           </h3>
-          <p style="font-size: 13px; opacity: 0.8; margin: 0;">Google analyzes mouse movements and user interaction patterns that are lost or altered through a proxy.</p>
+          <p style="font-size: 13px; opacity: 0.8; margin: 0; line-height: 1.6;">Google and Cloudflare analyze mouse
+            movements, typing patterns, scroll behavior, and timing. These human interaction patterns are lost or
+            altered when routing through a proxy, triggering bot detection.</p>
         </div>
 
-        <div class="reason-card" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
-          <h3 style="color: #ffe66d; font-size: 16px; margin-bottom: 5px; display: flex; align-items: center; gap: 8px;">
-            <i data-lucide="globe"></i> Validated Requests
+        <div class="reason-card"
+          style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+          <h3
+            style="color: #a78bfa; font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="fingerprint"></i> Canvas & WebGL Fingerprinting
           </h3>
-          <p style="font-size: 13px; opacity: 0.8; margin: 0;">Using full URLs (https://...) helps the proxy form a cleaner request that looks more like natural traffic.</p>
+          <p style="font-size: 13px; opacity: 0.8; margin: 0; line-height: 1.6;">Your browser's rendering engine creates
+            unique patterns when drawing graphics. Sites use this to identify individual devices. Proxies can't modify
+            these low-level rendering behaviors.</p>
+        </div>
+
+        <div class="reason-card"
+          style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+          <h3
+            style="color: #f59e0b; font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="cpu"></i> JavaScript Challenges
+          </h3>
+          <p style="font-size: 13px; opacity: 0.8; margin: 0; line-height: 1.6;">Sites execute complex JavaScript
+            challenges that verify you're running in a real browser environment. These check for WebAssembly support,
+            timing attacks, and hundreds of browser APIs.</p>
+        </div>
+
+        <div class="reason-card"
+          style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+          <h3
+            style="color: #ec4899; font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="wifi"></i> IP Reputation & Headers
+          </h3>
+          <p style="font-size: 13px; opacity: 0.8; margin: 0; line-height: 1.6;">Datacenter IPs are flagged instantly.
+            Additionally, HTTP headers like User-Agent, Accept-Language, and others must perfectly match expected
+            browser behavior or you're blocked.</p>
+        </div>
+
+        <div class="reason-card"
+          style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+          <h3
+            style="color: #ffe66d; font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="globe"></i> Full URL Benefits
+          </h3>
+          <p style="font-size: 13px; opacity: 0.8; margin: 0; line-height: 1.6;">Using complete URLs
+            (https://example.com) helps the proxy form cleaner, more direct requests that look closer to natural
+            traffic. It reduces redirect chains and maintains proper referrer headers.</p>
         </div>
       </div>
 
-      <p class="subtitle" style="font-size: 13px; opacity: 0.6; margin-top: 15px;">By entering the direct full URL, you help bypass some of these initial checks.</p>
-      <button id="close-reasons" style="margin-top: 20px;"><span>Got it</span></button>
+      <div
+        style="background: rgba(102, 126, 234, 0.1); border: 1px solid rgba(102, 126, 234, 0.3); padding: 15px; border-radius: 10px; margin: 20px 0;">
+        <h3 style="font-size: 14px; color: #667eea; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+          <i data-lucide="info"></i> What This Means for You
+        </h3>
+        <ul style="font-size: 13px; opacity: 0.85; line-height: 1.8; margin: 0; padding-left: 20px;">
+          <li>Always enter full URLs including <code
+              style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;">https://</code></li>
+          <li>Some sites with heavy protection (Google Search, Netflix, banking) may still not work</li>
+          <li>Use alternative instances if the main one is blocked</li>
+          <li>Clear your cache regularly for better performance</li>
+        </ul>
+      </div>
+
+      <p class="subtitle" style="font-size: 12px; opacity: 0.5; margin-top: 15px; font-style: italic;">Note: Bypassing
+        bot detection violates most sites' Terms of Service. Use responsibly and be aware of legal implications.</p>
+      <button id="close-reasons" style="margin-top: 20px;"><span>Got it!</span></button>
     </div>
   </div>
   <div class="container">
@@ -623,7 +684,9 @@
     </div>
     <div class="search-notice">
       <i data-lucide="info"></i>
-      <span>Tip: Write full website links (e.g., https://google.com) as Google blocks direct access. <a href="#" id="learn-more-link" style="color: var(--accent); text-decoration: underline; cursor: pointer;">Learn more</a></span>
+      <span>Tip: Write full website links (e.g., https://google.com) as Google blocks direct access. <a href="#"
+          id="learn-more-link" style="color: var(--accent); text-decoration: underline; cursor: pointer;">Learn
+          more</a></span>
     </div>
     <div class="trouble-button">
       <a href="/troubleshooting" class="trouble-link">
@@ -830,7 +893,7 @@
       }, 9500));
     })();
 
-    (function() {
+    (function () {
       // Get elements
       const reasonsOverlay = document.getElementById('reasons-overlay');
       const learnMoreLink = document.getElementById('learn-more-link');
