@@ -515,265 +515,6 @@
             font-size: 12px;
           }
         }
-
-        /* Learn More Button */
-        .learn-more-btn {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          padding: 8px 18px;
-          border-radius: 20px;
-          font-size: 13px;
-          font-weight: 600;
-          cursor: pointer;
-          margin-left: 12px;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-          position: relative;
-          overflow: hidden;
-          letter-spacing: 0.5px;
-        }
-
-        .learn-more-btn::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-          transition: left 0.5s ease;
-        }
-
-        .learn-more-btn:hover::before {
-          left: 100%;
-        }
-
-        .learn-more-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
-          background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-          border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        .learn-more-btn:active {
-          transform: translateY(0);
-        }
-
-        /* Limitations Overlay */
-        .limitations-content {
-          max-width: 650px;
-          max-height: 85vh;
-          width: 90%;
-          padding: 0 !important; /* Override default padding for flex layout */
-          display: flex;
-          flex-direction: column;
-          background: #1a1a2e; /* Fallback */
-          background: linear-gradient(145deg, #1a1a2e, #16213e);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-          overflow: hidden;
-        }
-
-        .limitations-header {
-          padding: 30px 30px 20px 30px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 15px;
-          background: rgba(22, 33, 62, 0.5);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-          flex-shrink: 0;
-        }
-
-        .limitations-header i {
-          color: #ff6b6b;
-          font-size: 28px;
-          filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.4));
-        }
-
-        .limitations-header h2 {
-          font-size: 24px;
-          margin: 0;
-          color: white;
-          background: linear-gradient(135deg, #fff, #e0e0e0);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        .limitations-body {
-          padding: 25px 30px;
-          overflow-y: auto;
-          flex-grow: 1;
-          scrollbar-width: thin;
-          scrollbar-color: rgba(102, 126, 234, 0.3) transparent;
-        }
-
-        .limitations-body::-webkit-scrollbar {
-          width: 6px;
-        }
-
-        .limitations-body::-webkit-scrollbar-track {
-          background: transparent;
-        }
-
-        .limitations-body::-webkit-scrollbar-thumb {
-          background-color: rgba(102, 126, 234, 0.3);
-          border-radius: 20px;
-        }
-
-        .limitations-intro {
-          text-align: center;
-          font-size: 15px;
-          color: rgba(255, 255, 255, 0.8);
-          margin-bottom: 25px;
-          line-height: 1.6;
-        }
-
-        .limitation-section {
-          background: rgba(255, 255, 255, 0.03);
-          border-radius: 12px;
-          padding: 18px;
-          margin-bottom: 15px;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          transition: transform 0.2s ease;
-        }
-
-        .limitation-section:hover {
-          transform: translateY(-2px);
-          background: rgba(255, 255, 255, 0.05);
-        }
-
-        .limitation-section.can-do {
-          border-left: 4px solid #4ecdc4;
-          background: linear-gradient(90deg, rgba(78, 205, 196, 0.05) 0%, transparent 100%);
-        }
-
-        .limitation-section.cannot-do {
-          border-left: 4px solid #ff6b6b;
-          background: linear-gradient(90deg, rgba(255, 107, 107, 0.05) 0%, transparent 100%);
-        }
-
-        .limitation-section.why {
-          border-left: 4px solid #667eea;
-          background: linear-gradient(90deg, rgba(102, 126, 234, 0.05) 0%, transparent 100%);
-        }
-
-        .limitation-section h3 {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          margin: 0 0 12px 0;
-          font-size: 18px;
-          color: white;
-          font-weight: 600;
-        }
-
-        .can-do h3 i { color: #4ecdc4; }
-        .cannot-do h3 i { color: #ff6b6b; }
-        .why h3 i { color: #667eea; }
-
-        .limitation-section ul {
-          margin: 0;
-          padding-left: 20px;
-        }
-
-        .limitation-section li {
-          color: rgba(255, 255, 255, 0.75);
-          line-height: 1.6;
-          margin-bottom: 6px;
-          font-size: 14px;
-        }
-
-        .limitation-section p {
-          color: rgba(255, 255, 255, 0.75);
-          line-height: 1.6;
-          margin-bottom: 10px;
-          font-size: 14px;
-        }
-
-        .verification-section {
-          background: rgba(0, 0, 0, 0.2);
-          border: 1px solid rgba(102, 126, 234, 0.3);
-          border-radius: 12px;
-          padding: 20px;
-          margin-top: 25px;
-          text-align: center;
-        }
-
-        .verification-text {
-          color: white;
-          font-size: 15px;
-          margin-bottom: 15px;
-        }
-
-        #verification-input {
-          width: 100%;
-          max-width: 350px;
-          padding: 12px 20px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          border-radius: 8px;
-          color: white;
-          font-size: 14px;
-          text-align: center;
-          transition: all 0.3s ease;
-        }
-
-        #verification-input:focus {
-          outline: none;
-          border-color: #667eea;
-          background: rgba(255, 255, 255, 0.1);
-          box-shadow: 0 0 15px rgba(102, 126, 234, 0.2);
-        }
-
-        .limitations-close-btn {
-          margin: 0 30px 30px 30px;
-          padding: 14px 40px;
-          background: linear-gradient(135deg, #4ecdc4 0%, #10b981 100%);
-          color: white;
-          border: none;
-          border-radius: 12px;
-          cursor: pointer;
-          font-weight: 700;
-          font-size: 16px;
-          transition: all 0.3s ease;
-          box-shadow: 0 4px 15px rgba(78, 205, 196, 0.35);
-          flex-shrink: 0;
-          align-self: center;
-          width: calc(100% - 60px);
-          text-transform: uppercase;
-          letter-spacing: 1px;
-        }
-
-        .limitations-close-btn:disabled {
-          background: linear-gradient(135deg, #4a4a4a, #5a5a5a);
-          cursor: not-allowed;
-          opacity: 0.7;
-          box-shadow: none;
-          color: rgba(255, 255, 255, 0.5);
-        }
-
-        .limitations-close-btn:not(:disabled):hover {
-          transform: translateY(-3px);
-          box-shadow: 0 8px 25px rgba(78, 205, 196, 0.5);
-          background: linear-gradient(135deg, #10b981 0%, #4ecdc4 100%);
-        }
-
-        @media (max-width: 768px) {
-          .limitations-content {
-            height: 90vh;
-            max-height: 90vh;
-            width: 95%;
-          }
-          
-          .limitations-header { padding: 20px; }
-          .limitations-body { padding: 15px 20px; }
-          .limitations-close-btn { 
-            margin: 0 20px 20px 20px; 
-            width: calc(100% - 40px);
-          }
-        }
   </style>
 
 </head>
@@ -820,68 +561,38 @@
       <button id="close-notice"><span>Continue to Main Site</span></button>
     </div>
   </div>
+  <div id="reasons-overlay" class="overlay" style="display: none;">
+    <div class="overlay-content">
+      <h2>Why Full Addresses?</h2>
+      <p>Modern bot detection systems like Google and Cloudflare have sophisticated methods to block proxy traffic.</p>
 
-  <!-- Limitations Overlay -->
-  <div id="limitations-overlay" class="overlay" style="display: none;">
-    <div class="overlay-content limitations-content">
-      <div class="limitations-header">
-        <i data-lucide="alert-triangle"></i>
-        <h2>Proxy Limitations & Important Notice</h2>
-      </div>
-
-      <div class="limitations-body">
-        <p class="limitations-intro">This proxy has technical limitations. Please understand what it CAN and CANNOT do:
-        </p>
-
-        <div class="limitation-section can-do">
-          <h3><i data-lucide="check-circle"></i> What Works</h3>
-          <ul>
-            <li>Basic URL obfuscation and privacy</li>
-            <li>Routing traffic through bare server</li>
-            <li>Content rewriting (HTML/CSS/JS)</li>
-            <li>Cookie and header management</li>
-            <li>Simple sites without bot protection</li>
-          </ul>
+      <div class="reason-cards" style="display: grid; gap: 15px; margin: 25px 0; text-align: left;">
+        <div class="reason-card" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+          <h3 style="color: #ff6b6b; font-size: 16px; margin-bottom: 5px; display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="shield-alert"></i> TLS Fingerprinting
+          </h3>
+          <p style="font-size: 13px; opacity: 0.8; margin: 0;">Proxies can't perfectly mimic legitimate browser security handshakes, which major sites detect instantly.</p>
         </div>
 
-        <div class="limitation-section cannot-do">
-          <h3><i data-lucide="x-circle"></i> What Does NOT Work</h3>
-          <ul>
-            <li><strong>Google reCAPTCHA</strong> (v2/v3) - Cannot bypass</li>
-            <li><strong>Cloudflare bot detection</strong> - Turnstile, WAF, challenges blocked</li>
-            <li><strong>TLS fingerprinting</strong> - Browser detection at connection level</li>
-            <li><strong>Canvas/WebGL fingerprinting</strong> - Unique device identification</li>
-            <li><strong>Advanced bot protection</strong> - Machine learning detection systems</li>
-            <li><strong>IP reputation checks</strong> - Server IPs may be flagged</li>
-          </ul>
+        <div class="reason-card" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+          <h3 style="color: #4ecdc4; font-size: 16px; margin-bottom: 5px; display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="mouse-pointer"></i> Behavioral Analysis
+          </h3>
+          <p style="font-size: 13px; opacity: 0.8; margin: 0;">Google analyzes mouse movements and user interaction patterns that are lost or altered through a proxy.</p>
         </div>
 
-        <div class="limitation-section why">
-          <h3><i data-lucide="info"></i> Why These Limitations Exist</h3>
-          <p>Modern websites use sophisticated detection methods including TLS fingerprinting, JavaScript challenges,
-            behavioral analysis, and machine learning to identify proxies and bots. Bypassing these systems:</p>
-          <ul>
-            <li>Often violates Terms of Service</li>
-            <li>May be illegal in many jurisdictions</li>
-            <li>Requires expensive residential IPs and complex techniques</li>
-            <li>Is actively prevented by security systems</li>
-          </ul>
-        </div>
-
-        <div class="verification-section">
-          <p class="verification-text"><strong>To acknowledge you understand these limitations, please type "I
-              understand" below:</strong></p>
-          <input type="text" id="verification-input" placeholder="Type 'I understand' here" autocomplete="off" />
-          <p class="verification-hint">Full address URLs are required (e.g., https://example.com)</p>
+        <div class="reason-card" style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+          <h3 style="color: #ffe66d; font-size: 16px; margin-bottom: 5px; display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="globe"></i> Validated Requests
+          </h3>
+          <p style="font-size: 13px; opacity: 0.8; margin: 0;">Using full URLs (https://...) helps the proxy form a cleaner request that looks more like natural traffic.</p>
         </div>
       </div>
 
-      <button id="close-limitations" class="limitations-close-btn" disabled>
-        <span>Continue</span>
-      </button>
+      <p class="subtitle" style="font-size: 13px; opacity: 0.6; margin-top: 15px;">By entering the direct full URL, you help bypass some of these initial checks.</p>
+      <button id="close-reasons" style="margin-top: 20px;"><span>Got it</span></button>
     </div>
   </div>
-
   <div class="container">
     <div class="raysContain">
       <div class="rays"></div>
@@ -912,8 +623,7 @@
     </div>
     <div class="search-notice">
       <i data-lucide="info"></i>
-      <span>Tip: Write full website links (e.g., https://google.com) as Google blocks direct access</span>
-      <button id="learn-more-btn" class="learn-more-btn">Learn More</button>
+      <span>Tip: Write full website links (e.g., https://google.com) as Google blocks direct access. <a href="#" id="learn-more-link" style="color: var(--accent); text-decoration: underline; cursor: pointer;">Learn more</a></span>
     </div>
     <div class="trouble-button">
       <a href="/troubleshooting" class="trouble-link">
@@ -956,35 +666,6 @@
   <script>
     document.getElementById('close-notice').addEventListener('click', function () {
       document.getElementById('notice-overlay').style.display = 'none';
-    });
-
-    // Learn More button functionality
-    document.getElementById('learn-more-btn').addEventListener('click', function () {
-      document.getElementById('limitations-overlay').style.display = 'flex';
-      lucide.createIcons(); // Re-initialize icons in the overlay
-    });
-
-    // Verification input and close button
-    const verificationInput = document.getElementById('verification-input');
-    const closeLimitationsBtn = document.getElementById('close-limitations');
-
-    verificationInput.addEventListener('input', function () {
-      const inputValue = this.value.trim().toLowerCase();
-      if (inputValue === 'i understand') {
-        closeLimitationsBtn.disabled = false;
-        closeLimitationsBtn.style.cursor = 'pointer';
-      } else {
-        closeLimitationsBtn.disabled = true;
-        closeLimitationsBtn.style.cursor = 'not-allowed';
-      }
-    });
-
-    closeLimitationsBtn.addEventListener('click', function () {
-      if (!this.disabled) {
-        document.getElementById('limitations-overlay').style.display = 'none';
-        verificationInput.value = ''; // Reset input
-        this.disabled = true; // Reset button state
-      }
     });
   </script>
   <script>
@@ -1148,6 +829,42 @@
         completeAnimation();
       }, 9500));
     })();
+
+    (function() {
+      // Get elements
+      const reasonsOverlay = document.getElementById('reasons-overlay');
+      const learnMoreLink = document.getElementById('learn-more-link');
+      const closeReasonsBtn = document.getElementById('close-reasons');
+
+      // Show reasons overlay
+      if (learnMoreLink) {
+        learnMoreLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (reasonsOverlay) {
+            reasonsOverlay.style.display = 'flex';
+            // Re-initialize icons inside the dynamically shown overlay if needed
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+          }
+        });
+      }
+
+      // Hide reasons overlay
+      if (closeReasonsBtn) {
+        closeReasonsBtn.addEventListener('click', () => {
+          if (reasonsOverlay) reasonsOverlay.style.display = 'none';
+        });
+      }
+
+      // Close on outside click
+      if (reasonsOverlay) {
+        reasonsOverlay.addEventListener('click', (e) => {
+          if (e.target === reasonsOverlay) {
+            reasonsOverlay.style.display = 'none';
+          }
+        });
+      }
+    })();
+
   </script>
 </body>
 
