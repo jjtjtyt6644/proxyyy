@@ -17,6 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p style="font-size: 12px; opacity: 0.7; margin:0;">Toggle the real-time statistics overlay visible on the screen.</p>
                 </div>
 
+                <div style="margin-bottom: 20px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <span style="font-size: 16px;">Ad Blocker</span>
+                        <button id="toggle-adblock-btn" style="padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: white; cursor: pointer;">Disable</button>
+                    </div>
+                    <p style="font-size: 12px; opacity: 0.7; margin:0;">Blocks advertisements and popups on proxied pages.</p>
+                </div>
+
                 <hr style="border:none; border-top:1px solid rgba(255,255,255,0.1); margin: 20px 0;">
 
                 <div style="margin-bottom: 20px;">
@@ -49,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const settingsOverlay = document.getElementById('settings-overlay');
         const closeSettingsBtn = document.getElementById('close-settings');
         const toggleStatsBtn = document.getElementById('toggle-stats-btn');
+        const toggleAdblockBtn = document.getElementById('toggle-adblock-btn');
         
         // Open Settings
         btn.addEventListener('click', () => {
@@ -58,6 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const disabled = localStorage.getItem('ambient_overlay_disabled') === 'true';
             toggleStatsBtn.innerText = disabled ? 'Enable' : 'Disable';
             toggleStatsBtn.style.background = disabled ? 'rgba(78, 205, 196, 0.2)' : 'rgba(255,255,255,0.1)';
+
+            // Update Adblock Button State
+            const adblockEnabled = localStorage.getItem('ambient_adblock_enabled') === 'true';
+            toggleAdblockBtn.innerText = adblockEnabled ? 'Disable' : 'Enable';
+            toggleAdblockBtn.style.background = adblockEnabled ? 'rgba(255,255,255,0.1)' : 'rgba(78, 205, 196, 0.2)';
             
             // Populate Architecture Info
             if(document.getElementById('arch-ua')) document.getElementById('arch-ua').innerText = navigator.userAgent;
@@ -90,12 +104,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Toggle Adblock
+        toggleAdblockBtn.addEventListener('click', () => {
+            const adblockEnabled = localStorage.getItem('ambient_adblock_enabled') === 'true';
+            const newState = !adblockEnabled;
+            localStorage.setItem('ambient_adblock_enabled', newState.toString());
+            
+            toggleAdblockBtn.innerText = newState ? 'Disable' : 'Enable';
+            toggleAdblockBtn.style.background = newState ? 'rgba(255,255,255,0.1)' : 'rgba(78, 205, 196, 0.2)';
+            
+            // Reload to apply changes
+            location.reload();
+        });
+
         // Listen for changes from other tabs/windows
         window.addEventListener('storage', (e) => {
             if (e.key === 'ambient_overlay_disabled') {
                const disabled = e.newValue === 'true';
                toggleStatsBtn.innerText = disabled ? 'Enable' : 'Disable';
                toggleStatsBtn.style.background = disabled ? 'rgba(78, 205, 196, 0.2)' : 'rgba(255,255,255,0.1)';
+            }
+            if (e.key === 'ambient_adblock_enabled') {
+               const enabled = e.newValue === 'true';
+               toggleAdblockBtn.innerText = enabled ? 'Disable' : 'Enable';
+               toggleAdblockBtn.style.background = enabled ? 'rgba(255,255,255,0.1)' : 'rgba(78, 205, 196, 0.2)';
             }
         });
         

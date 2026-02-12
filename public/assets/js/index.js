@@ -92,24 +92,26 @@ async function launch(val) {
             location.href = urlToNavigate;
           } catch (error) {
             console.error('Encoding error:', error);
-            await clearServiceWorkerCache();
-            location.href = "/error";
+            clearServiceWorkerCache().then(() => {
+              location.href = "/error";
+            });
           }
         })
-        .catch(async (error) => {
+        .catch((error) => {
           console.error("ServiceWorker registration failed:", error);
-          await clearServiceWorkerCache();
-          // Fallback: try to navigate directly
-          try {
-            let url = val.trim();
-            if (!(url.startsWith("https://") || url.startsWith("http://"))) {
-              url = "https://" + url;
+          clearServiceWorkerCache().then(() => {
+            // Fallback: try to navigate directly
+            try {
+              let url = val.trim();
+              if (!(url.startsWith("https://") || url.startsWith("http://"))) {
+                url = "https://" + url;
+              }
+              location.href = "/search?direct=" + encodeURIComponent(url);
+            } catch (fallbackError) {
+              console.error("Fallback navigation failed:", fallbackError);
+              location.href = "/error";
             }
-            location.href = "/search?direct=" + encodeURIComponent(url);
-          } catch (fallbackError) {
-            console.error("Fallback navigation failed:", fallbackError);
-            location.href = "/error";
-          }
+          });
         });
       } else {
         // Fallback for browsers without service worker support
@@ -128,8 +130,9 @@ async function launch(val) {
     }
   } catch (error) {
     console.error('Launch error:', error);
-    await clearServiceWorkerCache();
-    location.href = "/error";
+    clearServiceWorkerCache().then(() => {
+      location.href = "/error";
+    });
   } finally {
     isRegistering = false;
   }
