@@ -37,71 +37,87 @@
 
     <div class="glass">
       <div class="about-content">
-        <h1>About Ambient</h1>
+        <div class="hero-section">
+          <h1>About Ambient</h1>
+          <p class="subtitle">A modern, secure web proxy built for privacy and performance</p>
+        </div>
 
         <div class="dev-section">
           <h2><i data-lucide="code"></i> Core Development Team</h2>
           <div class="dev-card">
+            <div class="dev-avatar">
+              <i data-lucide="user"></i>
+            </div>
             <div class="dev-info">
               <h3>Junyu</h3>
-              <p class="dev-role">Core Developer</p>
-              <p>Junyu is the primary developer of this Ambient build, responsible for creating the comprehensive about
-                page, optimizing service worker performance to eliminate caching delays, implementing UI/UX
-                improvements, managing content cleanup, and developing security documentation to ensure safe proxy
-                usage.</p>
+              <p class="dev-role">Core Developer & Architect</p>
+              <p class="dev-description">Leading the development of Ambient with a focus on performance optimization, security implementation, and user experience design. Specializes in service worker architecture, UI/UX refinement, and comprehensive security documentation.</p>
+              <div class="dev-contributions">
+                <span class="contribution-badge">Service Worker Optimization</span>
+                <span class="contribution-badge">Security Implementation</span>
+                <span class="contribution-badge">UI/UX Design</span>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="safety-section">
-          <h2><i data-lucide="shield"></i> Security & Safety</h2>
+          <h2><i data-lucide="shield-check"></i> Security & Privacy First</h2>
+          <p class="section-subtitle">Your privacy and security are our top priorities. Here's how we protect you:</p>
           <div class="safety-grid">
             <div class="safety-item">
-              <i data-lucide="lock"></i>
+              <div class="safety-icon">
+                <i data-lucide="lock"></i>
+              </div>
               <h3>Isolated Browsing</h3>
-              <p>All proxied content runs in isolated iframes with no direct access to your browser's main context.</p>
+              <p>All proxied content runs in isolated iframes with no direct access to your browser's main context, ensuring complete separation from your personal data.</p>
             </div>
             <div class="safety-item">
-              <i data-lucide="eye-off"></i>
-              <h3>No Data Logging</h3>
-              <p>The server does not log or store any browsing data. All proxying is done in real-time with no
-                persistence.</p>
+              <div class="safety-icon">
+                <i data-lucide="eye-off"></i>
+              </div>
+              <h3>Zero Data Logging</h3>
+              <p>We don't log, store, or track any of your browsing activity. All proxying is done in real-time with no persistence whatsoever.</p>
             </div>
             <div class="safety-item">
-              <i data-lucide="zap"></i>
+              <div class="safety-icon">
+                <i data-lucide="zap"></i>
+              </div>
               <h3>Client-Side Processing</h3>
-              <p>URL encoding and request rewriting happens entirely in your browser using service workers.</p>
+              <p>URL encoding and request rewriting happens entirely in your browser using service workers, keeping your destinations private.</p>
             </div>
             <div class="safety-item">
-              <i data-lucide="server"></i>
+              <div class="safety-icon">
+                <i data-lucide="server"></i>
+              </div>
               <h3>Minimal Server Exposure</h3>
-              <p>The server only proxies requests and serves static files. No user data is stored or processed
-                server-side.</p>
+              <p>The server only proxies requests and serves static files. No user data is stored, processed, or accessible server-side.</p>
             </div>
           </div>
         </div>
 
         <div class="proxy-section">
-          <h2><i data-lucide="globe"></i> How Ambient Proxies Websites</h2>
+          <h2><i data-lucide="globe"></i> How Ambient Works</h2>
+          <p class="section-subtitle">A transparent look at our proxying architecture</p>
           <div class="proxy-steps">
             <div class="step">
-              <div class="step-number">1</div>
+              <div class="step-number">01</div>
               <div class="step-content">
                 <h3>URL Input</h3>
-                <p>User enters a website URL in the search bar on the home page.</p>
+                <p>You enter a website URL in the search bar on the home page.</p>
               </div>
             </div>
 
             <div class="step">
-              <div class="step-number">2</div>
+              <div class="step-number">02</div>
               <div class="step-content">
                 <h3>Service Worker Registration</h3>
-                <p>Ultraviolet service worker is registered with a specific scope to intercept requests.</p>
+                <p>Ultraviolet service worker is registered with a specific scope to intercept all subsequent requests.</p>
               </div>
             </div>
 
             <div class="step">
-              <div class="step-number">3</div>
+              <div class="step-number">03</div>
               <div class="step-content">
                 <h3>URL Encoding</h3>
                 <p>The URL is encoded using XOR cipher to obfuscate the destination before transmission.</p>
@@ -109,51 +125,50 @@
             </div>
 
             <div class="step">
-              <div class="step-number">4</div>
+              <div class="step-number">04</div>
               <div class="step-content">
                 <h3>Session Storage</h3>
-                <p>Encoded URL is temporarily stored in sessionStorage for the proxy page to access.</p>
+                <p>Encoded URL is temporarily stored in sessionStorage for the proxy page to access securely.</p>
               </div>
             </div>
 
             <div class="step">
-              <div class="step-number">5</div>
+              <div class="step-number">05</div>
               <div class="step-content">
                 <h3>Page Navigation</h3>
-                <p>User is redirected to /search page where an iframe loads the encoded URL.</p>
+                <p>You're redirected to the search page where an iframe loads the encoded URL seamlessly.</p>
               </div>
             </div>
 
             <div class="step">
-              <div class="step-number">6</div>
+              <div class="step-number">06</div>
               <div class="step-content">
                 <h3>Request Interception</h3>
-                <p>Service worker intercepts all iframe requests and rewrites them for proxying.</p>
+                <p>Service worker intercepts all iframe requests and rewrites them for secure proxying.</p>
               </div>
             </div>
 
             <div class="step">
-              <div class="step-number">7</div>
+              <div class="step-number">07</div>
               <div class="step-content">
                 <h3>Bare Server Routing</h3>
-                <p>Requests are routed through the Bare server at /bare/ endpoint on the backend.</p>
+                <p>Requests are routed through the Bare server at the /bare/ endpoint on the backend.</p>
               </div>
             </div>
 
             <div class="step">
-              <div class="step-number">8</div>
+              <div class="step-number">08</div>
               <div class="step-content">
                 <h3>Response Processing</h3>
-                <p>Server fetches the target website and returns the content, which gets rewritten by the service
-                  worker.</p>
+                <p>Server fetches the target website and returns the content, which gets rewritten by the service worker.</p>
               </div>
             </div>
 
             <div class="step">
-              <div class="step-number">9</div>
+              <div class="step-number">09</div>
               <div class="step-content">
                 <h3>Content Injection</h3>
-                <p>Ultraviolet injects client-side scripts to handle dynamic content and maintain functionality.</p>
+                <p>Ultraviolet injects client-side scripts to handle dynamic content and maintain full functionality.</p>
               </div>
             </div>
 
@@ -161,8 +176,7 @@
               <div class="step-number">10</div>
               <div class="step-content">
                 <h3>Isolated Rendering</h3>
-                <p>Final proxied website renders in the iframe with full functionality but isolated from your main
-                  browser context.</p>
+                <p>Final proxied website renders in the iframe with full functionality but completely isolated from your main browser context.</p>
               </div>
             </div>
           </div>
@@ -170,50 +184,57 @@
 
         <div class="tech-section">
           <h2><i data-lucide="cpu"></i> Technology Stack</h2>
+          <p class="section-subtitle">Built with modern, reliable technologies</p>
           <div class="tech-grid">
             <div class="tech-item">
+              <div class="tech-icon"><i data-lucide="monitor"></i></div>
               <h4>Frontend</h4>
               <ul>
-                <li>HTML5, CSS3, JavaScript (ES6+)</li>
-                <li>Service Workers for request interception</li>
-                <li>Ultraviolet proxy framework</li>
-                <li>Lucide icons</li>
+                <li>HTML5, CSS3, JavaScript ES6+</li>
+                <li>Service Workers API</li>
+                <li>Ultraviolet Proxy Framework</li>
+                <li>Lucide Icon System</li>
               </ul>
             </div>
             <div class="tech-item">
+              <div class="tech-icon"><i data-lucide="server"></i></div>
               <h4>Backend</h4>
               <ul>
-                <li>Node.js with Express server</li>
-                <li>@tomphttp/bare-server for proxying</li>
-                <li>CORS enabled for cross-origin requests</li>
-                <li>Static file serving</li>
+                <li>Node.js Runtime</li>
+                <li>Express Web Framework</li>
+                <li>@tomphttp/bare-server</li>
+                <li>CORS Middleware</li>
               </ul>
             </div>
             <div class="tech-item">
+              <div class="tech-icon"><i data-lucide="shield"></i></div>
               <h4>Security</h4>
               <ul>
-                <li>XOR URL encoding</li>
-                <li>Isolated iframe execution</li>
-                <li>Client-side request rewriting</li>
-                <li>No server-side data storage</li>
+                <li>XOR URL Encoding</li>
+                <li>Iframe Isolation</li>
+                <li>Client-Side Rewriting</li>
+                <li>Zero Data Persistence</li>
               </ul>
             </div>
           </div>
         </div>
 
         <div class="troubleshooting-section">
-          <h2><i data-lucide="wrench"></i> Troubleshooting</h2>
+          <h2><i data-lucide="tool"></i> Troubleshooting</h2>
           <div class="troubleshooting-content">
-            <p>If you experience syntax errors or slow loading when accessing websites, try clearing the service worker
-              cache:</p>
-            <button id="clearCacheBtn" class="clear-cache-btn">
-              <i data-lucide="trash-2"></i>
-              Clear Service Worker Cache
-            </button>
-            <p class="troubleshooting-note">
-              <strong>Note:</strong> This will reset all proxy settings and cached data.
-              The page will reload automatically after clearing the cache.
-            </p>
+            <p class="troubleshooting-intro">Experiencing issues with slow loading or syntax errors? Clear the service worker cache to resolve most common problems:</p>
+            <div class="cache-action">
+              <button id="clearCacheBtn" class="clear-cache-btn">
+                <i data-lucide="trash-2"></i>
+                <span>Clear Service Worker Cache</span>
+              </button>
+            </div>
+            <div class="troubleshooting-note">
+              <i data-lucide="info"></i>
+              <div>
+                <strong>Note:</strong> This will reset all proxy settings and cached data. The page will reload automatically after clearing the cache.
+              </div>
+            </div>
           </div>
         </div>
       </div>
