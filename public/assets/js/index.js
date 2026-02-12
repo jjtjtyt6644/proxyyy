@@ -231,3 +231,135 @@ window.addEventListener('unhandledrejection', async (event) => {
     }
   }
 });
+
+// Terms of Service & Legal Disclaimer Overlay
+(function() {
+  function initCompliance() {
+    // Check if user has already agreed
+    if (localStorage.getItem('ambient_tou_agreed') === 'true') {
+      return;
+    }
+
+    // Create the blocking overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'ambient-compliance-overlay';
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.98);
+      backdrop-filter: blur(15px);
+      z-index: 2147483647;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    `;
+
+    const content = document.createElement('div');
+    content.style.cssText = `
+      background: linear-gradient(145deg, rgba(30, 41, 59, 1), rgba(15, 23, 42, 1));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 20px 50px -10px rgba(0, 0, 0, 0.7);
+      color: #e2e8f0;
+      transform: scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    `;
+
+    content.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <h2 style="margin: 0; color: #fff; font-size: 20px; font-weight: 600;">Terms of Service</h2>
+      </div>
+      
+      <div style="font-size: 14px; line-height: 1.6; color: #94a3b8; margin-bottom: 24px; background: rgba(0,0,0,0.2); padding: 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+        <p style="margin: 0 0 12px 0;"><strong>Usage Agreement:</strong></p>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+          <li style="display: flex; gap: 10px; align-items: start;">
+            <span style="color: #60a5fa;">•</span>
+            <span>You acknowledge that the operators of Ambient Proxy assume <strong>no legal liability</strong> for your actions, searches, or any content accessed through this service.</span>
+          </li>
+          <li style="display: flex; gap: 10px; align-items: start;">
+            <span style="color: #60a5fa;">•</span>
+            <span>We utilize a unique <strong>Device ID</strong> to authorize your browser session and ensure compliance with our usage policies.</span>
+          </li>
+        </ul>
+      </div>
+
+      <p style="font-size: 12px; color: #64748b; margin-bottom: 24px; text-align: center;">
+        By clicking "I Agree", you consent to these terms and the generating of your unique device identifier.
+      </p>
+
+      <button id="accept-tou-btn" style="
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      " onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 6px 16px rgba(37, 99, 235, 0.4)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 12px rgba(37, 99, 235, 0.3)'">I AGREE & CONTINUE</button>
+    `;
+
+    overlay.appendChild(content);
+    document.body.appendChild(overlay);
+
+     // Prevent scrolling interactions
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    // Animate in
+    requestAnimationFrame(() => {
+      overlay.style.opacity = '1';
+      content.style.transform = 'scale(1)';
+    });
+
+    const btn = document.getElementById('accept-tou-btn');
+    btn.addEventListener('click', () => {
+      // Generate Device ID
+      let deviceId = localStorage.getItem('ambient_device_id');
+      if (!deviceId) {
+        // Fallback for older browsers if crypto.randomUUID is not available
+        if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+            deviceId = crypto.randomUUID();
+        } else {
+            deviceId = 'dev_' + Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+        localStorage.setItem('ambient_device_id', deviceId);
+      }
+      
+      // Save Agreement
+      localStorage.setItem('ambient_tou_agreed', 'true');
+      localStorage.setItem('ambient_tou_date', new Date().toISOString());
+
+      // Animate out
+      overlay.style.opacity = '0';
+      content.style.transform = 'scale(0.95)';
+      
+      setTimeout(() => {
+        overlay.remove();
+        document.body.style.overflow = originalOverflow;
+      }, 300);
+    });
+  }
+
+  // Run as early as possible on DOM content
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCompliance);
+  } else {
+    initCompliance();
+  }
+})();
