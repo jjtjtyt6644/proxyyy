@@ -19,7 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <div style="margin-bottom: 20px;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-size: 16px;">Ad Blocker</span>
+                        <div style="display:flex; flex-direction:column;">
+                            <span style="font-size: 16px;">Ad Blocker</span>
+                            <span id="adblock-stats" style="font-size: 10px; color: #4ecdc4; margin-top:2px; display:none;">0 ads blocked lifetime</span>
+                        </div>
                         <button id="toggle-adblock-btn" style="padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: white; cursor: pointer;">Disable</button>
                     </div>
                     <p style="font-size: 12px; opacity: 0.7; margin:0;">Blocks advertisements and popups on proxied pages.</p>
@@ -72,6 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const adblockEnabled = localStorage.getItem('ambient_adblock_enabled') === 'true';
             toggleAdblockBtn.innerText = adblockEnabled ? 'Disable' : 'Enable';
             toggleAdblockBtn.style.background = adblockEnabled ? 'rgba(255,255,255,0.1)' : 'rgba(78, 205, 196, 0.2)';
+            
+            // Show Adblock Statistics
+            const adStats = document.getElementById('adblock-stats');
+            if (adStats && adblockEnabled) {
+                const count = localStorage.getItem('ambient_adblock_count') || '0';
+                adStats.innerText = `${count} ads blocked lifetime`;
+                adStats.style.display = 'block';
+            } else if (adStats) {
+                adStats.style.display = 'none';
+            }
             
             // Populate Architecture Info
             if(document.getElementById('arch-ua')) document.getElementById('arch-ua').innerText = navigator.userAgent;
