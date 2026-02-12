@@ -654,6 +654,36 @@
       <button id="close-reasons" style="margin-top: 20px;"><span>Got it!</span></button>
     </div>
   </div>
+
+  <div id="domain-warning-overlay" class="overlay" style="display: none;">
+    <div class="overlay-content" style="max-width: 500px;">
+      <h2
+        style="color: #f59e0b; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px;">
+        <i data-lucide="alert-triangle"></i> Possible Search Query
+      </h2>
+      <p style="font-size: 16px; opacity: 0.9; margin-bottom: 20px;">It looks like you're trying to search instead of
+        visiting a direct website.</p>
+
+      <div
+        style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; text-align: left; margin-bottom: 25px;">
+        <p style="margin-bottom: 10px; font-size: 14px; opacity: 0.8;"><i data-lucide="info"
+            style="width: 16px; height: 16px; margin-right: 5px; vertical-align: middle;"></i> <strong>Why this
+            matters:</strong></p>
+        <ul style="font-size: 13px; opacity: 0.7; padding-left: 20px; line-height: 1.6;">
+          <li>Search engines (like Google) often block proxies</li>
+          <li>Direct links (e.g. <code>discord.com</code> or <code>https://example.com</code>) work much better</li>
+          <li>You entered: <code id="warning-user-input" style="color: #667eea; word-break: break-all;"></code></li>
+        </ul>
+      </div>
+
+      <div style="display: flex; gap: 15px; justify-content: center;">
+        <button id="cancel-search" style="background: rgba(255,255,255,0.1); width: auto; padding: 0 25px;">Go
+          Back</button>
+        <button id="confirm-search" style="width: auto; padding: 0 25px;">Search Anyway</button>
+      </div>
+    </div>
+  </div>
+
   <div class="container">
     <div class="raysContain">
       <div class="rays"></div>
@@ -781,8 +811,53 @@
         .register(swFile, { scope: swConfigSettings.prefix })
         .then((registration) => {
           console.log('ServiceWorker registration successful with scope: ', registration.scope);
+
           form.addEventListener('submit', async (event) => {
             event.preventDefault();
+
+            // Check for domain/URL pattern if not already confirmed
+            const val = address.value.trim();
+            const hasDot = val.includes('.') && val.split('.').length > 1;
+
+            if (!hasDot && !form.dataset.ignoreWarning) {
+              const warningOverlay = document.getElementById('domain-warning-overlay');
+              const warningInput = document.getElementById('warning-user-input');
+              const confirmBtn = document.getElementById('confirm-search');
+              const cancelBtn = document.getElementById('cancel-search');
+
+              if (warningInput) warningInput.textContent = val;
+              if (warningOverlay) {
+                warningOverlay.style.display = 'flex';
+                // Initialize icons in the overlay
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+
+                // One-time listeners for the overlay buttons
+                const cleanup = () => {
+                  warningOverlay.style.display = 'none';
+                  confirmBtn.removeEventListener('click', confirmHandler);
+                  cancelBtn.removeEventListener('click', cancelHandler);
+                };
+
+                const confirmHandler = () => {
+                  form.dataset.ignoreWarning = 'true';
+                  cleanup();
+                  form.requestSubmit(); // Re-submit form
+                };
+
+                const cancelHandler = () => {
+                  cleanup();
+                  address.focus();
+                };
+
+                confirmBtn.addEventListener('click', confirmHandler);
+                cancelBtn.addEventListener('click', cancelHandler);
+                return; // Stop current submission
+              }
+            }
+
+            // Reset warning state
+            form.dataset.ignoreWarning = '';
+
             let encodedUrl = swConfigSettings.prefix + __uv$config.encodeUrl(search(address.value));
             sessionStorage.setItem('encodedUrl', encodedUrl);
             location.href = '/search';

@@ -56,29 +56,7 @@ async function launch(val) {
         .register(swFile, { scope: swConfigSettings.prefix })
         .then((registration) => {
           console.log("ServiceWorker registration successful with scope: ", registration.scope);
-
-          // Listen for controller change (when new SW takes over)
-          navigator.serviceWorker.addEventListener('controllerchange', () => {
-            console.log('Service worker updated, reloading page...');
-            window.location.reload();
-          });
-
-          // Check for updates and force refresh if needed
-          registration.addEventListener('updatefound', () => {
-            const newWorker = registration.installing;
-            if (newWorker) {
-              newWorker.addEventListener('statechange', () => {
-                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                  // New service worker available, skip waiting
-                  newWorker.postMessage({ action: 'skipWaiting' });
-                }
-              });
-            }
-          });
-
-          // Force update check
-          registration.update();
-
+          
           let url = val.trim();
           
           // Validate input
