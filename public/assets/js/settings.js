@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleStatsBtn.style.background = disabled ? 'rgba(78, 205, 196, 0.2)' : 'rgba(255,255,255,0.1)';
 
             // Update Adblock Button State
-            const adblockEnabled = localStorage.getItem('ambient_adblock_enabled') === 'true';
+            const adblockEnabled = localStorage.getItem('ambient_adblock_enabled') !== 'false';
             toggleAdblockBtn.innerText = adblockEnabled ? 'Disable' : 'Enable';
             toggleAdblockBtn.style.background = adblockEnabled ? 'rgba(255,255,255,0.1)' : 'rgba(78, 205, 196, 0.2)';
             
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Toggle Adblock
         toggleAdblockBtn.addEventListener('click', () => {
-            const adblockEnabled = localStorage.getItem('ambient_adblock_enabled') === 'true';
+            const adblockEnabled = localStorage.getItem('ambient_adblock_enabled') !== 'false';
             const newState = !adblockEnabled;
             localStorage.setItem('ambient_adblock_enabled', newState.toString());
             
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
                toggleStatsBtn.style.background = disabled ? 'rgba(78, 205, 196, 0.2)' : 'rgba(255,255,255,0.1)';
             }
             if (e.key === 'ambient_adblock_enabled') {
-               const enabled = e.newValue === 'true';
+               const enabled = e.newValue !== 'false';
                toggleAdblockBtn.innerText = enabled ? 'Disable' : 'Enable';
                toggleAdblockBtn.style.background = enabled ? 'rgba(255,255,255,0.1)' : 'rgba(78, 205, 196, 0.2)';
             }
