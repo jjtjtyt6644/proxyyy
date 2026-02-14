@@ -79,6 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <option value="paranoid">🔴 Paranoid - Maximum</option>
                                     </select>
                                 </div>
+                                <div class="shield-whitelist-section">
+                                    <label class="shield-level-label" style="display:block;margin-bottom:8px">Whitelisted Domains:</label>
+                                    <div class="whitelist-input-group">
+                                        <input type="text" id="whitelist-input" placeholder="e.g. poki.com" class="whitelist-input">
+                                        <button id="add-whitelist-btn" class="whitelist-add-btn">Add</button>
+                                    </div>
+                                    <div id="whitelist-container" class="whitelist-container"></div>
+                                </div>
                             </div>
                             <button id="toggle-privacy-btn" class="toggle-btn">Disable</button>
                         </div>
@@ -344,6 +352,88 @@ document.addEventListener('DOMContentLoaded', () => {
                 padding: 8px;
             }
 
+            .shield-whitelist-section {
+                margin-top: 16px;
+                padding-top: 16px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .whitelist-input-group {
+                display: flex;
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+
+            .whitelist-input {
+                flex: 1;
+                background: rgba(0,0,0,0.4);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 6px;
+                padding: 8px 12px;
+                color: white;
+                font-family: inherit;
+                font-size: 13px;
+                outline: none;
+                transition: all 0.2s;
+            }
+
+            .whitelist-input:focus {
+                border-color: #4ecdc4;
+                box-shadow: 0 0 0 2px rgba(78, 205, 196, 0.2);
+            }
+
+            .whitelist-add-btn {
+                padding: 6px 12px;
+                background: rgba(78, 205, 196, 0.15);
+                color: #4ecdc4;
+                border: 1px solid rgba(78, 205, 196, 0.3);
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 12px;
+                font-weight: 600;
+                transition: all 0.2s;
+            }
+
+            .whitelist-add-btn:hover {
+                background: rgba(78, 205, 196, 0.25);
+                transform: translateY(-1px);
+            }
+
+            .whitelist-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+                max-height: 100px;
+                overflow-y: auto;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(78, 205, 196, 0.3) transparent;
+            }
+
+            .whitelist-tag {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                padding: 4px 8px;
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 4px;
+                font-size: 11px;
+                color: rgba(255,255,255,0.8);
+            }
+
+            .whitelist-remove {
+                cursor: pointer;
+                opacity: 0.6;
+                transition: opacity 0.2s;
+                display: flex;
+                align-items: center;
+            }
+
+            .whitelist-remove:hover {
+                opacity: 1;
+                color: #ef4444;
+            }
+
             .privacy-shield-item {
                 border-left: 3px solid #4ecdc4;
             }
@@ -533,6 +623,61 @@ document.addEventListener('DOMContentLoaded', () => {
                 shieldLevelSelect.value = level;
                 shieldLevelSelect.disabled = !privacyEnabled;
             }
+
+            // --- Whitelist Logic ---
+            const wContainer = document.getElementById('whitelist-container');
+            const wAddBtn = document.getElementById('add-whitelist-btn');
+            const wInput = document.getElementById('whitelist-input');
+
+            // Function to render the list
+            const updateWhitelistUI = () => {
+                const list = JSON.parse(localStorage.getItem('ambient_privacy_shield_whitelist') || '[]');
+                wContainer.innerHTML = '';
+                list.forEach(domain => {
+                    const tag = document.createElement('div');
+                    tag.className = 'whitelist-tag';
+                    tag.innerHTML = `
+                        ${domain}
+                        <span class="whitelist-remove">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </span>
+                    `;
+                    tag.querySelector('.whitelist-remove').onclick = () => {
+                        const currentList = JSON.parse(localStorage.getItem('ambient_privacy_shield_whitelist') || '[]');
+                        const newList = currentList.filter(d => d !== domain);
+                        localStorage.setItem('ambient_privacy_shield_whitelist', JSON.stringify(newList));
+                        updateWhitelistUI();
+                    };
+                    wContainer.appendChild(tag);
+                });
+            };
+
+            // Add Domain Logic
+            const handleAdd = () => {
+                let val = wInput.value.trim().toLowerCase();
+                if (!val) return;
+                val = val.replace(/^https?:\/\//, '').replace(/^www\./, '').split('/')[0];
+                
+                const list = JSON.parse(localStorage.getItem('ambient_privacy_shield_whitelist') || '[]');
+                if (!list.includes(val)) {
+                    list.push(val);
+                    localStorage.setItem('ambient_privacy_shield_whitelist', JSON.stringify(list));
+                    updateWhitelistUI();
+                }
+                wInput.value = '';
+            };
+
+            // Clean event listeners to prevent duplicates on re-open
+            const newAddBtn = wAddBtn.cloneNode(true);
+            wAddBtn.parentNode.replaceChild(newAddBtn, wAddBtn);
+            newAddBtn.onclick = handleAdd;
+
+            const newInput = wInput.cloneNode(true);
+            wInput.parentNode.replaceChild(newInput, wInput);
+            newInput.onkeypress = (e) => { if (e.key === 'Enter') handleAdd(); };
+
+            updateWhitelistUI();
+            // -----------------------
             
             // Populate Architecture Info
             if(document.getElementById('arch-ua')) document.getElementById('arch-ua').innerText = navigator.userAgent;

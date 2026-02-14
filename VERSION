@@ -1,24 +1,18 @@
 [VERSION]
-1.4.1
+1.4.2
 
 [RELEASE DATE]
-2026-02-10
+2026-02-14
 
 [CHANGES]
-- Enhanced animations with dynamic particle system and elastic effects
-- Smooth gradient transitions and modern micro-interactions
-- Improved visual effects with varied speeds and glow effects
-- Refined background animations with depth and movement
-- Complete troubleshooting guide overhaul with comprehensive solutions
-- Updated devlogs with recent commits and contributor information
-- Refined styles for study timer and UI buttons
-- Updated time.css for better styling
-- Added comprehensive about page with developer credits
-- Enhanced text visibility and contrast on about page
-- Fixed service worker caching issues
-- Added student utility features
-- Updated .gitignore
-- Improved directory organization
+- Added Privacy Shield: Advanced tracker blocking and fingerprinting protection
+- Implemented comprehensive Ad Blocker with visual statistics
+- Added Settings Panel: Centralized control for all Ambient features
+- introduced Whitelist System: Allow custom domains to bypass protections
+- Enhanced Settings UI with glassmorphism and smooth animations
+- optimized client.js injection logic for better performance
+- Added real-time stats for blocked ads and trackers in settings
+- Updated README and Devlogs with v1.4.2 information
 
 [NOTES]
-Stable release for production use.
+Major security and privacy update. Recommended for all users.
