@@ -577,7 +577,6 @@
       <img src="assets/imgs/logo.png" alt="logo" />
       <div class="flex">
         <a href="/">Home</a>
-        <a href="/g">Games</a>
         <a href="/a">Apps</a>
         <a href="/about">About</a>
         <a href="/devlogs">Dev Logs</a>
@@ -787,6 +786,32 @@
                 <li>Try a different browser (Firefox often handles media better)</li>
                 <li>Ensure your browser has permission to use media codecs</li>
               </ul>
+            </div>
+          </div>
+
+          <div class="issue-card priority-medium">
+            <div class="issue-title">
+              <i data-lucide="shield-off"></i>
+              Games or Webpages Not Loading / Broken Layout
+            </div>
+            <div class="issue-description">
+              Some games (like on Poki) fail to load, interactive elements are missing, or the page layout looks broken.
+            </div>
+            <div class="solution">
+              <h4><i data-lucide="check-circle"></i> Solution:</h4>
+              <p><strong>Cause:</strong> The <strong>Privacy Shield</strong> feature is currently in <strong>BETA</strong>. It works by intercepting scripts to block trackers, but this can sometimes block legitimate game scripts or site functionality by mistake.</p>
+              <p><strong>How to fix:</strong></p>
+              <ol>
+                <li>Open <strong>Settings</strong> (Gear Icon)</li>
+                <li>Locate the <strong>Privacy Shield</strong> section</li>
+                <li><strong>Disable</strong> the Privacy Shield specifically for this session</li>
+                <li><strong>OR</strong> add the domain (e.g., poki.com) to the <strong>Whitelist</strong> in the Privacy Shield settings</li>
+                <li>Refresh the page</li>
+              </ol>
+            </div>
+            <div class="tip-box">
+              <i data-lucide="flask-conical"></i>
+              <p><strong>Beta Feature:</strong> We are actively working on improving the Privacy Shield's accuracy. Please report broken sites to help us improve!</p>
             </div>
           </div>
 

@@ -68,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <path d="m9 12 2 2 4-4"/>
                                     </svg>
                                     Privacy Shield
+                                    <span class="beta-badge">BETA</span>
+                                    <button id="shield-learn-more" class="learn-more-link">Learn More</button>
                                     <span id="privacy-stats" class="badge">0 blocked</span>
                                 </div>
                                 <p class="setting-desc">Block tracking scripts, fingerprinting, cookies & strip URL trackers</p>
@@ -121,7 +123,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
         </div>
-        
+
+        <!-- Beta Info Modal -->
+        <div id="beta-modal" class="overlay" style="display: none; z-index: 10001; align-items: center; justify-content: center;">
+            <div class="overlay-content beta-modal-content">
+                <div class="beta-header" style="margin-bottom:12px; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.1); display:flex; justify-content:space-between; align-items:center;">
+                    <h3 style="margin:0; color:#f59e0b; display:flex; align-items:center; gap:10px; font-size:18px">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        Privacy Shield Beta
+                    </h3>
+                    <button id="close-beta-modal" class="close-btn" style="width:32px;height:32px">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="beta-body" style="color:rgba(255,255,255,0.9); font-size:14px; line-height:1.5">
+                    <p>The Privacy Shield is a new feature designed to protect your browsing by blocking trackers. However, because it works by intercepting scripts, it is <strong>experimental</strong> and may behave unpredictably.</p>
+                    <div style="background:rgba(245, 158, 11, 0.1); border:1px solid rgba(245, 158, 11, 0.2); border-radius:8px; padding:12px; margin:15px 0">
+                        <strong style="color:#f59e0b; display:block; margin-bottom:5px">Known Issues:</strong>
+                        <ul style="margin:0; padding-left:20px; color:rgba(255,255,255,0.8)">
+                            <li>Some games (e.g., Poki) may fail to load</li>
+                            <li>Interactive elements might break</li>
+                            <li>Legitimate scripts might be blocked</li>
+                        </ul>
+                    </div>
+                    <p style="font-size:13px; opacity:0.7">We are actively working to improve accuracy. If a site breaks, add it to the <strong>Whitelist</strong> or disable the shield.</p>
+                    <button class="toggle-btn" style="width:100%; margin-top:10px" onclick="document.getElementById('beta-modal').style.display='none'">I Understand</button>
+                </div>
+            </div>
+        </div>
+
         <style>
             .settings-panel {
                 max-width: 650px !important;
@@ -520,6 +550,59 @@ document.addEventListener('DOMContentLoaded', () => {
                 line-height: 1.4;
             }
 
+            .beta-badge {
+                background: #f59e0b20;
+                color: #f59e0b;
+                font-size: 10px;
+                padding: 2px 6px;
+                border-radius: 4px;
+                border: 1px solid #f59e0b40;
+                letter-spacing: 0.5px;
+                font-weight: 700;
+                vertical-align: middle;
+            }
+
+            .learn-more-link {
+                background: none;
+                border: none;
+                color: #f59e0b;
+                text-decoration: underline;
+                cursor: pointer;
+                font-size: 12px;
+                padding: 0;
+                margin-left: 8px;
+                opacity: 0.8;
+                transition: opacity 0.2s;
+            }
+
+            .learn-more-link:hover {
+                opacity: 1;
+            }
+
+            .beta-modal-content {
+                background: #1a1b1e;
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 12px;
+                padding: 24px;
+                max-width: 450px;
+                width: 90%;
+                box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+                position: relative;
+                color: #e0e0e0;
+            }
+
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.7);
+                backdrop-filter: blur(5px);
+                z-index: 9999;
+                display: flex;
+            }
+
             @media (max-width: 768px) {
                 .settings-panel {
                     max-width: 95% !important;
@@ -683,6 +766,34 @@ document.addEventListener('DOMContentLoaded', () => {
             if(document.getElementById('arch-ua')) document.getElementById('arch-ua').innerText = navigator.userAgent;
             if(document.getElementById('arch-platform')) document.getElementById('arch-platform').innerText = navigator.platform;
             if(document.getElementById('arch-cores')) document.getElementById('arch-cores').innerText = navigator.hardwareConcurrency || 'Unknown';
+
+            // --- Beta Modal Logic ---
+            const shieldLearnMore = document.getElementById('shield-learn-more');
+            const betaModal = document.getElementById('beta-modal');
+            const closeBetaModal = document.getElementById('close-beta-modal');
+
+            if (shieldLearnMore && betaModal) {
+                shieldLearnMore.onclick = (e) => {
+                    e.preventDefault();
+                    betaModal.style.display = 'flex';
+                };
+            }
+
+            if (closeBetaModal && betaModal) {
+                closeBetaModal.onclick = () => {
+                    betaModal.style.display = 'none';
+                };
+            }
+            
+            // Close when clicking outside content
+            if (betaModal) {
+                betaModal.onclick = (e) => {
+                    if (e.target === betaModal) {
+                        betaModal.style.display = 'none';
+                    }
+                };
+            }
+            // ------------------------
         });
         
         // Close Settings
