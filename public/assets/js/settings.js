@@ -3,43 +3,471 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!document.getElementById('settings-overlay')) {
         const overlayHTML = `
         <div id="settings-overlay" class="overlay" style="display: none;">
-            <div class="overlay-content" style="max-width: 400px; text-align: left;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-                    <h2 style="margin:0; font-size: 24px;">Settings</h2>
-                    <button id="close-settings" style="background:none; border:none; color:white; font-size:24px; cursor:pointer;">&times;</button>
-                </div>
-                
-                <div style="margin-bottom: 20px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <span style="font-size: 16px;">Statistics Overlay</span>
-                        <button id="toggle-stats-btn" style="padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: white; cursor: pointer;">Disable</button>
+            <div class="overlay-content settings-panel">
+                <!-- Header -->
+                <div class="settings-header">
+                    <div class="settings-title-group">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="settings-icon-title">
+                            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                        <h2>Settings</h2>
                     </div>
-                    <p style="font-size: 12px; opacity: 0.7; margin:0;">Toggle the real-time statistics overlay visible on the screen.</p>
+                    <button id="close-settings" class="close-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
                 </div>
 
-                <div style="margin-bottom: 20px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                        <div style="display:flex; flex-direction:column;">
-                            <span style="font-size: 16px;">Ad Blocker</span>
-                            <span id="adblock-stats" style="font-size: 10px; color: #4ecdc4; margin-top:2px; display:none;">0 ads blocked lifetime</span>
+                <!-- Settings Content -->
+                <div class="settings-content">
+                    <!-- Privacy & Browsing Section -->
+                    <div class="settings-section">
+                        <h3 class="section-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            Privacy & Browsing
+                        </h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-label">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                                    </svg>
+                                    Statistics Overlay
+                                </div>
+                                <p class="setting-desc">Display real-time performance metrics and statistics on your screen</p>
+                            </div>
+                            <button id="toggle-stats-btn" class="toggle-btn">Disable</button>
                         </div>
-                        <button id="toggle-adblock-btn" style="padding: 6px 12px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: white; cursor: pointer;">Disable</button>
+
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <div class="setting-label">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+                                    </svg>
+                                    Ad Blocker
+                                    <span id="adblock-stats" class="badge">0 blocked</span>
+                                </div>
+                                <p class="setting-desc">Block advertisements, popups, and tracking scripts on proxied pages</p>
+                            </div>
+                            <button id="toggle-adblock-btn" class="toggle-btn">Disable</button>
+                        </div>
+
+                        <div class="setting-item privacy-shield-item">
+                            <div class="setting-info">
+                                <div class="setting-label">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                        <path d="m9 12 2 2 4-4"/>
+                                    </svg>
+                                    Privacy Shield
+                                    <span id="privacy-stats" class="badge">0 blocked</span>
+                                </div>
+                                <p class="setting-desc">Block tracking scripts, fingerprinting, cookies & strip URL trackers</p>
+                                <div class="shield-level-selector">
+                                    <label class="shield-level-label">Protection Level:</label>
+                                    <select id="shield-level" class="shield-dropdown">
+                                        <option value="basic">🟢 Basic - Recommended</option>
+                                        <option value="advanced">🟡 Advanced - Stronger</option>
+                                        <option value="paranoid">🔴 Paranoid - Maximum</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button id="toggle-privacy-btn" class="toggle-btn">Disable</button>
+                        </div>
                     </div>
-                    <p style="font-size: 12px; opacity: 0.7; margin:0;">Blocks advertisements and popups on proxied pages.</p>
-                </div>
 
-                <hr style="border:none; border-top:1px solid rgba(255,255,255,0.1); margin: 20px 0;">
-
-                <div style="margin-bottom: 20px;">
-                    <h3 style="font-size: 16px; margin-bottom: 10px; color: #4ecdc4;">System Architecture</h3>
-                    <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; font-family: monospace; font-size: 12px;">
-                        <div style="margin-bottom: 6px;"><span style="opacity:0.6">UA:</span> <span id="arch-ua">Thinking...</span></div>
-                        <div style="margin-bottom: 6px;"><span style="opacity:0.6">Platform:</span> <span id="arch-platform">Thinking...</span></div>
-                        <div><span style="opacity:0.6">Cores:</span> <span id="arch-cores">Thinking...</span></div>
+                    <!-- System Information Section -->
+                    <div class="settings-section">
+                        <h3 class="section-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                            System Information
+                        </h3>
+                        
+                        <div class="system-info-grid">
+                            <div class="info-card">
+                                <div class="info-label">User Agent</div>
+                                <div class="info-value" id="arch-ua">Loading...</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-label">Platform</div>
+                                <div class="info-value" id="arch-platform">Loading...</div>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-label">CPU Cores</div>
+                                <div class="info-value" id="arch-cores">Loading...</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>`;
+        </div>
+        
+        <style>
+            .settings-panel {
+                max-width: 650px !important;
+                width: 95% !important;
+                max-height: 85vh;
+                overflow-y: auto;
+                text-align: left !important;
+                padding: 0 !important;
+                scrollbar-width: thin;
+                scrollbar-color: rgba(78, 205, 196, 0.3) rgba(0,0,0,0.2);
+            }
+
+            .settings-panel::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            .settings-panel::-webkit-scrollbar-track {
+                background: rgba(0,0,0,0.2);
+                border-radius: 4px;
+            }
+
+            .settings-panel::-webkit-scrollbar-thumb {
+                background: rgba(78, 205, 196, 0.3);
+                border-radius: 4px;
+            }
+
+            .settings-panel::-webkit-scrollbar-thumb:hover {
+                background: rgba(78, 205, 196, 0.5);
+            }
+
+            .settings-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 28px 32px;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                background: linear-gradient(135deg, rgba(78, 205, 196, 0.05) 0%, rgba(16, 185, 129, 0.05) 100%);
+                position: sticky;
+                top: 0;
+                z-index: 10;
+                backdrop-filter: blur(10px);
+            }
+
+            .settings-title-group {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+            }
+
+            .settings-icon-title {
+                color: #4ecdc4;
+                animation: rotateSettingsIcon 20s linear infinite;
+            }
+
+            @keyframes rotateSettingsIcon {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+
+            .settings-header h2 {
+                margin: 0;
+                font-size: 28px;
+                font-weight: 700;
+                background: linear-gradient(135deg, #4ecdc4 0%, #10b981 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .close-btn {
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 10px;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                color: white;
+            }
+
+            .close-btn:hover {
+                background: rgba(239, 68, 68, 0.15);
+                border-color: rgba(239, 68, 68, 0.3);
+                transform: rotate(90deg);
+            }
+
+            .close-btn svg {
+                transition: all 0.3s ease;
+            }
+
+            .settings-content {
+                padding: 32px;
+                display: flex;
+                flex-direction: column;
+                gap: 32px;
+            }
+
+            .settings-section {
+                background: rgba(255,255,255,0.02);
+                border: 1px solid rgba(255,255,255,0.08);
+                border-radius: 16px;
+                padding: 24px;
+                transition: all 0.3s ease;
+            }
+
+            .settings-section:hover {
+                background: rgba(255,255,255,0.04);
+                border-color: rgba(78, 205, 196, 0.2);
+                box-shadow: 0 8px 24px rgba(78, 205, 196, 0.1);
+            }
+
+            .section-title {
+                font-size: 18px;
+                font-weight: 600;
+                color: #4ecdc4;
+                margin: 0 0 20px 0;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .section-title svg {
+                filter: drop-shadow(0 0 8px rgba(78, 205, 196, 0.4));
+            }
+
+            .setting-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px;
+                background: rgba(0,0,0,0.2);
+                border: 1px solid rgba(255,255,255,0.05);
+                border-radius: 12px;
+                margin-bottom: 16px;
+                transition: all 0.3s ease;
+                gap: 20px;
+            }
+
+            .setting-item:last-child {
+                margin-bottom: 0;
+            }
+
+            .setting-item:hover {
+                background: rgba(255,255,255,0.03);
+                border-color: rgba(78, 205, 196, 0.15);
+                transform: translateX(4px);
+            }
+
+            .setting-info {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .setting-label {
+                font-size: 16px;
+                font-weight: 600;
+                color: white;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .setting-label svg {
+                color: #4ecdc4;
+            }
+
+            .badge {
+                display: inline-block;
+                padding: 4px 10px;
+                background: rgba(78, 205, 196, 0.15);
+                border: 1px solid rgba(78, 205, 196, 0.3);
+                border-radius: 20px;
+                font-size: 11px;
+                font-weight: 600;
+                color: #4ecdc4;
+                margin-left: 8px;
+            }
+
+            .shield-level-selector {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-top: 12px;
+                padding: 12px;
+                background: rgba(0,0,0,0.3);
+                border-radius: 8px;
+                border: 1px solid rgba(255,255,255,0.05);
+            }
+
+            .shield-level-label {
+                font-size: 13px;
+                color: rgba(255,255,255,0.7);
+                font-weight: 500;
+            }
+
+            .shield-dropdown {
+                flex: 1;
+                padding: 8px 12px;
+                background: rgba(0,0,0,0.4);
+                border: 1px solid rgba(78, 205, 196, 0.3);
+                border-radius: 8px;
+                color: white;
+                font-size: 13px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                outline: none;
+            }
+
+            .shield-dropdown:hover {
+                background: rgba(78, 205, 196, 0.1);
+                border-color: rgba(78, 205, 196, 0.5);
+            }
+
+            .shield-dropdown:focus {
+                border-color: #4ecdc4;
+                box-shadow: 0 0 0 2px rgba(78, 205, 196, 0.2);
+            }
+
+            .shield-dropdown option {
+                background: #1a1a2e;
+                color: white;
+                padding: 8px;
+            }
+
+            .privacy-shield-item {
+                border-left: 3px solid #4ecdc4;
+            }
+
+            .setting-desc {
+                font-size: 13px;
+                color: rgba(255,255,255,0.6);
+                margin: 0;
+                line-height: 1.5;
+            }
+
+            .toggle-btn {
+                padding: 10px 24px;
+                border-radius: 10px;
+                border: 1.5px solid rgba(255,255,255,0.2);
+                background: rgba(255,255,255,0.08);
+                color: white;
+                font-weight: 600;
+                font-size: 14px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                white-space: nowrap;
+                min-width: 100px;
+            }
+
+            .toggle-btn:hover {
+                background: rgba(78, 205, 196, 0.15);
+                border-color: rgba(78, 205, 196, 0.4);
+                transform: scale(1.05);
+                box-shadow: 0 4px 12px rgba(78, 205, 196, 0.2);
+            }
+
+            .toggle-btn:active {
+                transform: scale(0.98);
+            }
+
+            .toggle-btn.enabled {
+                background: linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(22, 163, 74, 0.2) 100%);
+                border-color: rgba(34, 197, 94, 0.4);
+                color: #22c55e;
+            }
+
+            .toggle-btn.disabled {
+                background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(220, 38, 38, 0.2) 100%);
+                border-color: rgba(239, 68, 68, 0.4);
+                color: #ef4444;
+            }
+
+            .system-info-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 16px;
+            }
+
+            .info-card {
+                background: rgba(0,0,0,0.3);
+                border: 1px solid rgba(255,255,255,0.05);
+                border-radius: 12px;
+                padding: 16px;
+                transition: all 0.3s ease;
+            }
+
+            .info-card:hover {
+                background: rgba(255,255,255,0.03);
+                border-color: rgba(78, 205, 196, 0.2);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            }
+
+            .info-label {
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.8px;
+                color: rgba(255,255,255,0.5);
+                margin-bottom: 8px;
+                font-weight: 600;
+            }
+
+            .info-value {
+                font-family: 'Courier New', monospace;
+                font-size: 13px;
+                color: white;
+                word-break: break-word;
+                line-height: 1.4;
+            }
+
+            @media (max-width: 768px) {
+                .settings-panel {
+                    max-width: 95% !important;
+                    max-height: 90vh;
+                }
+
+                .settings-header {
+                    padding: 20px 20px;
+                }
+
+                .settings-header h2 {
+                    font-size: 24px;
+                }
+
+                .settings-content {
+                    padding: 20px;
+                    gap: 24px;
+                }
+
+                .settings-section {
+                    padding: 18px;
+                }
+
+                .setting-item {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 16px;
+                }
+
+                .toggle-btn {
+                    width: 100%;
+                }
+
+                .system-info-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>`;
         document.body.insertAdjacentHTML('beforeend', overlayHTML);
     }
 
@@ -61,29 +489,49 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeSettingsBtn = document.getElementById('close-settings');
         const toggleStatsBtn = document.getElementById('toggle-stats-btn');
         const toggleAdblockBtn = document.getElementById('toggle-adblock-btn');
+        const togglePrivacyBtn = document.getElementById('toggle-privacy-btn');
+        const shieldLevelSelect = document.getElementById('shield-level');
         
         // Open Settings
         btn.addEventListener('click', () => {
             settingsOverlay.style.display = 'flex';
             
             // Update Stats Button State
-            const disabled = localStorage.getItem('ambient_overlay_disabled') === 'true';
-            toggleStatsBtn.innerText = disabled ? 'Enable' : 'Disable';
-            toggleStatsBtn.style.background = disabled ? 'rgba(78, 205, 196, 0.2)' : 'rgba(255,255,255,0.1)';
+            const statsDisabled = localStorage.getItem('ambient_overlay_disabled') === 'true';
+            toggleStatsBtn.innerText = statsDisabled ? 'Enable' : 'Disable';
+            toggleStatsBtn.className = statsDisabled ? 'toggle-btn enabled' : 'toggle-btn disabled';
 
             // Update Adblock Button State
             const adblockEnabled = localStorage.getItem('ambient_adblock_enabled') !== 'false';
             toggleAdblockBtn.innerText = adblockEnabled ? 'Disable' : 'Enable';
-            toggleAdblockBtn.style.background = adblockEnabled ? 'rgba(255,255,255,0.1)' : 'rgba(78, 205, 196, 0.2)';
+            toggleAdblockBtn.className = adblockEnabled ? 'toggle-btn disabled' : 'toggle-btn enabled';
             
-            // Show Adblock Statistics
+            // Show Adblock Statistics Badge
             const adStats = document.getElementById('adblock-stats');
-            if (adStats && adblockEnabled) {
-                const count = localStorage.getItem('ambient_adblock_count') || '0';
-                adStats.innerText = `${count} ads blocked lifetime`;
-                adStats.style.display = 'block';
-            } else if (adStats) {
-                adStats.style.display = 'none';
+            if (adStats) {
+                const count = parseInt(localStorage.getItem('ambient_adblock_count') || '0');
+                adStats.innerText = `${count.toLocaleString()} blocked`;
+                adStats.style.display = adblockEnabled ? 'inline-block' : 'none';
+            }
+
+            // Update Privacy Shield Button State
+            const privacyEnabled = localStorage.getItem('ambient_privacy_shield_enabled') !== 'false';
+            togglePrivacyBtn.innerText = privacyEnabled ? 'Disable' : 'Enable';
+            togglePrivacyBtn.className = privacyEnabled ? 'toggle-btn disabled' : 'toggle-btn enabled';
+            
+            // Show Privacy Shield Statistics Badge
+            const privacyStats = document.getElementById('privacy-stats');
+            if (privacyStats) {
+                const count = parseInt(localStorage.getItem('ambient_privacy_shield_blocked') || '0');
+                privacyStats.innerText = `${count.toLocaleString()} blocked`;
+                privacyStats.style.display = privacyEnabled ? 'inline-block' : 'none';
+            }
+
+            // Set Shield Level Dropdown
+            if (shieldLevelSelect) {
+                const level = localStorage.getItem('ambient_privacy_shield_level') || 'basic';
+                shieldLevelSelect.value = level;
+                shieldLevelSelect.disabled = !privacyEnabled;
             }
             
             // Populate Architecture Info
@@ -104,11 +552,10 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('ambient_overlay_disabled', newState.toString());
             
             toggleStatsBtn.innerText = newState ? 'Enable' : 'Disable';
-            toggleStatsBtn.style.background = newState ? 'rgba(78, 205, 196, 0.2)' : 'rgba(255,255,255,0.1)';
+            toggleStatsBtn.className = newState ? 'toggle-btn enabled' : 'toggle-btn disabled';
             
             if (newState) {
                 // Now Disabled - Hide Overlay
-                // The overlay ID 'ambient-proxy-overlay' is assumed to be the one used in index.html or elsewhere
                 const overlay = document.getElementById('ambient-proxy-overlay');
                 if(overlay) overlay.style.display = 'none';
             } else {
@@ -124,23 +571,50 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('ambient_adblock_enabled', newState.toString());
             
             toggleAdblockBtn.innerText = newState ? 'Disable' : 'Enable';
-            toggleAdblockBtn.style.background = newState ? 'rgba(255,255,255,0.1)' : 'rgba(78, 205, 196, 0.2)';
+            toggleAdblockBtn.className = newState ? 'toggle-btn disabled' : 'toggle-btn enabled';
             
             // Reload to apply changes
             location.reload();
         });
+
+        // Toggle Privacy Shield
+        togglePrivacyBtn.addEventListener('click', () => {
+            const privacyEnabled = localStorage.getItem('ambient_privacy_shield_enabled') !== 'false';
+            const newState = !privacyEnabled;
+            localStorage.setItem('ambient_privacy_shield_enabled', newState.toString());
+            
+            togglePrivacyBtn.innerText = newState ? 'Disable' : 'Enable';
+            togglePrivacyBtn.className = newState ? 'toggle-btn disabled' : 'toggle-btn enabled';
+            
+            // Enable/disable the shield level dropdown
+            if (shieldLevelSelect) {
+                shieldLevelSelect.disabled = !newState;
+            }
+            
+            // Reload to apply changes
+            location.reload();
+        });
+
+        // Privacy Shield Level Change
+        if (shieldLevelSelect) {
+            shieldLevelSelect.addEventListener('change', (e) => {
+                localStorage.setItem('ambient_privacy_shield_level', e.target.value);
+                // Reload to apply new level
+                location.reload();
+            });
+        }
 
         // Listen for changes from other tabs/windows
         window.addEventListener('storage', (e) => {
             if (e.key === 'ambient_overlay_disabled') {
                const disabled = e.newValue === 'true';
                toggleStatsBtn.innerText = disabled ? 'Enable' : 'Disable';
-               toggleStatsBtn.style.background = disabled ? 'rgba(78, 205, 196, 0.2)' : 'rgba(255,255,255,0.1)';
+               toggleStatsBtn.className = disabled ? 'toggle-btn enabled' : 'toggle-btn disabled';
             }
             if (e.key === 'ambient_adblock_enabled') {
                const enabled = e.newValue !== 'false';
                toggleAdblockBtn.innerText = enabled ? 'Disable' : 'Enable';
-               toggleAdblockBtn.style.background = enabled ? 'rgba(255,255,255,0.1)' : 'rgba(78, 205, 196, 0.2)';
+               toggleAdblockBtn.className = enabled ? 'toggle-btn disabled' : 'toggle-btn enabled';
             }
         });
         

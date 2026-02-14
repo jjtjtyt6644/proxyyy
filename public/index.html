@@ -24,6 +24,120 @@
   <link rel="stylesheet" href="assets/css/elements/time.css" />
 
   <style>
+    /* Settings Button Styles */
+    .settings-button {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: linear-gradient(135deg, rgba(78, 205, 196, 0.15) 0%, rgba(16, 185, 129, 0.15) 100%);
+      border: 1.5px solid rgba(78, 205, 196, 0.3);
+      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 
+        0 2px 8px rgba(78, 205, 196, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .settings-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .settings-button:hover::before {
+      left: 100%;
+    }
+
+    .settings-button:hover {
+      background: linear-gradient(135deg, rgba(78, 205, 196, 0.25) 0%, rgba(16, 185, 129, 0.25) 100%);
+      border-color: rgba(78, 205, 196, 0.6);
+      transform: translateY(-2px);
+      box-shadow: 
+        0 4px 16px rgba(78, 205, 196, 0.3),
+        0 0 20px rgba(78, 205, 196, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .settings-button:active {
+      transform: translateY(0) scale(0.98);
+      box-shadow: 
+        0 2px 8px rgba(78, 205, 196, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .settings-button i {
+      width: 20px;
+      height: 20px;
+      color: #4ecdc4;
+      transition: all 0.3s ease;
+      animation: rotateGear 20s linear infinite;
+      animation-play-state: paused;
+    }
+
+    .settings-button:hover i {
+      animation-play-state: running;
+      filter: drop-shadow(0 0 8px rgba(78, 205, 196, 0.6));
+    }
+
+    @keyframes rotateGear {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .settings-text {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--text);
+      letter-spacing: 0.3px;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 0 10px rgba(78, 205, 196, 0.3);
+    }
+
+    /* Pulse animation for attention */
+    @keyframes settingsPulse {
+      0%, 100% {
+        box-shadow: 
+          0 2px 8px rgba(78, 205, 196, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      }
+      50% {
+        box-shadow: 
+          0 4px 20px rgba(78, 205, 196, 0.4),
+          0 0 30px rgba(78, 205, 196, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    .settings-button.pulse {
+      animation: settingsPulse 2s ease-in-out infinite;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .settings-text {
+        display: none;
+      }
+      
+      .settings-button {
+        padding: 10px 12px;
+        gap: 0;
+      }
+    }
+
     /* Front Page Styles */
     #front-page {
       position: fixed;
@@ -697,8 +811,9 @@
         <a href="/about">About</a>
         <a href="/devlogs">Dev Logs</a>
       </div>
-      <div id="settings-btn" style="cursor: pointer; display: flex; align-items: center;">
+      <div id="settings-btn" class="settings-button">
         <i data-lucide="settings"></i>
+        <span class="settings-text">Settings</span>
       </div>
     </nav>
     <div class="news">
@@ -1000,6 +1115,22 @@
             reasonsOverlay.style.display = 'none';
           }
         });
+      }
+    })();
+
+    // Settings Button Pulse Animation on Load
+    (function() {
+      const settingsBtn = document.getElementById('settings-btn');
+      if (settingsBtn) {
+        // Add pulse class after front page animation
+        setTimeout(() => {
+          settingsBtn.classList.add('pulse');
+          
+          // Remove pulse after 6 seconds
+          setTimeout(() => {
+            settingsBtn.classList.remove('pulse');
+          }, 6000);
+        }, 10000); // Start after front page animation completes
       }
     })();
 
