@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <h3 class="section-title">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
                                 Tab Cloaking
+                                <span class="beta-badge" style="margin-left: 10px;">BETA</span>
                             </h3>
                             <div class="setting-item" style="flex-direction: column; align-items: flex-start;">
                                 <div class="setting-info" style="width: 100%;">
@@ -151,6 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                                 <li>Then, click <strong>Launch in About:Blank</strong> below</li>
                                                 <li>The new tab will look exactly like the app you selected</li>
                                             </ul>
+                                            <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 11px; color: #facc15;">
+                                                <svg style="vertical-align: text-bottom; margin-right: 4px;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                                <strong>Note:</strong> Stats Overlay and Ad Blocker features may be limited or unavailable in this mode.
+                                            </div>
                                         </div>
                                         <button class="ab-btn" onclick="openAboutBlank()" style="width:100%; justify-content:center; background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(217,119,6,0.2)); border-color:rgba(245,158,11,0.3); color:#fbbf24">
                                             <svg style="vertical-align: text-bottom; margin-right: 8px;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>

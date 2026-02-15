@@ -841,6 +841,27 @@
             </div>
           </div>
 
+          <div class="issue-card priority-medium">
+            <div class="issue-title">
+              <i data-lucide="eye-off"></i>
+              Stats Overlay or Ad Blocker Not Appearing
+            </div>
+            <div class="issue-description">
+              The statistics overlay, frame counter, or ad blocker notifications are missing when I launch a site.
+            </div>
+            <div class="solution">
+              <h4><i data-lucide="help-circle"></i> Cause:</h4>
+              <p>You are likely using the <strong>"Launch in About:Blank"</strong> (Tab Cloaking) feature.</p>
+              <p><strong>Explanation:</strong> When running in <code>about:blank</code> mode to hide your history, the browser restricts certain scripts from running across different contexts for security reasons. This can prevent the overlay and ad blocker from injecting correctly.</p>
+              <h4><i data-lucide="check-circle"></i> Solution:</h4>
+              <ul>
+                <li>Launch the site directly without using "Launch in About:Blank".</li>
+                <li>If you need cloaking, you may have to browse without the overlay features.</li>
+                <li>Understand this is a browser security limitation, not a bug in Ambient.</li>
+              </ul>
+            </div>
+          </div>
+
           <div class="issue-card priority-low">
             <div class="issue-title">
               <i data-lucide="smartphone"></i>
