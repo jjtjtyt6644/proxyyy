@@ -171,6 +171,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="setting-info">
                                     <span class="setting-name">Custom Background</span>
                                     <p class="setting-desc">Enter a direct image URL (png, jpg, gif) to customize your background.</p>
+                                    <p class="setting-desc" style="margin-top: 6px; color: #94a3b8; font-size: 11px;">
+                                        <svg style="vertical-align: sub; margin-right: 4px;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                        <strong>Tip:</strong> Darker backgrounds are recommended as most site text is white.
+                                    </p>
                                     <div class="theme-input-group">
                                         <input type="text" id="theme-bg-input" class="theme-input" placeholder="https://example.com/image.jpg">
                                         <button id="theme-apply-btn" class="theme-btn">Apply</button>
@@ -1180,8 +1184,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 doc.body.appendChild(iframe);
 
                 // Inject client script for overlay/adblocker if not disabled
-                if (localStorage.getItem('ambient_overlay_disabled') !== 'true' || 
-                    localStorage.getItem('ambient_adblock_enabled') !== 'false') {
+                // ONLY if the current page is a proxied session (to avoid showing overlay on home/apps pages inside the cloak)
+                if ((localStorage.getItem('ambient_overlay_disabled') !== 'true' || 
+                     localStorage.getItem('ambient_adblock_enabled') !== 'false') && 
+                    (window.location.pathname.includes('/search/') || window.location.pathname.includes('/service/'))) {
                     
                     const script = doc.createElement('script');
                     script.src = window.location.origin + '/search/client.js';
