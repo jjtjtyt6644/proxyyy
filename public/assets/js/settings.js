@@ -134,10 +134,29 @@ document.addEventListener('DOMContentLoaded', () => {
                                         </div>
                                     </div>
 
-                                    <button class="ab-btn" onclick="openAboutBlank()">
-                                        <svg style="vertical-align: text-bottom; margin-right: 5px;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x="9" y="3" x2="9" y2="21"></line></svg>
-                                        Open in About:Blank (Cloaked)
-                                    </button>
+                                    <div style="margin-top:20px; border-top:1px solid rgba(255,255,255,0.1); padding-top:16px;">
+                                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                                            <span style="font-size:14px; font-weight:600; color:#e2e8f0; display:flex; align-items:center; gap:8px">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                                Launch in About:Blank
+                                            </span>
+                                            <span class="beta-badge" style="background:rgba(245,158,11,0.2); color:#f59e0b; border:1px solid rgba(245,158,11,0.3)">RECOMMENDED</span>
+                                        </div>
+                                        <div style="background:rgba(15,23,42,0.4); border-radius:8px; padding:12px; margin-bottom:12px; border:1px solid rgba(255,255,255,0.05)">
+                                            <p style="font-size:12px; color:#cbd5e1; margin:0 0 8px 0; line-height:1.5">
+                                                <strong style="color:#fff">How Cloaking Works:</strong> This opens Ambient in a special <code>about:blank</code> window that hides the URL from your browser history and extensions.
+                                            </p>
+                                            <ul style="font-size:11px; color:#94a3b8; margin:0; padding-left:20px; line-height:1.4">
+                                                <li>First, select a <strong>Disguise Tab</strong> option above (e.g., Google Drive)</li>
+                                                <li>Then, click <strong>Launch in About:Blank</strong> below</li>
+                                                <li>The new tab will look exactly like the app you selected</li>
+                                            </ul>
+                                        </div>
+                                        <button class="ab-btn" onclick="openAboutBlank()" style="width:100%; justify-content:center; background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(217,119,6,0.2)); border-color:rgba(245,158,11,0.3); color:#fbbf24">
+                                            <svg style="vertical-align: text-bottom; margin-right: 8px;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                                            Launch in About:Blank
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -890,7 +909,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Update Privacy Shield Button State
-            const privacyEnabled = localStorage.getItem('ambient_privacy_shield_enabled') !== 'false';
+            const privacyEnabled = localStorage.getItem('ambient_privacy_shield_enabled') === 'true';
             togglePrivacyBtn.innerText = privacyEnabled ? 'Disable' : 'Enable';
             togglePrivacyBtn.className = privacyEnabled ? 'toggle-btn disabled' : 'toggle-btn enabled';
             
@@ -1159,6 +1178,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const iframe = doc.createElement('iframe');
                 iframe.src = window.location.href;
                 doc.body.appendChild(iframe);
+
+                // Inject client script for overlay/adblocker if not disabled
+                if (localStorage.getItem('ambient_overlay_disabled') !== 'true' || 
+                    localStorage.getItem('ambient_adblock_enabled') !== 'false') {
+                    
+                    const script = doc.createElement('script');
+                    script.src = window.location.origin + '/search/client.js';
+                    doc.body.appendChild(script);
+                }
             };
             // --------------------------
         });
@@ -1202,7 +1230,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Toggle Privacy Shield
         togglePrivacyBtn.addEventListener('click', () => {
-            const privacyEnabled = localStorage.getItem('ambient_privacy_shield_enabled') !== 'false';
+            const privacyEnabled = localStorage.getItem('ambient_privacy_shield_enabled') === 'true';
             const newState = !privacyEnabled;
             localStorage.setItem('ambient_privacy_shield_enabled', newState.toString());
             
