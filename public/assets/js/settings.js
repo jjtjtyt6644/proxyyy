@@ -119,6 +119,74 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="info-value" id="arch-cores">Loading...</div>
                             </div>
                         </div>
+
+                        <!-- Tab Cloaking & Disguise -->
+                        <div class="settings-section">
+                            <h3 class="section-title">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg>
+                                Tab Cloaking
+                            </h3>
+                            <div class="setting-item" style="flex-direction: column; align-items: flex-start;">
+                                <div class="setting-info" style="width: 100%;">
+                                    <span class="setting-name">Disguise Tab</span>
+                                    <p class="setting-desc">Change the tab title and icon to look like another site.</p>
+                                    
+                                    <div class="cloak-grid">
+                                        <button class="cloak-btn" onclick="applyCloak('Ambient Proxy', 'https://www.google.com/favicon.ico')">
+                                            <img src="https://www.google.com/favicon.ico" class="cloak-icon" style="filter: grayscale(1);"> Reset
+                                        </button>
+                                        <button class="cloak-btn" onclick="applyCloak('Google', 'https://www.google.com/favicon.ico')">
+                                            <img src="https://www.google.com/favicon.ico" class="cloak-icon"> Google
+                                        </button>
+                                        <button class="cloak-btn" onclick="applyCloak('Google Classroom', 'https://ssl.gstatic.com/classroom/favicon.png')">
+                                            <img src="https://ssl.gstatic.com/classroom/favicon.png" class="cloak-icon"> Classroom
+                                        </button>
+                                        <button class="cloak-btn" onclick="applyCloak('Google Drive', 'https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png')">
+                                            <img src="https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png" class="cloak-icon"> Drive
+                                        </button>
+                                        <button class="cloak-btn" onclick="applyCloak('Zoom', 'https://st1.zoom.us/zoom.ico')">
+                                            <img src="https://st1.zoom.us/zoom.ico" class="cloak-icon"> Zoom
+                                        </button>
+                                        <button class="cloak-btn" onclick="toggleCustomCloak()">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Custom
+                                        </button> 
+                                    </div>
+
+                                    <div id="custom-cloak-area" class="cloak-custom-area">
+                                        <div class="theme-input-group">
+                                            <input type="text" id="cloak-title-input" class="theme-input" placeholder="Custom Title">
+                                            <input type="text" id="cloak-icon-input" class="theme-input" placeholder="Icon URL">
+                                            <button id="cloak-apply-btn" class="theme-btn">Set</button>
+                                        </div>
+                                    </div>
+
+                                    <button class="ab-btn" onclick="openAboutBlank()">
+                                        <svg style="vertical-align: text-bottom; margin-right: 5px;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                                        Open in About:Blank (Cloaked)
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Appearance Section -->
+                        <div class="settings-section">
+                            <h3 class="section-title">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                                Theme & Appearance
+                            </h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <span class="setting-name">Custom Background</span>
+                                    <p class="setting-desc">Enter a direct image URL (png, jpg, gif) to customize your background.</p>
+                                    <div class="theme-input-group">
+                                        <input type="text" id="theme-bg-input" class="theme-input" placeholder="https://example.com/image.jpg">
+                                        <button id="theme-apply-btn" class="theme-btn">Apply</button>
+                                        <button id="theme-reset-btn" class="theme-btn reset" style="display:none">Reset</button>
+                                    </div>
+                                    <p id="theme-status" style="font-size:12px; margin-top:8px; opacity:0.7; display:none"></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -603,6 +671,128 @@ document.addEventListener('DOMContentLoaded', () => {
                 display: flex;
             }
 
+            .theme-input-group {
+                display: flex;
+                gap: 12px;
+                margin-top: 15px;
+            }
+
+            .theme-input {
+                flex: 1;
+                background: rgba(0,0,0,0.4);
+                border: 1px solid rgba(255,255,255,0.1);
+                border-radius: 8px;
+                padding: 10px 14px;
+                color: white;
+                font-family: inherit;
+                font-size: 13px;
+                outline: none;
+                transition: all 0.2s;
+            }
+
+            .theme-input:focus {
+                border-color: #4ecdc4;
+                box-shadow: 0 0 0 2px rgba(78, 205, 196, 0.2);
+            }
+
+            .theme-btn {
+                padding: 10px 20px;
+                border-radius: 8px;
+                border: 1px solid rgba(78, 205, 196, 0.3);
+                background: rgba(78, 205, 196, 0.15);
+                color: #4ecdc4;
+                font-weight: 600;
+                font-size: 13px;
+                cursor: pointer;
+                transition: all 0.2s;
+            }
+
+            .theme-btn:hover {
+                background: rgba(78, 205, 196, 0.25);
+                transform: translateY(-1px);
+            }
+            
+            .theme-btn.reset {
+                border-color: rgba(239, 68, 68, 0.3);
+                background: rgba(239, 68, 68, 0.15);
+                color: #ef4444;
+            }
+
+            .theme-btn.reset:hover {
+                background: rgba(239, 68, 68, 0.25);
+            }
+
+            .cloak-btn {
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 8px;
+                padding: 10px 14px;
+                color: white;
+                font-family: inherit;
+                font-size: 13px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                cursor: pointer;
+                transition: all 0.2s;
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .cloak-btn:hover {
+                background: rgba(255, 255, 255, 0.15);
+                transform: translateY(-1px);
+            }
+
+            .cloak-btn.active {
+                background: rgba(78, 205, 196, 0.2);
+                border-color: #4ecdc4;
+                color: #4ecdc4;
+            }
+
+            .cloak-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 10px;
+                margin-top: 15px;
+            }
+
+            .cloak-icon {
+                width: 20px;
+                height: 20px;
+                border-radius: 4px;
+                object-fit: contain;
+            }
+
+            .cloak-custom-area {
+                margin-top: 15px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                padding-top: 15px;
+                display: none;
+            }
+            
+            .cloak-custom-area.show {
+                display: block;
+            }
+
+            .ab-btn {
+                width: 100%;
+                margin-top: 15px;
+                background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+                border: none;
+                color: white;
+                padding: 12px;
+                border-radius: 10px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .ab-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+            }
+
             @media (max-width: 768px) {
                 .settings-panel {
                     max-width: 95% !important;
@@ -794,6 +984,134 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
             }
             // ------------------------
+
+            // --- Theme & Appearance Logic ---
+            const themeInput = document.getElementById('theme-bg-input');
+            const themeApplyBtn = document.getElementById('theme-apply-btn');
+            const themeResetBtn = document.getElementById('theme-reset-btn');
+            const themeStatus = document.getElementById('theme-status');
+
+            const currentTheme = localStorage.getItem('ambient_theme_background');
+            if (currentTheme) {
+                themeInput.value = currentTheme;
+                themeResetBtn.style.display = 'inline-block';
+            }
+
+            const applyTheme = (url) => {
+                if (!url) return;
+                
+                // Validate URL (basic check)
+                if (!url.startsWith('http') && !url.startsWith('data:image')) {
+                    themeStatus.innerText = '⚠️ Invalid URL. Must start with http:// or https://';
+                    themeStatus.style.color = '#f59e0b';
+                    themeStatus.style.display = 'block';
+                    return;
+                }
+
+                localStorage.setItem('ambient_theme_background', url);
+                
+                // Show success message
+                themeStatus.innerText = '✅ Theme applied! Reloading...';
+                themeStatus.style.color = '#10b981';
+                themeStatus.style.display = 'block';
+
+                // Show reset button
+                themeResetBtn.style.display = 'inline-block';
+
+                setTimeout(() => {
+                    location.reload();
+                }, 1000);
+            };
+
+            themeApplyBtn.onclick = () => {
+                applyTheme(themeInput.value.trim());
+            };
+            
+            themeInput.onkeypress = (e) => {
+                if (e.key === 'Enter') applyTheme(themeInput.value.trim());
+            };
+
+            themeResetBtn.onclick = () => {
+                localStorage.removeItem('ambient_theme_background');
+                themeInput.value = '';
+                themeResetBtn.style.display = 'none';
+                themeStatus.innerText = '↺ Theme reset. Reloading...';
+                themeStatus.style.display = 'block';
+                setTimeout(() => {
+                    location.reload();
+                }, 1000);
+            };
+            // --------------------------------
+
+            // --- Tab Cloaking Logic ---
+            window.applyCloak = (title, icon) => {
+                localStorage.setItem('ambient_cloak_title', title);
+                localStorage.setItem('ambient_cloak_icon', icon);
+                
+                document.title = title;
+                
+                let link = document.querySelector("link[rel~='icon']");
+                if (!link) {
+                    link = document.createElement('link');
+                    link.rel = 'icon';
+                    document.head.appendChild(link);
+                }
+                link.href = icon;
+            };
+
+            window.toggleCustomCloak = () => {
+                const area = document.getElementById('custom-cloak-area');
+                if(area) area.classList.toggle('show');
+            };
+
+            const toggleCustomCloakBtn = document.querySelector('.cloak-btn[onclick="toggleCustomCloak()"]');
+            if (toggleCustomCloakBtn) {
+                toggleCustomCloakBtn.onclick = window.toggleCustomCloak;
+            }
+
+            const cloakApplyBtn = document.getElementById('cloak-apply-btn');
+            const cloakTitleInput = document.getElementById('cloak-title-input');
+            const cloakIconInput = document.getElementById('cloak-icon-input');
+
+            if (cloakApplyBtn) {
+                cloakApplyBtn.onclick = () => {
+                    const t = cloakTitleInput.value.trim() || 'Ambient Proxy';
+                    const i = cloakIconInput.value.trim() || '/public/assets/imgs/logo.png';
+                    applyCloak(t, i);
+                };
+            }
+            
+            // About:Blank Cloak
+            window.openAboutBlank = () => {
+                const newWin = window.open('about:blank', '_blank');
+                if (!newWin) {
+                    alert('Pop-up blocked! Please allow pop-ups for this site.');
+                    return;
+                }
+                
+                const title = localStorage.getItem('ambient_cloak_title') || 'Ambient Proxy';
+                const icon = localStorage.getItem('ambient_cloak_icon') || '/public/assets/imgs/logo.png';
+
+                const doc = newWin.document;
+                doc.title = title;
+                
+                const link = doc.createElement('link');
+                link.rel = 'icon';
+                link.href = icon;
+                doc.head.appendChild(link);
+                
+                const style = doc.createElement('style');
+                style.innerHTML = `
+                    body, html { margin: 0; padding: 0; height: 100%; width: 100%; overflow: hidden; }
+                    iframe { border: none; width: 100%; height: 100%; }
+                `;
+                doc.head.appendChild(style);
+
+                const iframe = doc.createElement('iframe');
+                iframe.src = window.location.href;
+                doc.body.appendChild(iframe);
+            };
+            // --------------------------
         });
         
         // Close Settings

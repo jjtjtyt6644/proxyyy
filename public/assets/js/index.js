@@ -1,3 +1,40 @@
+// Apply Custom Theme on Load
+(function() {
+    const customBg = localStorage.getItem('ambient_theme_background');
+    if (customBg) {
+        // Create style element to override background
+        const style = document.createElement('style');
+        style.innerText = `
+            body, .container {
+                background: url('${customBg}') no-repeat center center fixed !important;
+                background-size: cover !important;
+            }
+            .rays {
+                display: none !important; 
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // Apply Tab Cloaking
+    const cloakTitle = localStorage.getItem('ambient_cloak_title');
+    const cloakIcon = localStorage.getItem('ambient_cloak_icon');
+
+    if (cloakTitle) {
+        document.title = cloakTitle;
+    }
+
+    if (cloakIcon) {
+        let link = document.querySelector("link[rel~='icon']");
+        if (!link) {
+            link = document.createElement('link');
+            link.rel = 'icon';
+            document.head.appendChild(link);
+        }
+        link.href = cloakIcon;
+    }
+})();
+
 // Mutex to prevent race conditions
 let isRegistering = false;
 

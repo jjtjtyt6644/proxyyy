@@ -630,6 +630,32 @@
           }
         }
   </style>
+  <script>
+    (function() {
+        const customBg = localStorage.getItem('ambient_theme_background');
+        if (customBg) {
+            document.documentElement.style.background = `url('${customBg}') no-repeat center center fixed`;
+            document.documentElement.style.backgroundSize = 'cover';
+            const style = document.createElement('style');
+            style.textContent = `
+                body { background: transparent !important; }
+                .rays { display: none !important; }
+            `;
+            document.head.appendChild(style);
+        }
+
+        const cloakTitle = localStorage.getItem('ambient_cloak_title');
+        if (cloakTitle) document.title = cloakTitle;
+
+        const cloakIcon = localStorage.getItem('ambient_cloak_icon');
+        if (cloakIcon) {
+            let link = document.querySelector("link[rel~='icon']") || document.createElement('link');
+            link.rel = 'icon';
+            link.href = cloakIcon;
+            document.head.appendChild(link);
+        }
+    })();
+  </script>
 
 </head>
 
