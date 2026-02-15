@@ -94,32 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
 
-                    <!-- System Information Section -->
-                    <div class="settings-section">
-                        <h3 class="section-title">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                                <line x1="8" y1="21" x2="16" y2="21"/>
-                                <line x1="12" y1="17" x2="12" y2="21"/>
-                            </svg>
-                            System Information
-                        </h3>
-                        
-                        <div class="system-info-grid">
-                            <div class="info-card">
-                                <div class="info-label">User Agent</div>
-                                <div class="info-value" id="arch-ua">Loading...</div>
-                            </div>
-                            <div class="info-card">
-                                <div class="info-label">Platform</div>
-                                <div class="info-value" id="arch-platform">Loading...</div>
-                            </div>
-                            <div class="info-card">
-                                <div class="info-label">CPU Cores</div>
-                                <div class="info-value" id="arch-cores">Loading...</div>
-                            </div>
-                        </div>
-
                         <!-- Tab Cloaking & Disguise -->
                         <div class="settings-section">
                             <h3 class="section-title">
@@ -161,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     </div>
 
                                     <button class="ab-btn" onclick="openAboutBlank()">
-                                        <svg style="vertical-align: text-bottom; margin-right: 5px;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                                        <svg style="vertical-align: text-bottom; margin-right: 5px;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x="9" y="3" x2="9" y2="21"></line></svg>
                                         Open in About:Blank (Cloaked)
                                     </button>
                                 </div>
@@ -183,7 +157,45 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <button id="theme-apply-btn" class="theme-btn">Apply</button>
                                         <button id="theme-reset-btn" class="theme-btn reset" style="display:none">Reset</button>
                                     </div>
+                                    
+                                    <div class="separator-text" style="text-align: center; margin: 10px 0; font-size: 12px; color: #888;">— OR —</div>
+
+                                    <div class="theme-input-group">
+                                        <input type="file" id="theme-file-input" accept="image/*" style="display: none;">
+                                        <label for="theme-file-input" class="theme-btn" style="width: 100%; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                            Upload Image from Device
+                                        </label>
+                                    </div>
+
                                     <p id="theme-status" style="font-size:12px; margin-top:8px; opacity:0.7; display:none"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- System Information Section -->
+                        <div class="settings-section">
+                            <h3 class="section-title">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                                System Information
+                            </h3>
+                            
+                            <div class="system-info-grid">
+                                <div class="info-card">
+                                    <div class="info-label">User Agent</div>
+                                    <div class="info-value" id="arch-ua">Loading...</div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-label">Platform</div>
+                                    <div class="info-value" id="arch-platform">Loading...</div>
+                                </div>
+                                <div class="info-card">
+                                    <div class="info-label">CPU Cores</div>
+                                    <div class="info-value" id="arch-cores">Loading...</div>
                                 </div>
                             </div>
                         </div>
@@ -1002,25 +1014,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Validate URL (basic check)
                 if (!url.startsWith('http') && !url.startsWith('data:image')) {
-                    themeStatus.innerText = '⚠️ Invalid URL. Must start with http:// or https://';
-                    themeStatus.style.color = '#f59e0b';
-                    themeStatus.style.display = 'block';
+                    const status = document.getElementById('theme-status');
+                    status.innerText = '⚠️ Invalid URL. Must start with http:// or be an image file.';
+                    status.style.color = '#f59e0b';
+                    status.style.display = 'block';
                     return;
                 }
 
-                localStorage.setItem('ambient_theme_background', url);
-                
-                // Show success message
-                themeStatus.innerText = '✅ Theme applied! Reloading...';
-                themeStatus.style.color = '#10b981';
-                themeStatus.style.display = 'block';
+                try {
+                    localStorage.setItem('ambient_theme_background', url);
+                    
+                    // Show success message
+                    const status = document.getElementById('theme-status');
+                    status.innerText = '✅ Theme applied! Reloading...';
+                    status.style.color = '#10b981';
+                    status.style.display = 'block';
 
-                // Show reset button
-                themeResetBtn.style.display = 'inline-block';
+                    // Show reset button
+                    const resetBtn = document.getElementById('theme-reset-btn');
+                    if(resetBtn) resetBtn.style.display = 'inline-block';
 
-                setTimeout(() => {
-                    location.reload();
-                }, 1000);
+                    setTimeout(() => {
+                        location.reload();
+                    }, 500);
+                } catch (e) {
+                    const status = document.getElementById('theme-status');
+                    console.error(e);
+                    if (e.name === 'QuotaExceededError' || e.message.includes('quota')) {
+                        status.innerText = '❌ Image too large for storage! Try a smaller image.';
+                    } else {
+                        status.innerText = '❌ Failed to save theme. ' + e.message;
+                    }
+                    status.style.color = '#ef4444';
+                    status.style.display = 'block';
+                }
             };
 
             themeApplyBtn.onclick = () => {
@@ -1030,6 +1057,28 @@ document.addEventListener('DOMContentLoaded', () => {
             themeInput.onkeypress = (e) => {
                 if (e.key === 'Enter') applyTheme(themeInput.value.trim());
             };
+
+            // File Upload Logic
+            const themeFileInput = document.getElementById('theme-file-input');
+            if (themeFileInput) {
+                themeFileInput.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+
+                    // 2.5MB limit to be safe with LocalStorage text limits (~3.3MB base64)
+                    if (file.size > 2.5 * 1024 * 1024) { 
+                        alert('Image is too large! Please choose an image under 2.5MB to save storage space.');
+                        return;
+                    }
+
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        const result = event.target.result;
+                        applyTheme(result);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
 
             themeResetBtn.onclick = () => {
                 localStorage.removeItem('ambient_theme_background');
