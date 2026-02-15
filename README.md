@@ -3,6 +3,7 @@
   <p>Enhance your experience.</p>
   <p>Ambient is a web based proxy built for all of your browsing needs.</p>
   <p><strong>Current Version: v1.4.2</strong></p>
+  <p><strong>This probably my last update. Enjoy!! </p>
 </div>
 
 ![preview](https://i.ibb.co/xtNW3r2s/Screenshot-2025-03-28-10-37-09-AM.png)
