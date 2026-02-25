@@ -6,7 +6,9 @@
   <p><strong>This is probably my last update. Enjoy!! </p>
 </div>
 
-![preview](https://i.ibb.co/fzh8hKJ4/Screenshot-2026-02-25-224221.png)
+<p align="center">
+  <img src="https://i.ibb.co/fzh8hKJ4/Screenshot-2026-02-25-224221.png" alt="preview" width="600" />
+</p>
 
 > [!IMPORTANT]
 > If you fork this repo please consider giving us a star. Thank you!
