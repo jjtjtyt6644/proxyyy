@@ -7,7 +7,7 @@
 </div>
 
 <p align="center">
-  <img src="https://i.ibb.co/fzh8hKJ4/Screenshot-2026-02-25-224221.png" alt="preview" width="600" />
+  <img src="https://i.ibb.co/VctxTPV5/Screenshot-2026-02-25-224221.png" alt="preview" style="max-width: 800px; width: 100%; height: auto;" />
 </p>
 
 > [!IMPORTANT]
