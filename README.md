@@ -84,6 +84,7 @@ Click the button above to instantly deploy your own copy to Vercel for free.
 8. Once the deployment succeeds, Vercel will provide a unique URL (e.g. `https://proxyyy.vercel.app`). Use that URL to access your own proxy instance.
 9. You can manage future redeployments by pushing to the GitHub repo or clicking "Deployments" in the Vercel dashboard.
 
+If u need any help come to my class
 ### Manual Deployment
 
 1. **Clone the repository:**
