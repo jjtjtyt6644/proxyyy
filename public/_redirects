@@ -1,0 +1,6 @@
+# Fix UV proxy routing
+/search/*    /index.html   200
+# Fix Bare server routing (critical for "Bare meta" error)
+/bare/*      /index.html   200
+# Catch-all for all proxy paths
+/*           /index.html   200
