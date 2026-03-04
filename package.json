@@ -14,7 +14,7 @@
   "dependencies": {
     "@tomphttp/bare-server-node": "2.0.5",
     "chalk": "^5.2.0",
-    "cors": "^2.8.5",
+    "cors": "^2.8.6",
     "express": "^5.1.0",
     "lucide": "^0.486.0"
   },
